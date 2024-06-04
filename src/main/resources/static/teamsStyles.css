@@ -1,0 +1,104 @@
+header{
+    display: flex !important;
+    justify-content: space-between;
+    max-height: 10%;
+}
+nav ul{
+    display: flex;
+    gap: 2em;
+    margin: 0;
+}
+nav li{
+    font-size: 1.6em;
+}
+nav{
+    display: flex !important;
+    align-items: center;
+    padding-right: 2em;
+    justify-self: end;
+}
+
+nav a{
+    text-decoration: none !important;
+}
+
+.photos img{
+    max-height: 100%;
+}
+.photos{
+    display: flex;
+    gap: 2em;
+}
+footer {
+    color: white;
+}
+footer a{
+    color: white;
+}
+main{
+    display: flex !important;
+    justify-content: center;
+    gap: 7em;
+    align-items: center;
+}
+.card{
+    height: 73%;
+    width: 20% !important;
+}
+.info-trophies, .info-fans, .info-history{
+    display: none;
+}
+.card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+    font-family: arial, helvetica;
+}
+
+@media(max-width: 2000px){
+	html { font-size: 16px; }
+    .card-body p{
+        font-size: 15px !important;
+    }
+}
+@media (max-width: 1780px) {
+	html { font-size: 15px; }
+    .card-body p{
+        font-size: 13px !important;
+    }
+}
+@media (max-width: 1400px) {
+	html { font-size: 14px; }
+    .card-body p{
+        font-size: 13px !important;
+    }
+}
+@media (max-width: 1120px) {
+	html { font-size: 13px; }
+    .card-body p{
+        font-size: 12px !important;
+    }
+}
+@media (max-width: 1024px) {
+    header{
+        font-size: 10px !important;
+    }
+	main{
+        display: flex;
+        flex-direction: column !important;
+        overflow: visible !important;
+        justify-content: flex-start;
+        padding-block: 3em;
+     }
+    .card{
+        width: 83% !important;
+        height: 100% !important;
+    }
+    .trophies{
+        display: none;
+    }
+ 
+}
