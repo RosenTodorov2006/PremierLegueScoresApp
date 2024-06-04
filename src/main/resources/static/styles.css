@@ -1,0 +1,343 @@
+.header-navbar{
+    display: flex;
+    gap: 0.5em;
+    padding-block: 1em;
+    align-items: center;
+    justify-content: center;
+}
+.header-navbar ul{
+    display: flex;
+    gap: 1em;
+    margin: 0em;
+}
+.header-navbar p{
+
+    margin: 0em;
+}
+.header-navbar button{
+    display: none;
+    border-radius: 0.3em;
+    color: #37003C;
+}
+.prLogo{
+    width: 3.5em;
+    display: none;
+}
+
+.header-navbar li {
+    max-width: 2.5em; 
+    max-height: 40px;
+}
+.header-navbar li img{
+    width: 100%;
+    height: 100%;
+}
+i{
+    width: 1em;
+    height: 1em;
+}
+.header-navbar p{
+    color: #ffffff;
+}
+header{
+    background-color: #37003C;
+}
+.login_buttons{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    color: #ffffff;
+    border-inline: 1px solid #5F3363;
+    padding-inline: 1em;
+    gap: 4em;
+}
+.login_buttons button{
+    padding: 0.8em;
+    border-radius: 0.7em;
+}
+.me-3{
+    padding-right: 0.5em;
+}
+main{
+    background-image: url("images/background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    max-height: 100%;
+    overflow: hidden;
+    padding-block: 1em;
+}
+.video{
+    border-radius: 1em;
+    overflow: hidden;
+}
+table{
+    max-width: 20%;
+}
+.main{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1.3em;
+    height: 100%;
+    padding-inline: 2em;
+}
+.no-padding {
+    padding: 0.2em !important; /* Добавете !important за да гарантирате, че стиловете се прилагат */
+}
+
+.table-white td{
+    background-color: #FFFFFF;
+    color: #5F3363;
+}
+.table-white tr{
+    background-color: #37003C;
+    color: #FFFFFF;
+    text-align: center;
+}
+.points{
+    background-color: #5F3363 !important;
+    color: #FFFFFF !important;;
+}
+.table-white, .table-white tr, .table-white td{
+    border: 1px solid #37003C;
+}
+td{
+    text-align: start;
+}
+.ranking{
+    width: 19%;
+    border-radius: 1em;
+    overflow: hidden;
+    max-height: 100%;
+}
+.table-white{
+    min-width: 100%;
+}
+.ranking-header, .live-scores p{
+    text-align: center;
+    font-size: 2em;
+    padding: 0;
+    margin: 0;
+    background: radial-gradient(circle, #d748e4, #6e6ed8);
+    color: white;
+    font-weight: bold;
+}
+.table-white{
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+    overflow: hidden;
+    flex-basis: 15%;
+}
+
+.table-white td:nth-child(3){
+    text-align: center;
+}
+.middle-container{
+	display: flex;
+	flex-direction: column;
+    align-items: center;
+	gap: 1em;
+    flex-basis: 25%;
+    min-height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.middle-container img{
+	width: 30%;
+    height: auto;
+}
+.middle-container p{
+    color: #FFFFFF;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+    font-family: arial, helvetica;
+}
+.live-scores{
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    border-radius: 1em;
+    flex-basis: 15%;
+    overflow: hidden;
+    height: 100%;
+}
+
+.live-scores tbody{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 0.3em;
+}
+.live-scores tbody tr{
+    display: flex;
+    gap: 0.9em;
+    padding: 0.5em;
+}
+.live-scores table{
+    min-width: 100%;
+    display: flex;
+    color: #37003C;
+    overflow-y: auto;
+}
+.live-scores tbody tr:not(:last-child){
+    border-bottom: 1px solid #37003C;
+}
+.info{
+    background-color: rgba(191, 177, 192, 0.3);
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 1em;
+    color: #37003C;
+}
+.info p{
+    margin: 0;
+}
+.register-link{
+    text-decoration: none;
+    color: #37003C;
+    background-color: #FFFFFF;
+    padding: 0.4em;
+    border-radius: 0.3em;
+}
+.register-link:hover{
+    text-decoration: none;
+    color: #FFFFFF;
+    background-color: #37003C;
+}
+.align-items-center{
+    margin: 0em;
+    padding-block: 0em;
+}
+#regist{
+    padding-block: 0.6em !important;
+}
+#copy{
+    padding-block: 0.2em !important;
+}
+.main{
+    max-height: 88%;
+}
+main{
+    display: flex !important;
+    align-items: center;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+}
+@media (max-width: 1024px) {
+    .header-navbar button{
+        display: block;
+    }
+    .prLogo{
+        display: block;
+    }
+    .header-navbar ul{
+        display: none;
+    }
+    .header-navbar p{
+        display: none;
+    }
+    .header-navbar{
+        justify-content: space-between;
+        padding-inline: 2em;
+    }
+    .main{
+     display: flex;
+     flex-direction: row;
+     min-height: 100% !important;
+     overflow: visible !important;
+     justify-content: flex-start;
+     flex-wrap: wrap;
+     align-items: center;
+     justify-content: center;
+    }
+
+   .middle-container{
+        gap: 1em !important;
+        overflow: visible;
+        min-height: auto;
+        order:3;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+   }
+    main{
+        overflow: visible !important;
+        max-height: max-content;
+    }
+    .ranking{
+        overflow: visible !important;
+        height: 42.2em;
+        justify-self: start;
+        flex-basis: 44%;
+    }
+    .live-scores{
+        height: auto;
+        height: 42.2em;
+        flex-basis: 44%;
+    }
+    tbody{
+        width: 80%;
+    }
+    tr{
+        width: 100%;
+        justify-content: center;
+    }
+    .ranking-header{
+        border-top-right-radius: 0.4em;
+        border-top-left-radius: 0.4em;
+    }
+    .content{
+        order: -1;
+    }
+    .middle-container img{
+        width: 50%;
+    }
+    @media (max-width: 650px) {
+        iframe{
+            width: 300px;
+        }
+        .middle-container{
+            font-size: 13px !important;
+        }
+        html{
+            font-size: 12px !important;
+        }
+    }
+    @media (max-width: 480px) {
+        iframe{
+            width: 250px;
+            height: 150px;
+        }
+        .middle-container{
+            font-size: 11px !important;
+        }
+        html{
+            font-size: 10px !important;
+        }
+    }
+    @media (max-width: 400px) {
+        iframe{
+            width: 200px;
+            height: 125px;
+        }
+        .middle-container{
+            font-size: 10px !important;
+        }
+        html{
+            font-size: 9px !important;
+        }
+    }
+}
+.show-ul{
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center!important;
+    max-width: 60% !important;
+    flex-wrap: wrap !important;
+}
