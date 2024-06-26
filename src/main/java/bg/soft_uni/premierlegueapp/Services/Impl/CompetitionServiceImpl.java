@@ -1,6 +1,6 @@
-package Services.Impl;
+package bg.soft_uni.premierlegueapp.Services.Impl;
 
-import Services.CompetitionService;
+import bg.soft_uni.premierlegueapp.Services.CompetitionService;
 import org.springframework.stereotype.Service;
 
 @Service

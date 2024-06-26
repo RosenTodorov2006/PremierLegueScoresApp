@@ -12,9 +12,9 @@ spring:
       hiddenmethod:
         filter:
           enabled: true
-    sql:
-        init:
-          mode: always
+#    sql:
+#        init:
+#          mode: always
     jpa:
       # Choose either MySQL 8 or MySQL 5 below
       # For MySQL 8
