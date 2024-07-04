@@ -1,8 +1,6 @@
 package bg.soft_uni.premierlegueapp.Models.Entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Table(name = "users")
 @Entity
@@ -13,6 +11,17 @@ public class UserEntity extends BaseEntity{
     private String email;
     @Column(nullable = false)
     private String password;
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
+    private Role role;
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
     public String getName() {
         return name;
