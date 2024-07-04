@@ -30,6 +30,22 @@ public class Team extends BaseEntity{
     @JoinColumn(name = "town_id", referencedColumnName = "id")
     private Town town;
 
+    public Team(String name, String initials, LocalDate created, double budget, String historyInfo, String fansInfo, String trophiesInfo, Color kitColor, Town town) {
+        this.name = name;
+        this.initials = initials;
+        this.created = created;
+        this.budget = budget;
+        this.historyInfo = historyInfo;
+        this.fansInfo = fansInfo;
+        this.trophiesInfo = trophiesInfo;
+        this.kitColor = kitColor;
+        this.town = town;
+    }
+
+    public Team() {
+
+    }
+
     public String getName() {
         return name;
     }

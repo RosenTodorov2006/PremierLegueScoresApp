@@ -10,6 +10,14 @@ public class Competition extends BaseEntity{
     @Column
     private String name;
 
+    public Competition(String name) {
+        this.name = name;
+    }
+
+    public Competition() {
+
+    }
+
     public String getName() {
         return name;
     }

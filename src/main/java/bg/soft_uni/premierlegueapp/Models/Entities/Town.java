@@ -11,6 +11,15 @@ public class Town extends BaseEntity{
     @JoinColumn(referencedColumnName = "id", name = "country_id")
     private Country country;
 
+    public Town(String name, Country country) {
+        this.name = name;
+        this.country = country;
+    }
+
+    public Town() {
+
+    }
+
     public String getName() {
         return name;
     }

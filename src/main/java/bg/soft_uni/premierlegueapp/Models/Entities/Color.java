@@ -10,6 +10,14 @@ public class Color extends BaseEntity{
     @Column(nullable = false)
     private String name;
 
+    public Color(String name) {
+        this.name = name;
+    }
+
+    public Color() {
+
+    }
+
     public String getName() {
         return name;
     }

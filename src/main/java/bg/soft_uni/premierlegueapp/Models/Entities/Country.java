@@ -10,6 +10,14 @@ public class Country extends BaseEntity{
     @Column
     private String name;
 
+    public Country(String name) {
+        this.name = name;
+    }
+
+    public Country() {
+
+    }
+
     public String getName() {
         return name;
     }
