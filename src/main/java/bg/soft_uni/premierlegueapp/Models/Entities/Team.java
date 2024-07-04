@@ -17,12 +17,18 @@ public class Team extends BaseEntity{
     private LocalDate created;
     @Column
     private double budget;
-    @Column(nullable = false, columnDefinition = "LONGTEXT", name = "history_info")
-    private String historyInfo;
-    @Column(nullable = false, columnDefinition = "LONGTEXT", name = "fans_info")
-    private String fansInfo;
-    @Column(nullable = false, columnDefinition = "LONGTEXT", name = "trophies_info")
-    private String trophiesInfo;
+    @Column(nullable = false, columnDefinition = "LONGTEXT", name = "history_small_info")
+    private String historySmallInfo;
+    @Column(nullable = false, columnDefinition = "LONGTEXT", name = "history_big_info")
+    private String historyBigInfo;
+    @Column(nullable = false, columnDefinition = "LONGTEXT", name = "fans_small_info")
+    private String fansSmallInfo;
+    @Column(nullable = false, columnDefinition = "LONGTEXT", name = "fans_big_info")
+    private String fansBigInfo;
+    @Column(nullable = false, columnDefinition = "LONGTEXT", name = "trophies_small_info")
+    private String trophiesSmallInfo;
+    @Column(nullable = false, columnDefinition = "LONGTEXT", name = "trophies_big_info")
+    private String trophiesBigInfo;
     @ManyToOne
     @JoinColumn(name = "kit_color", referencedColumnName = "id")
     private Color kitColor;
@@ -30,14 +36,17 @@ public class Team extends BaseEntity{
     @JoinColumn(name = "town_id", referencedColumnName = "id")
     private Town town;
 
-    public Team(String name, String initials, LocalDate created, double budget, String historyInfo, String fansInfo, String trophiesInfo, Color kitColor, Town town) {
+    public Team(String name, String initials, LocalDate created, double budget, String historySmallInfo, String historyBigInfo, String fansSmallInfo, String fansBigInfo, String trophiesSmallInfo, String trophiesBigInfo, Color kitColor, Town town) {
         this.name = name;
         this.initials = initials;
         this.created = created;
         this.budget = budget;
-        this.historyInfo = historyInfo;
-        this.fansInfo = fansInfo;
-        this.trophiesInfo = trophiesInfo;
+        this.historySmallInfo = historySmallInfo;
+        this.historyBigInfo = historyBigInfo;
+        this.fansSmallInfo = fansSmallInfo;
+        this.fansBigInfo = fansBigInfo;
+        this.trophiesSmallInfo = trophiesSmallInfo;
+        this.trophiesBigInfo = trophiesBigInfo;
         this.kitColor = kitColor;
         this.town = town;
     }
@@ -78,29 +87,6 @@ public class Team extends BaseEntity{
         this.budget = budget;
     }
 
-    public String getHistoryInfo() {
-        return historyInfo;
-    }
-
-    public void setHistoryInfo(String historyInfo) {
-        this.historyInfo = historyInfo;
-    }
-
-    public String getFansInfo() {
-        return fansInfo;
-    }
-
-    public void setFansInfo(String fansInfo) {
-        this.fansInfo = fansInfo;
-    }
-
-    public String getTrophiesInfo() {
-        return trophiesInfo;
-    }
-
-    public void setTrophiesInfo(String trophiesInfo) {
-        this.trophiesInfo = trophiesInfo;
-    }
 
     public Color getKitColor() {
         return kitColor;
@@ -124,5 +110,53 @@ public class Team extends BaseEntity{
 
     public void setPlace(int place) {
         this.place = place;
+    }
+
+    public String getHistorySmallInfo() {
+        return historySmallInfo;
+    }
+
+    public void setHistorySmallInfo(String historySmallInfo) {
+        this.historySmallInfo = historySmallInfo;
+    }
+
+    public String getHistoryBigInfo() {
+        return historyBigInfo;
+    }
+
+    public void setHistoryBigInfo(String historyBigInfo) {
+        this.historyBigInfo = historyBigInfo;
+    }
+
+    public String getFansSmallInfo() {
+        return fansSmallInfo;
+    }
+
+    public void setFansSmallInfo(String fansSmallInfo) {
+        this.fansSmallInfo = fansSmallInfo;
+    }
+
+    public String getFansBigInfo() {
+        return fansBigInfo;
+    }
+
+    public void setFansBigInfo(String fansBigInfo) {
+        this.fansBigInfo = fansBigInfo;
+    }
+
+    public String getTrophiesSmallInfo() {
+        return trophiesSmallInfo;
+    }
+
+    public void setTrophiesSmallInfo(String trophiesSmallInfo) {
+        this.trophiesSmallInfo = trophiesSmallInfo;
+    }
+
+    public String getTrophiesBigInfo() {
+        return trophiesBigInfo;
+    }
+
+    public void setTrophiesBigInfo(String trophiesBigInfo) {
+        this.trophiesBigInfo = trophiesBigInfo;
     }
 }

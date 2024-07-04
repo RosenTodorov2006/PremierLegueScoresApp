@@ -12,15 +12,8 @@ spring:
       hiddenmethod:
         filter:
           enabled: true
-#    sql:
-#        init:
-#          mode: always
     jpa:
-      # Choose either MySQL 8 or MySQL 5 below
-      # For MySQL 8
       database-platform: org.hibernate.dialect.MySQLDialect
-      #For MySQL 5
-      #database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
       hibernate:
         ddl-auto: update
       open-in-view: false
@@ -33,3 +26,10 @@ spring:
     #api-key:
     #api-secret:
     #cloud-name:
+    thymeleaf:
+      check-template-location: true
+      cache: false
+      prefix: file:./src/main/resources/templates/
+      resources:
+        static-locations: file:./src/main/resources/static/
+        cache-period: 0
