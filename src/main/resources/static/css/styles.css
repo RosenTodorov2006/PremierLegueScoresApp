@@ -14,10 +14,14 @@
 
     margin: 0em;
 }
-.header-navbar button{
+#teamsPages{
     display: none;
-    border-radius: 0.3em;
-    color: #37003C;
+    color: white;
+    background-color: #6e6ed8;
+    margin: 0;
+    font-size: 1.2em;
+    text-decoration: none;
+    font-weight: bold;
 }
 .prLogo{
     width: 3.5em;
@@ -229,8 +233,9 @@ main{
     justify-content: center;
     gap: 1em;
 }
-@media (max-width: 1024px) {
-    .header-navbar button{
+
+@media (max-width: 1300px) {
+    #teamsPages{
         display: block;
     }
     .prLogo{
@@ -241,10 +246,6 @@ main{
     }
     .header-navbar p{
         display: none;
-    }
-    .header-navbar{
-        justify-content: space-between;
-        padding-inline: 2em;
     }
     .main{
      display: flex;
