@@ -27,18 +27,16 @@
                                 <form th:action="@{/login}" th:method="post" th:object="${loginSeedDto}">
 
                                     <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">SIGN INTO YOUR ACCOUNT</h5>
-                                    <strong th:if="${invalidData}" class="bg-blur rounded text-danger">
+                                    <strong th:if="${invalidData}" class="bg-blur rounded alert-danger">
                                         Wrong username and password combination.
                                     </strong>
 
                                     <div data-mdb-input-init class="form-outline mb-4">
-                                        <input th:field="*{email}" th:errorclass="'is-invalid alert-danger'" id="form2Example17" class="form-control form-control-lg" placeholder="Email address"/>
-                                        <small th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="bg-danger text-light rounded">Invalid email!</small>
+                                        <input th:field="*{email}" id="form2Example17" class="form-control form-control-lg" placeholder="Email address"/>
                                     </div>
 
                                     <div data-mdb-input-init class="form-outline mb-4">
-                                        <input type="password" th:field="*{password}" th:errorclass="'is-invalid alert-danger'" id="form2Example27" class="form-control form-control-lg" placeholder="Password"/>
-                                        <small th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="bg-danger text-light rounded">Invalid password!</small>
+                                        <input type="password" th:field="*{password}" id="form2Example27" class="form-control form-control-lg" placeholder="Password"/>
                                     </div>
 
                                     <div class="pt-1 mb-4">

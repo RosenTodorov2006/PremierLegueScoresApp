@@ -42,9 +42,15 @@ public class UserController {
         if(!model.containsAttribute("loginSeedDto")){
             model.addAttribute("loginSeedDto", new LoginSeedDto());
         }
-        if(!model.containsAttribute("invalidData")){
             model.addAttribute("invalidData", false);
+        return "login";
+    }
+    @GetMapping("/login-error")
+    public String loginError(Model model){
+        if(!model.containsAttribute("loginSeedDto")){
+            model.addAttribute("loginSeedDto", new LoginSeedDto());
         }
+        model.addAttribute("invalidData", true);
         return "login";
     }
 }
