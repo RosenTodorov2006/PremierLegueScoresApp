@@ -47,18 +47,4 @@ public class UserController {
         }
         return "login";
     }
-    @PostMapping("/login")
-    public String loginAndSave(@Valid LoginSeedDto loginSeedDto, BindingResult bindingResult, RedirectAttributes redirectAttributes){
-        if(bindingResult.hasErrors()){
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.loginSeedDto", bindingResult);
-            redirectAttributes.addFlashAttribute("loginSeedDto", loginSeedDto);
-            return "redirect:/login";
-        }
-        if(this.userService.invalidData(loginSeedDto)){
-            redirectAttributes.addFlashAttribute("invalidData", true);
-            return "redirect:/login";
-        }
-        // Todo LOGIN AND CURRENT USER
-        return "redirect:/";
-    }
 }

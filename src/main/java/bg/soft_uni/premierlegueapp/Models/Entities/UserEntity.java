@@ -6,7 +6,7 @@ import jakarta.persistence.Table;
 
 @Table(name = "users")
 @Entity
-public class User extends BaseEntity{
+public class UserEntity extends BaseEntity{
     @Column(unique = true, nullable = false)
     private String name;
     @Column(unique = true, nullable = false)

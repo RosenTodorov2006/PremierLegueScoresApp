@@ -2,7 +2,7 @@ package bg.soft_uni.premierlegueapp.Services.Impl;
 
 import bg.soft_uni.premierlegueapp.Models.Dtos.LoginSeedDto;
 import bg.soft_uni.premierlegueapp.Models.Dtos.RegisterSeedDto;
-import bg.soft_uni.premierlegueapp.Models.Entities.User;
+import bg.soft_uni.premierlegueapp.Models.Entities.UserEntity;
 import bg.soft_uni.premierlegueapp.Services.UserService;
 import bg.soft_uni.premierlegueapp.Repositories.UserRepository;
 import org.modelmapper.ModelMapper;
@@ -30,14 +30,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void register(RegisterSeedDto registerSeedDto) {
-        User map = this.modelMapper.map(registerSeedDto, User.class);
+        UserEntity map = this.modelMapper.map(registerSeedDto, UserEntity.class);
         map.setPassword(this.passwordEncoder.encode(registerSeedDto.getPassword()));
         this.userRepository.save(map);
     }
 
     @Override
     public boolean invalidData(LoginSeedDto loginSeedDto) {
-        Optional<User> byEmail = this.userRepository.findByEmail(loginSeedDto.getEmail());
+        Optional<UserEntity> byEmail = this.userRepository.findByEmail(loginSeedDto.getEmail());
         if(byEmail.isEmpty()){
             return true;
         }

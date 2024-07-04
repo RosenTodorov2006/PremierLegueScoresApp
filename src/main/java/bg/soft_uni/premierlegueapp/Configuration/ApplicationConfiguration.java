@@ -14,10 +14,6 @@ public class  ApplicationConfiguration {
         return new ModelMapper();
     }
     @Bean
-    public PasswordEncoder passwordEncoder(){
-        return new Pbkdf2PasswordEncoder();
-    }
-    @Bean
     public RestClient restClient(){
         return RestClient.create();
     }
