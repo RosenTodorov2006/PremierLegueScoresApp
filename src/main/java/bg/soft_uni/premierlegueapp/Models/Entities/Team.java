@@ -1,5 +1,6 @@
 package bg.soft_uni.premierlegueapp.Models.Entities;
 
+import bg.soft_uni.premierlegueapp.Models.Entities.Enums.TeamNames;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -10,7 +11,8 @@ public class Team extends BaseEntity{
     @Column
     private int place;
     @Column(unique = true, nullable = false)
-    private String name;
+    @Enumerated(EnumType.STRING)
+    private TeamNames name;
     @Column(unique = true)
     private String initials;
     @Column
@@ -36,7 +38,7 @@ public class Team extends BaseEntity{
     @JoinColumn(name = "town_id", referencedColumnName = "id")
     private Town town;
 
-    public Team(String name, String initials, LocalDate created, double budget, String historySmallInfo, String historyBigInfo, String fansSmallInfo, String fansBigInfo, String trophiesSmallInfo, String trophiesBigInfo, Color kitColor, Town town) {
+    public Team(TeamNames name, String initials, LocalDate created, double budget, String historySmallInfo, String historyBigInfo, String fansSmallInfo, String fansBigInfo, String trophiesSmallInfo, String trophiesBigInfo, Color kitColor, Town town) {
         this.name = name;
         this.initials = initials;
         this.created = created;
@@ -55,11 +57,11 @@ public class Team extends BaseEntity{
 
     }
 
-    public String getName() {
+    public TeamNames getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(TeamNames name) {
         this.name = name;
     }
 

@@ -1,78 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arsenal page</title>
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/teamsStyles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/fa/css/all.min.css">
-    <style>
-      .card-body button{
-  background-color: #E12128;
-  border: 1px solid #a00910b4;;
-}
-</style>
-</head>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="Fragments/fragments::head"></head>
 <body>
-    <header  style="background-color: #E12128;">
-        <div class="photos" style="gap: 0em;">
-            <img src="/images/ArsenalResources/arsenal-logo.png" alt="">
-            <img class = "trophies" src="/images/ArsenalResources/arsenal-trophies.png" alt="">
-        </div>
-        <nav>
-            <ul>
-                <li ><a style = "color: white !important;" onmouseover="this.style.color='#023375';" onmouseout="this.style.color='white';" href="https://www.arsenal.com/tickets?field_arsenal_team_target_id=1&revision_information=">Tickets <i class="fa-solid fa-arrow-up-right-from-square"></i></a></li>
-                <li class="off_site"><a style = "color: white !important; border-inline: 1px solid white; padding-inline: 0.5em;" onmouseover="this.style.color='#023375';" onmouseout="this.style.color='white';" href="https://www.arsenal.com/">Official site <i class="fa-solid fa-arrow-up-right-from-square"></i></a></li>
-                <li><a style = "color: white !important" onmouseover="this.style.color='#023375';" onmouseout="this.style.color='white';" href="https://twitter.com/arsenal"><i class="fa-brands fa-twitter"></i></a></li>
-                <li><a style = "color: white !important" onmouseover="this.style.color='#023375';" onmouseout="this.style.color='white';" href="https://www.instagram.com/arsenal/"><i class="fa-brands fa-instagram"></i></a></li>
-                <li><a style = "color: white !important" onmouseover="this.style.color='#023375';" onmouseout="this.style.color='white';" href="https://www.facebook.com/Arsenal/"><i class="fa-brands fa-facebook"></i></a></li>
-                <li><a style = "color: white !important" onmouseover="this.style.color='#023375';" onmouseout="this.style.color='white';" href="https://www.youtube.com/@arsenal"><i class="fa-brands fa-youtube"></i></a></li>
-                <li><a style = "color: white !important" onmouseover="this.style.color='#023375';" onmouseout="this.style.color='white';" href="https://www.tiktok.com/@arsenal"><i class="fa-brands fa-tiktok"></i></a></i></li>
-            </ul>
-        </nav>
-    </header>
-    <main id="main"  style="background-image: url('/images/ArsenalResources/photo-1577224682146-dd7843c88d33.avif'); background-size: 100% 100%;">
-        <div class="card" id ="card-history" style="width: 18rem;">
-            <img src="/images/ArsenalResources/history.png.jpeg" id="photo1" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">HISTORY</h5>
-              <p class="card-text"></p>
-              <p class="info-history">
-                </p>
-              <button id="history-button" class="btn btn-primary">Read more</button>
-            </div>
-          </div>
-          <div class="card" id="card-fans" style="width: 18rem;">
-            <img src="/images/ArsenalResources/arsenalFans.png" id="photo" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">FANS</h5>
-              <p class="card-text"></p>
-              <p class="info-fans"></p>
-                <button class="btn btn-primary" id="fans-button">Read more</button>
-            </div>
-          </div>
-          <div class="card" id="card-trophies" style="width: 18rem;">
-            <img src="/images/ArsenalResources/bqetmf5of712ap84fckp.webp" id="photo3" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">TROPHIES</h5>
-              <p class="card-text"></p>
-              <p class="info-trophies"></p>
-              <button  class="btn btn-primary" id="trophies-button">Read more</button>
-            </div>
-          </div>
-    </main>
-    <footer class="bg-body-tertiary text-center text-lg-start" style="background-color: #E12128;">
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
-          © 2024 Copyright: LiveScores.com
-        </div>
-        <!-- Copyright -->
-      </footer>
+    <header th:replace="~{Fragments/fragments::header(
+    '#E12128',
+     '/images/ArsenalResources/arsenal-logo.png',
+      '/images/ArsenalResources/arsenal-trophies.png',
+         'https://www.arsenal.com/tickets?field_arsenal_team_target_id=1&revision_information=',
+         'https://www.arsenal.com/',
+         'https://twitter.com/arsenal',
+         'https://www.instagram.com/arsenal/',
+         'https://www.facebook.com/Arsenal/',
+         'https://www.youtube.com/@arsenal',
+         'https://www.tiktok.com/@arsenal'
+          )}"></header>
+    <main th:replace="~{Fragments/fragments::main(
+    '/images/ArsenalResources/photo-1577224682146-dd7843c88d33.avif',
+    '/images/ArsenalResources/history.png.jpeg',
+    '/images/ArsenalResources/arsenalFans.png',
+    '/images/ArsenalResources/bqetmf5of712ap84fckp.webp',
+    ${team.getHistorySmallInfo()},
+    ${team.getHistoryBigInfo()},
+    ${team.getFansSmallInfo()},
+    ${team.getFansBigInfo()},
+    ${team.getTrophiesSmallInfo()},
+    ${team.getHistoryBigInfo()},
+    '#E12128',
+    '#a00910b4'
+)}"></main>
+    <footer th:replace="Fragments/fragments::footer('#E12128', 'white')"></footer>
       <script src="/myscript.js"></script>
 </body>
 </html>

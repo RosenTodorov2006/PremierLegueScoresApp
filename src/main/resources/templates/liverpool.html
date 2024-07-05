@@ -1,78 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liverpool page</title>
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/teamsStyles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/fa/css/all.min.css">
-    <style>
-      .card-body button{
-        background-color: #D71921;
-        border: 1px solid #7B2518;
-      }
-    </style>
-</head>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="Fragments/fragments::head"></head>
+
 <body>
-    <header>
-        <div class="photos">
-            <img src="/images/LiverpoolResources/liverpool-fc-logo-027452BE2B-seeklogo.com.png" alt="">
-            <img class = "trophies" src="/images/LiverpoolResources/trophies.png" alt="">
-        </div>
-        <nav>
-            <ul>
-                <li><a style = "color: #7B2518 !important" onmouseover="this.style.color='#D71921';" onmouseout="this.style.color='#7B2518';" href="https://www.liverpoolfc.com/tickets/tickets-availability">Tickets <i class="fa-solid fa-arrow-up-right-from-square"></i></a></li>
-                <li class="off_site"><a style = "color: #7B2518 !important; border-inline: 1px solid #D71921;
-                  padding-inline: 0.5em;" onmouseover="this.style.color='#D71921';" onmouseout="this.style.color='#7B2518';" href="https://www.liverpoolfc.com/">Official site <i class="fa-solid fa-arrow-up-right-from-square"></i></a></li>
-                <li><a style = "color: #7B2518 !important"  onmouseover="this.style.color='#D71921';" onmouseout="this.style.color='#7B2518';" href="https://twitter.com/lfc?"><i class="fa-brands fa-twitter"></i></a></li>
-                <li><a style = "color: #7B2518 !important"  onmouseover="this.style.color='#D71921';" onmouseout="this.style.color='#7B2518';" href="https://www.instagram.com/liverpoolfc/"><i class="fa-brands fa-instagram"></i></a></li>
-                <li><a style = "color: #7B2518 !important"  onmouseover="this.style.color='#D71921';" onmouseout="this.style.color='#7B2518';" href="https://www.facebook.com/LiverpoolFC/"><i class="fa-brands fa-facebook"></i></a></li>
-                <li><a style = "color: #7B2518 !important"  onmouseover="this.style.color='#D71921';" onmouseout="this.style.color='#7B2518';" href="https://www.youtube.com/channel/UC9LQwHZoucFT94I2h6JOcjw"><i class="fa-brands fa-youtube"></i></a></li>
-                <li><a style = "color: #7B2518 !important"  onmouseover="this.style.color='#D71921';" onmouseout="this.style.color='#7B2518';" href="https://www.tiktok.com/@liverpoolfc"><i class="fa-brands fa-tiktok"></i></a></i></li>
-            </ul>
-        </nav>
-    </header>
-    <main id="main"  style="background-image: url('/images/LiverpoolResources/england-football-football-premier-league-stadium-hd-wallpaper-preview.jpg'); background-size: 100% 100%;">
-        <div class="card" id ="card-history" style="width: 18rem;">
-            <img src="/images/LiverpoolResources/liverpoolHistory.png" id="photo1" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">HISTORY</h5>
-              <p class="card-text"></p>
-              <p class="info-history"></p>
-              <button id="history-button" class="btn btn-primary">Read more</button>
-            </div>
-          </div>
-          <div class="card" id="card-fans" style="width: 18rem;">
-            <img src="/images/LiverpoolResources/fansAnpPlayers.png" id="photo" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">FANS</h5>
-              <p class="card-text"></p>
-              <p class="info-fans"></p>
-                <button class="btn btn-primary" id="fans-button">Read more</button>
-            </div>
-          </div>
-          <div class="card" id="card-trophies" style="width: 18rem;">
-            <img src="/images/LiverpoolResources/liverpool-team-ucl-trophy_t6baurj3lpnj12yulnlrpq4ge.jpg" id="photo3" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">TROPHIES</h5>
-              <p class="card-text"></p>
-              <p class="info-trophies"></p>
-              <button  class="btn btn-primary" id="trophies-button">Read more</button>
-            </div>
-          </div>
-    </main>
-    <footer class="bg-body-tertiary text-center text-lg-start" style="background-color: #D71921;">
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
-          © 2024 Copyright: LiveScores.com
-        </div>
-        <!-- Copyright -->
-      </footer>
-      <script src="/myscript.js"></script>
+    <header th:replace="~{Fragments/fragments :: header(
+    '#D71921',
+    '/images/LiverpoolResources/liverpool-fc-logo-027452BE2B-seeklogo.com.png',
+    '/images/LiverpoolResources/trophies.png',
+    'https://www.liverpoolfc.com/tickets/tickets-availability',
+    'https://www.liverpoolfc.com/',
+    'https://twitter.com/lfc?',
+    'https://www.instagram.com/liverpoolfc/',
+    'https://www.facebook.com/LiverpoolFC/',
+    'https://www.youtube.com/channel/UC9LQwHZoucFT94I2h6JOcjw',
+    'https://www.tiktok.com/@liverpoolfc'
+)}"></header>
+    <main th:replace="~{Fragments/fragments::main(
+    '/images/LiverpoolResources/england-football-football-premier-league-stadium-hd-wallpaper-preview.jpg',
+    '/images/LiverpoolResources/liverpoolHistory.png',
+    '/images/LiverpoolResources/fansAnpPlayers.png',
+    '/images/LiverpoolResources/liverpool-team-ucl-trophy_t6baurj3lpnj12yulnlrpq4ge.jpg',
+    ${team.getHistorySmallInfo()},
+    ${team.getHistoryBigInfo()},
+    ${team.getFansSmallInfo()},
+    ${team.getFansBigInfo()},
+    ${team.getTrophiesSmallInfo()},
+    ${team.getHistoryBigInfo()},
+    '#D71921',
+    '#7B2518'
+)}"></main>
+    <footer th:replace="Fragments/fragments::footer('#D71921', 'white')"></footer>
+    <script src="/myscript.js"></script>
 </body>
 </html>

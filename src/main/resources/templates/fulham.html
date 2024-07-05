@@ -1,79 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fulham page</title>
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/teamsStyles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/fa/css/all.min.css">
-    <style>
-      .card-body button{
-  background-color: black;
-  border: 1px solid #FFFFFF;;
-}
-</style>
-</head>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="Fragments/fragments::head"></head>
+
 <body>
-    <header  style="background-color: black; ">
-        <div class="photos" style="gap: 0em;">
-            <img src="/images/FulhamResources/fc-fulham-club-logo-symbol-premier-league-football-abstract-design-illustration-with-black-background-free-vector.jpg" alt="">
-            <img class = "trophies" src="/images/FulhamResources/png.png" alt="">
-        </div>
-        <nav>
-            <ul>
-                <li ><a style = "color: #CB2026 !important;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#CB2026';" href="https://www.fulhamfc.com/tickets-and-hospitality/match-tickets/">Tickets <i class="fa-solid fa-arrow-up-right-from-square"></i></a></li>
-                <li class="off_site"><a style = "color: #CB2026 !important; border-inline: 1px solid white; padding-inline: 0.5em;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#CB2026';" href="https://www.fulhamfc.com">Official site <i class="fa-solid fa-arrow-up-right-from-square"></i></a></li>
-                <li><a style = "color: #CB2026 !important" onmouseover="this.style.color='white';" onmouseout="this.style.color='#CB2026';" href="https://twitter.com/fulhamfc"><i class="fa-brands fa-twitter"></i></a></li>
-                <li><a style = "color: #CB2026 !important" onmouseover="this.style.color='white';" onmouseout="this.style.color='#CB2026';" href="https://www.instagram.com/fulhamfc/"><i class="fa-brands fa-instagram"></i></a></li>
-                <li><a style = "color: #CB2026 !important" onmouseover="this.style.color='white';" onmouseout="this.style.color='#CB2026';" href="https://www.facebook.com/FulhamFC/"><i class="fa-brands fa-facebook"></i></a></li>
-                <li><a style = "color: #CB2026 !important" onmouseover="this.style.color='white';" onmouseout="this.style.color='#CB2026';" href="https://www.youtube.com/channel/UC2VLfz92cTT8jHIFOecC-LA"><i class="fa-brands fa-youtube"></i></a></li>
-                <li><a style = "color: #CB2026 !important" onmouseover="this.style.color='white';" onmouseout="this.style.color='#CB2026';" href="https://www.tiktok.com/@fulhamfc"><i class="fa-brands fa-tiktok"></i></a></i></li>
-            </ul>
-        </nav>
-    </header>
-    <main id="main"  style="background-image: url('/images/FulhamResources/4d7bfe60-f206-11ec-9ca5-25aa8b1b033c.jpg'); background-size: 100% 100%;">
-        <div class="card" id ="card-history" style="width: 18rem;">
-            <img src="/images/FulhamResources/history.png" id="photo1" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">HISTORY</h5>
-              <p class="card-text"></p>
-              <p class="info-history"></p>
-              <button id="history-button" class="btn btn-primary">Read more</button>
-            </div>
-          </div>
-          <div class="card" id="card-fans" style="width: 18rem;">
-            <img src="/images/FulhamResources/fulham-fc-we-are-banner-bkzif8pmreha0t7v.jpg" id="photo" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">FANS</h5>
-              <p class="card-text">
-                </p>
-              <p class="info-fans"></p>
-                <button class="btn btn-primary" id="fans-button">Read more</button>
-            </div>
-          </div>
-          <div class="card" id="card-trophies" style="width: 18rem;">
-            <img src="/images/FulhamResources/players (2).png" id="photo3" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">TROPHIES</h5>
-              <p class="card-text">
-                </p>
-              <p class="info-trophies"></p>
-              <button  class="btn btn-primary" id="trophies-button">Read more</button>
-            </div>
-          </div>
-    </main>
-    <footer class="bg-body-tertiary text-center text-lg-start" style="background-color: black;">
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
-          © 2024 Copyright: LiveScores.com
-        </div>
-        <!-- Copyright -->
-      </footer>
-      <script src="/myscript.js"></script>
+<header th:replace="~{Fragments/fragments :: header(
+    'black',
+    '/images/FulhamResources/fc-fulham-club-logo-symbol-premier-league-football-abstract-design-illustration-with-black-background-free-vector.jpg',
+    '/images/FulhamResources/png.png',
+    'https://www.fulhamfc.com/tickets-and-hospitality/match-tickets/',
+    'https://www.fulhamfc.com',
+    'https://twitter.com/fulhamfc',
+    'https://www.instagram.com/fulhamfc/',
+    'https://www.facebook.com/FulhamFC/',
+    'https://www.youtube.com/channel/UC2VLfz92cTT8jHIFOecC-LA',
+    'https://www.tiktok.com/@fulhamfc'
+)}"></header>
+
+    <main th:replace="~{Fragments/fragments::main(
+    '/images/FulhamResources/4d7bfe60-f206-11ec-9ca5-25aa8b1b033c.jpg',
+    '/images/FulhamResources/history.png',
+    '/images/FulhamResources/fulham-fc-we-are-banner-bkzif8pmreha0t7v.jpg',
+    '/images/FulhamResources/players (2).png',
+    ${team.getHistorySmallInfo()},
+    ${team.getHistoryBigInfo()},
+    ${team.getFansSmallInfo()},
+    ${team.getFansBigInfo()},
+    ${team.getTrophiesSmallInfo()},
+    ${team.getHistoryBigInfo()},
+    'black',
+    '#FFFFFF'
+)}"></main>
+    <footer th:replace="Fragments/fragments::footer('black', 'white')"></footer>
+    <script src="/myscript.js"></script>
 </body>
 </html>

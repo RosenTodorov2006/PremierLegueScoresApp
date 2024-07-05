@@ -1,79 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manchester City page</title>
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/teamsStyles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/fa/css/all.min.css">
-    <style>
-      .card-body button{
-  background-color: #7DB0DB;
-  border: 1px solid #FFFFFF;;
-}
-</style>
-</head>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="Fragments/fragments::head"></head>
+
+
 <body>
-    <header  style="background-color: #6EACDD; ">
-        <div class="photos" style="gap: 0em;">
-            <img src="/images/ManCityResources/logo.png" alt="">
-            <img class = "trophies" src="/images/ManCityResources/trophiesManCity.png" alt="">
-        </div>
-        <nav>
-            <ul>
-                <li ><a style = "color: #F4C865 !important;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#F4C865';" href="https://www.mancity.com/tickets/mens">Tickets <i class="fa-solid fa-arrow-up-right-from-square"></i></a></li>
-                <li class="off_site"><a style = "color: #F4C865 !important; border-inline: 1px solid white; padding-inline: 0.5em;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#F4C865';" href="https://www.mancity.com">Official site <i class="fa-solid fa-arrow-up-right-from-square"></i></a></li>
-                <li><a style = "color: #F4C865 !important" onmouseover="this.style.color='white';" onmouseout="this.style.color='#F4C865';" href="https://twitter.com/mancity"><i class="fa-brands fa-twitter"></i></a></li>
-                <li><a style = "color: #F4C865 !important" onmouseover="this.style.color='white';" onmouseout="this.style.color='#F4C865';" href="https://www.instagram.com/mancity/"><i class="fa-brands fa-instagram"></i></a></li>
-                <li><a style = "color: #F4C865 !important" onmouseover="this.style.color='white';" onmouseout="this.style.color='#F4C865';" href="https://www.facebook.com/mancity/"><i class="fa-brands fa-facebook"></i></a></li>
-                <li><a style = "color: #F4C865 !important" onmouseover="this.style.color='white';" onmouseout="this.style.color='#F4C865';" href="https://www.youtube.com/@mancity"><i class="fa-brands fa-youtube"></i></a></li>
-                <li><a style = "color: #F4C865 !important" onmouseover="this.style.color='white';" onmouseout="this.style.color='#F4C865';" href="https://www.tiktok.com/@mancity"><i class="fa-brands fa-tiktok"></i></a></i></li>
-            </ul>
-        </nav>
-    </header>
-    <main id="main"  style="background-image: url('/images/ManCityResources/manwallpaper.png'); background-size: 100% 100%;">
-        <div class="card" id ="card-history" style="width: 18rem;">
-            <img src="/images/ManCityResources/manCityHistory.png" id="photo1" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">HISTORY</h5>
-              <p class="card-text"></p>
-              <p class="info-history"></p>
-              <button id="history-button" class="btn btn-primary">Read more</button>
-            </div>
-          </div>
-          <div class="card" id="card-fans" style="width: 18rem;">
-            <img src="/images/ManCityResources/manCityFans.png" id="photo" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">FANS</h5>
-              <p class="card-text">
-                </p>
-              <p class="info-fans"></p>
-                <button class="btn btn-primary" id="fans-button">Read more</button>
-            </div>
-          </div>
-          <div class="card" id="card-trophies" style="width: 18rem;">
-            <img src="/images/ManCityResources/manchester-city-inter_862x485.webp" id="photo3" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">TROPHIES</h5>
-              <p class="card-text">
-                </p>
-              <p class="info-trophies"></p>
-              <button  class="btn btn-primary" id="trophies-button">Read more</button>
-            </div>
-          </div>
-    </main>
-    <footer class="bg-body-tertiary text-center text-lg-start" style="background-color: #7DB0DB;">
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
-          © 2024 Copyright: LiveScores.com
-        </div>
-        <!-- Copyright -->
-      </footer>
-      <script src="/myscript.js"></script>
+    <header th:replace="~{Fragments/fragments :: header(
+    '#6EACDD',
+    '/images/ManCityResources/logo.png',
+    '/images/ManCityResources/trophiesManCity.png',
+    'https://www.mancity.com/tickets/mens',
+    'https://www.mancity.com',
+    'https://twitter.com/mancity',
+    'https://www.instagram.com/mancity/',
+    'https://www.facebook.com/mancity/',
+    'https://www.youtube.com/@mancity',
+    'https://www.tiktok.com/@mancity'
+)}"></header>
+    <main th:replace="~{Fragments/fragments::main(
+    '/images/ManCityResources/manwallpaper.png',
+    '/images/ManCityResources/manCityHistory.png',
+    '/images/ManCityResources/manCityFans.png',
+    '/images/ManCityResources/manchester-city-inter_862x485.webp',
+    ${team.getHistorySmallInfo()},
+    ${team.getHistoryBigInfo()},
+    ${team.getFansSmallInfo()},
+    ${team.getFansBigInfo()},
+    ${team.getTrophiesSmallInfo()},
+    ${team.getHistoryBigInfo()},
+    '#7DB0DB',
+    '#FFFFFF'
+)}"></main>
+    <footer th:replace="Fragments/fragments::footer('#7DB0DB', 'white')"></footer>
+    <script src="/myscript.js"></script>
 </body>
 </html>

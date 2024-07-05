@@ -1,6 +1,7 @@
 package bg.soft_uni.premierlegueapp.Inits;
 
 import bg.soft_uni.premierlegueapp.Models.Entities.*;
+import bg.soft_uni.premierlegueapp.Models.Entities.Enums.TeamNames;
 import bg.soft_uni.premierlegueapp.Repositories.*;
 import jakarta.transaction.Transactional;
 import org.springframework.boot.CommandLineRunner;
@@ -90,7 +91,7 @@ public class DataInit implements CommandLineRunner {
 
             teamRepository.saveAll(List.of(
                     new Team(
-                            "Arsenal",  // name
+                            TeamNames.Arsenal,  // name
                             "ARS",  // initials
                             LocalDate.of(1886, 1, 1),  // created
                             100000000,  // budget
@@ -104,7 +105,7 @@ public class DataInit implements CommandLineRunner {
                             london  // town
                     ),
                     new Team(
-                            "Chelsea",  // name
+                            TeamNames.Chelsea,  // name
                             "CHE",  // initials
                             LocalDate.of(1905, 1, 1),  // created
                             120000000,  // budget
@@ -118,7 +119,7 @@ public class DataInit implements CommandLineRunner {
                             london  // town
                     ),
                     new Team(
-                            "Leicester City",  // name
+                            TeamNames.LeicesterCity,  // name
                             "LEI",  // initials
                             LocalDate.of(1884, 1, 1),  // created
                             80000000,  // budget
@@ -132,7 +133,7 @@ public class DataInit implements CommandLineRunner {
                             leicester  // town
                     ),
                     new Team(
-                            "Nottingham Forest",  // name
+                            TeamNames.NottinghamForest,  // name
                             "NFFC",  // initials
                             LocalDate.of(1865, 1, 1),  // created
                             70000000,  // budget
@@ -146,7 +147,7 @@ public class DataInit implements CommandLineRunner {
                             nottingham  // town
                     ),
                     new Team(
-                            "Southampton",  // name
+                            TeamNames.Southampton,  // name
                             "SOU",  // initials
                             LocalDate.of(1885, 1, 1),  // created
                             60000000,  // budget
@@ -160,7 +161,7 @@ public class DataInit implements CommandLineRunner {
                             southampton  // town
                     ),
                     new Team(
-                            "Liverpool",  // name
+                            TeamNames.Liverpool,  // name
                             "LIV",  // initials
                             LocalDate.of(1892, 1, 1),  // created
                             150000000,  // budget
@@ -174,7 +175,7 @@ public class DataInit implements CommandLineRunner {
                             liverpool  // town
                     ),
                     new Team(
-                            "Crystal Palace",  // name
+                            TeamNames.CrystalPalace,  // name
                             "CP",  // initials
                             LocalDate.of(1905, 1, 1),  // created
                             80000000,  // budget
@@ -188,7 +189,7 @@ public class DataInit implements CommandLineRunner {
                             london  // town
                     ),
                     new Team(
-                            "Aston Villa",  // name
+                            TeamNames.AstonVilla,  // name
                             "AVFC",  // initials
                             LocalDate.of(1874, 1, 1),  // created
                             90000000,  // budget
@@ -202,7 +203,7 @@ public class DataInit implements CommandLineRunner {
                             birmingham  // town
                     ),
                     new Team(
-                            "Bournemouth AFC",  // name
+                            TeamNames.BournemouthAFC,  // name
                             "BAFC",  // initials
                             LocalDate.of(1899, 1, 1),  // created
                             50000000,  // budget
@@ -216,7 +217,7 @@ public class DataInit implements CommandLineRunner {
                             bournemouth  // town
                     ),
                     new Team(
-                            "Everton Football Club",  // name
+                            TeamNames.Everton,  // name
                             "EFC",  // initials
                             LocalDate.of(1878, 1, 1),  // created
                             60000000,  // budget
@@ -230,7 +231,7 @@ public class DataInit implements CommandLineRunner {
                             everton  // town
                     ),
                     new Team(
-                            "Manchester City Football Club",  // name
+                            TeamNames.ManchesterCity,  // name
                             "MCFC",  // initials
                             LocalDate.of(1880, 1, 1),  // created
                             80000000,  // budget
@@ -244,7 +245,7 @@ public class DataInit implements CommandLineRunner {
                             manchester  // town
                     ),
                     new Team(
-                            "Tottenham Hotspur Football Club",  // name
+                            TeamNames.TottenhamHotspur,  // name
                             "THFC",  // initials
                             LocalDate.of(1882, 9, 5),  // created
                             100000000,  // budget
@@ -258,7 +259,7 @@ public class DataInit implements CommandLineRunner {
                             london  // town
                     ),
                     new Team(
-                            "Brentford Football Club",  // name
+                            TeamNames.Brentford,  // name
                             "BFC",  // initials
                             LocalDate.of(1889, 10, 10),  // created
                             50000000,  // budget
@@ -272,7 +273,7 @@ public class DataInit implements CommandLineRunner {
                             brentford  // town
                     ),
                     new Team(
-                            "Fulham Football Club",  // name
+                            TeamNames.Fulham,  // name
                             "FFC",  // initials
                             LocalDate.of(1879, 6, 30),  // created
                             40000000,  // budget
@@ -286,7 +287,7 @@ public class DataInit implements CommandLineRunner {
                             london  // town
                     ),
                     new Team(
-                            "Manchester United Football Club",  // name
+                            TeamNames.ManchesterUnited,  // name
                             "MUFC",  // initials
                             LocalDate.of(1878, 12, 5),  // created
                             70000000,  // budget
@@ -300,7 +301,7 @@ public class DataInit implements CommandLineRunner {
                             manchester  // town
                     ),
                     new Team(
-                            "West Ham United Football Club",  // name
+                            TeamNames.WestHamUnited,  // name
                             "WHUFC",  // initials
                             LocalDate.of(1895, 7, 5),  // created
                             45000000,  // budget
@@ -314,7 +315,7 @@ public class DataInit implements CommandLineRunner {
                             london  // town
                     ),
                     new Team(
-                            "Brighton & Hove Albion Football Club",  // name
+                            TeamNames.BrightonHoveAlbion,  // name
                             "BHAFC",  // initials
                             LocalDate.of(1901, 8, 21),  // created
                             35000000,  // budget
@@ -328,7 +329,7 @@ public class DataInit implements CommandLineRunner {
                             brighton  // town
                     ),
                     new Team(
-                            "Wolverhampton Wanderers Football Club",  // name
+                            TeamNames.Wolverhampton,  // name
                             "Wolves",  // initials
                             LocalDate.of(1877, 8, 1),  // created
                             50000000,  // budget
@@ -342,7 +343,7 @@ public class DataInit implements CommandLineRunner {
                             wolverhampton  // town
                     ),
                     new Team(
-                            "Newcastle United Football Club",  // name
+                            TeamNames.NewcastleUnited,  // name
                             "NUFC",  // initials
                             LocalDate.of(1892, 12, 9),  // created
                             70000000,  // budget
@@ -356,7 +357,7 @@ public class DataInit implements CommandLineRunner {
                             newCastle  // town
                     ),
                     new Team(
-                            "Ipswich Town Football Club",  // name
+                            TeamNames.Ipswich,  // name
                             "ITFC",  // initials
                             LocalDate.of(1878, 10, 16),  // created
                             55000000,  // budget

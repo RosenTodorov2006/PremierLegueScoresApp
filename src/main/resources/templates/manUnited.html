@@ -1,80 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manchester United page</title>
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/teamsStyles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/fa/css/all.min.css">
-    <style>
-      .card-body button{
-  background-color: #DF1A21;
-  border: 1px solid #FFFFFF;;
-}
-</style>
-</head>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="Fragments/fragments::head"></head>
+
 <body>
-    <header  style="background-color: #8E0000; ">
-        <div class="photos" style="gap: 0em;">
-            <img src="/images/ManUnitedResources/logoManUnd.png" alt="">
-            <img class = "trophies" src="/images/ManUnitedResources/50508439821.png" alt="">
-        </div>
-        <nav>
-            <ul>
-                <li ><a style = "color: #FEE600 !important;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FEE600';" href="https://tickets.manutd.com/en-GB/categories/home-tickets">Tickets <i class="fa-solid fa-arrow-up-right-from-square"></i></a></li>
-                <li class="off_site"><a style = "color: #FEE600 !important; border-inline: 1px solid white; padding-inline: 0.5em;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FEE600';" href="https://www.manutd.com">Official site <i class="fa-solid fa-arrow-up-right-from-square"></i></a></li>
-                <li><a style = "color: #FEE600 !important" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FEE600';" href="https://twitter.com/ManUtd"><i class="fa-brands fa-twitter"></i></a></li>
-                <li><a style = "color: #FEE600 !important" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FEE600';" href="https://www.instagram.com/manchesterunited/"><i class="fa-brands fa-instagram"></i></a></li>
-                <li><a style = "color: #FEE600 !important" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FEE600';" href="https://www.facebook.com/manchesterunited/"><i class="fa-brands fa-facebook"></i></a></li>
-                <li><a style = "color: #FEE600 !important" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FEE600';" href="https://www.youtube.com/manutd"><i class="fa-brands fa-youtube"></i></a></li>
-                <li><a style = "color: #FEE600 !important" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FEE600';" href="https://www.tiktok.com/@manutd"><i class="fa-brands fa-tiktok"></i></a></i></li>
-            </ul>
-        </nav>
-    </header>
-    <main id="main"  style="background-image: url('/images/ManUnitedResources/wp3293641.jpg'); background-size: 100% 100%;">
-        <div class="card" id ="card-history" style="width: 18rem;">
-            <img src="/images/ManUnitedResources/historyManUnited.png" id="photo1" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">HISTORY</h5>
-              <p class="card-text">
-                </p>
-              <p class="info-history"></p>
-              <button id="history-button" class="btn btn-primary">Read more</button>
-            </div>
-          </div>
-          <div class="card" id="card-fans" style="width: 18rem;">
-            <img src="/images/ManUnitedResources/2038308-42761647-2560-1440.jpg" id="photo" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">FANS</h5>
-              <p class="card-text">
-                </p>
-              <p class="info-fans"></p>
-                <button class="btn btn-primary" id="fans-button">Read more</button>
-            </div>
-          </div>
-          <div class="card" id="card-trophies" style="width: 18rem;">
-            <img src="/images/ManUnitedResources/p01l9tn3.jpg" id="photo3" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">TROPHIES</h5>
-              <p class="card-text">
-                </p>
-              <p class="info-trophies"></p>
-              <button  class="btn btn-primary" id="trophies-button">Read more</button>
-            </div>
-          </div>
-    </main>
-    <footer class="bg-body-tertiary text-center text-lg-start" style="background-color: #DF1A21;">
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
-          © 2024 Copyright: LiveScores.com
-        </div>
-        <!-- Copyright -->
-      </footer>
-      <script src="/myscript.js"></script>
+    <header th:replace="~{Fragments/fragments :: header(
+    '#8E0000',
+    '/images/ManUnitedResources/logoManUnd.png',
+    '/images/ManUnitedResources/50508439821.png',
+    'https://tickets.manutd.com/en-GB/categories/home-tickets',
+    'https://www.manutd.com',
+    'https://twitter.com/ManUtd',
+    'https://www.instagram.com/manchesterunited/',
+    'https://www.facebook.com/manchesterunited/',
+    'https://www.youtube.com/manutd',
+    'https://www.tiktok.com/@manutd'
+)}"></header>
+    <main th:replace="~{Fragments/fragments::main(
+    '/images/ManUnitedResources/wp3293641.jpg',
+    '/images/ManUnitedResources/historyManUnited.png',
+    '/images/ManUnitedResources/2038308-42761647-2560-1440.jpg',
+    '/images/ManUnitedResources/p01l9tn3.jpg',
+    ${team.getHistorySmallInfo()},
+    ${team.getHistoryBigInfo()},
+    ${team.getFansSmallInfo()},
+    ${team.getFansBigInfo()},
+    ${team.getTrophiesSmallInfo()},
+    ${team.getHistoryBigInfo()},
+    '#DF1A21',
+    '#FFFFFF'
+)}"></main>
+    <footer th:replace="Fragments/fragments::footer('#DF1A21', 'white')"></footer>
+    <script src="/myscript.js"></script>
 </body>
 </html>
