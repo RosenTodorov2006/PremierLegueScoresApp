@@ -90,7 +90,7 @@ public class DataInit implements CommandLineRunner {
             Color black = colorRepository.findByName("Black");
             Color yellow = colorRepository.findByName("Yellow");
             Competition competition = this.competitionRepository.findByName(CompetitionNames.PremierLeague);
-
+            //ToDo set position with api
             teamRepository.saveAll(List.of(
                     new Team(
                             competition,
