@@ -24,7 +24,9 @@ public class TeamServiceImpl implements TeamService {
         TeamExportDto map = this.modelMapper.map(team, TeamExportDto.class);
         map.setKitColor(team.getKitColor().getName());
         map.setTown(team.getTown().getName());
-        map.setCreated(team.getCreated().toString());
+        map.setBudget(String.format("%.0f$", team.getBudget()));
+        map.setCompetition(team.getCompetition().getName().name());
+        map.setCountry(team.getTown().getCountry().getName());
         return map;
     }
 }

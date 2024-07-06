@@ -16,7 +16,7 @@
     'https://www.youtube.com/spursofficial',
     'https://www.tiktok.com/@spursofficial'
 )}"></header>
-
+<section th:replace="Fragments/fragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#1E2551', 'white', ${team.country},${team.competition})"></section>
     <main th:replace="~{Fragments/fragments::main(
     '/images/TottenhamResources/241659-2500x1478-desktop-hd-tottenham-hotspur-fc-background-photo.jpg',
     '/images/TottenhamResources/TotHistory.png',
@@ -32,6 +32,6 @@
     '#FFFFFF'
 )}"></main>
     <footer th:replace="Fragments/fragments::footer('#1E2551', 'white')"></footer>
-    <script src="/myscript.js"></script>
+    <script src="/js/teamPageJs.js"></script>
 </body>
 </html>

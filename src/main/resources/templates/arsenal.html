@@ -15,6 +15,7 @@
          'https://www.youtube.com/@arsenal',
          'https://www.tiktok.com/@arsenal'
           )}"></header>
+    <section th:replace="Fragments/fragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#E12128', 'white', ${team.country},${team.competition})"></section>
     <main th:replace="~{Fragments/fragments::main(
     '/images/ArsenalResources/photo-1577224682146-dd7843c88d33.avif',
     '/images/ArsenalResources/history.png.jpeg',
@@ -30,6 +31,6 @@
     '#a00910b4'
 )}"></main>
     <footer th:replace="Fragments/fragments::footer('#E12128', 'white')"></footer>
-      <script src="/myscript.js"></script>
+      <script src="/js/teamPageJs.js"></script>
 </body>
 </html>

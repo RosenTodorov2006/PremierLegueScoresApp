@@ -1,6 +1,7 @@
 package bg.soft_uni.premierlegueapp.Models.Dtos;
 
 import bg.soft_uni.premierlegueapp.Models.Entities.Color;
+import bg.soft_uni.premierlegueapp.Models.Entities.Country;
 import bg.soft_uni.premierlegueapp.Models.Entities.Enums.TeamNames;
 import bg.soft_uni.premierlegueapp.Models.Entities.Town;
 import jakarta.persistence.*;
@@ -11,7 +12,7 @@ public class TeamExportDto {
     private TeamNames name;
     private String initials;
     private String created;
-    private double budget;
+    private String budget;
     private String historySmallInfo;
     private String historyBigInfo;
     private String fansSmallInfo;
@@ -20,6 +21,8 @@ public class TeamExportDto {
     private String trophiesBigInfo;
     private String kitColor;
     private String town;
+    private String competition;
+    private String country;
 
     public TeamNames getName() {
         return name;
@@ -45,11 +48,11 @@ public class TeamExportDto {
         this.created = created;
     }
 
-    public double getBudget() {
+    public String getBudget() {
         return budget;
     }
 
-    public void setBudget(double budget) {
+    public void setBudget(String budget) {
         this.budget = budget;
     }
 
@@ -115,5 +118,21 @@ public class TeamExportDto {
 
     public void setTown(String town) {
         this.town = town;
+    }
+
+    public String getCompetition() {
+        return competition;
+    }
+
+    public void setCompetition(String competition) {
+        this.competition = competition;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 }

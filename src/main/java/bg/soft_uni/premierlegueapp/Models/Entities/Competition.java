@@ -1,16 +1,16 @@
 package bg.soft_uni.premierlegueapp.Models.Entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import bg.soft_uni.premierlegueapp.Models.Entities.Enums.CompetitionNames;
+import jakarta.persistence.*;
 
 @Table
 @Entity(name = "competitions")
 public class Competition extends BaseEntity{
     @Column
-    private String name;
+    @Enumerated(EnumType.STRING)
+    private CompetitionNames name;
 
-    public Competition(String name) {
+    public Competition(CompetitionNames name) {
         this.name = name;
     }
 
@@ -18,11 +18,11 @@ public class Competition extends BaseEntity{
 
     }
 
-    public String getName() {
+    public CompetitionNames getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(CompetitionNames name) {
         this.name = name;
     }
 }

@@ -16,6 +16,7 @@
     'https://www.youtube.com/channel/UC9LQwHZoucFT94I2h6JOcjw',
     'https://www.tiktok.com/@liverpoolfc'
 )}"></header>
+    <section th:replace="Fragments/fragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#D71921', 'white', ${team.country},${team.competition})"></section>
     <main th:replace="~{Fragments/fragments::main(
     '/images/LiverpoolResources/england-football-football-premier-league-stadium-hd-wallpaper-preview.jpg',
     '/images/LiverpoolResources/liverpoolHistory.png',
@@ -31,6 +32,6 @@
     '#7B2518'
 )}"></main>
     <footer th:replace="Fragments/fragments::footer('#D71921', 'white')"></footer>
-    <script src="/myscript.js"></script>
+    <script src="/js/teamPageJs.js"></script>
 </body>
 </html>

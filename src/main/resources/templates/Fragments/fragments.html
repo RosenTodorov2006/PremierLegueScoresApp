@@ -80,6 +80,9 @@
         </ul>
     </nav>
 </header>
+<section th:fragment="teamSmallInfo(name, initials, created, kitColor, town, budget, textColor, backgroundColor, country, league)" th:style="'text-align: center; background-color: ' + ${backgroundColor} + ';'" id="smallClubInfo">
+    <p th:style="'margin: 0; font-family: Arial, sans-serif; font-size: 16px; line-height: 1.5; padding: 3px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); color: ' + ${textColor} + '; background-color: ' + ${backgroundColor} + ';'" th:text="'The team named ' + ${name} + ', with initials ' + ${initials} + ', was created on ' + ${created} + '. They play in jerseys of ' + ${kitColor} + ' color and hail from ' + ${town} + ', ' + ${country} + '. Their budget is ' + ${budget} + ' and they play in the ' + ${league} + '.'"></p>
+</section>
 <main th:fragment="main(background, imageHistory, imageFans, imageTrophies, historySmallInfo, historyBigInfo, fansSmallInfo, fansBigInfo, trophiesSmallInfo, trophiesBigInfo, buttonColor, borderColor)" id="main" th:style="'background-image: url(' + ${background} + '); background-size: 100% 100%;'">
     <div class="card" id ="card-history" style="width: 18rem;">
         <img th:src="${imageHistory}" id="photo1" class="card-img-top" alt="...">

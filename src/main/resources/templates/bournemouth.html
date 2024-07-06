@@ -16,6 +16,7 @@
          'https://www.youtube.com/channel/UCeOCuVSSweaEj6oVtJZEKQw',
          'https://www.tiktok.com/@afcb'
           )}"></header>
+    <section th:replace="Fragments/fragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#CA0B0F', 'white', ${team.country},${team.competition})"></section>
     <main th:replace="~{Fragments/fragments::main(
     '/images/BournemouthResources/wp4227156-afc-bournemouth-wallpapers.jpg',
     '/images/BournemouthResources/history.png',
@@ -31,6 +32,6 @@
     '#a00910b4'
 )}"></main>
     <footer th:replace="Fragments/fragments::footer('#CA0B0F', 'white')"></footer>
-    <script src="/myscript.js"></script>
+    <script src="/js/teamPageJs.js"></script>
 </body>
 </html>

@@ -21,6 +21,7 @@
             </ul>
         </nav>
     </header>
+    <section th:replace="Fragments/fragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#03529B', 'white', ${team.country},${team.competition})"></section>
     <main th:replace="~{Fragments/fragments::main(
     '/images/CeystalPalaceResources/gettyimages-899395030.webp',
     '/images/CeystalPalaceResources/Crystal-Palace.png',
@@ -36,6 +37,6 @@
     '#a00910b4'
 )}"></main>
     <footer th:replace="Fragments/fragments::footer('#03529B', 'white')"></footer>
-    <script src="/myscript.js"></script>
+    <script src="/js/teamPageJs.js"></script>
 </body>
 </html>

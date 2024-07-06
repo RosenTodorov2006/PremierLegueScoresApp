@@ -19,6 +19,9 @@ public class Team extends BaseEntity{
     private LocalDate created;
     @Column
     private double budget;
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
+    private Competition competition;
     @Column(nullable = false, columnDefinition = "LONGTEXT", name = "history_small_info")
     private String historySmallInfo;
     @Column(nullable = false, columnDefinition = "LONGTEXT", name = "history_big_info")
@@ -38,7 +41,7 @@ public class Team extends BaseEntity{
     @JoinColumn(name = "town_id", referencedColumnName = "id")
     private Town town;
 
-    public Team(TeamNames name, String initials, LocalDate created, double budget, String historySmallInfo, String historyBigInfo, String fansSmallInfo, String fansBigInfo, String trophiesSmallInfo, String trophiesBigInfo, Color kitColor, Town town) {
+    public Team(Competition competition, TeamNames name, String initials, LocalDate created, double budget, String historySmallInfo, String historyBigInfo, String fansSmallInfo, String fansBigInfo, String trophiesSmallInfo, String trophiesBigInfo, Color kitColor, Town town) {
         this.name = name;
         this.initials = initials;
         this.created = created;
@@ -51,6 +54,7 @@ public class Team extends BaseEntity{
         this.trophiesBigInfo = trophiesBigInfo;
         this.kitColor = kitColor;
         this.town = town;
+        this.competition=competition;
     }
 
     public Team() {
@@ -160,5 +164,13 @@ public class Team extends BaseEntity{
 
     public void setTrophiesBigInfo(String trophiesBigInfo) {
         this.trophiesBigInfo = trophiesBigInfo;
+    }
+
+    public Competition getCompetition() {
+        return competition;
+    }
+
+    public void setCompetition(Competition competition) {
+        this.competition = competition;
     }
 }

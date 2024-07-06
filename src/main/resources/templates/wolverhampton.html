@@ -16,7 +16,7 @@
     'https://www.youtube.com/channel/UCQ7Lqg5Czh5djGK6iOG53KQ',
     'https://www.tiktok.com/@wolves'
 )}"></header>
-
+<section th:replace="Fragments/fragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#F5A918', 'white', ${team.country},${team.competition})"></section>
     <main th:replace="~{Fragments/fragments::main(
     '/images/WolverhamptonResources/backgrounfWol.jpg',
     '/images/WolverhamptonResources/historyWolves.png',
@@ -32,6 +32,6 @@
     '#FFFFFF'
 )}"></main>
     <footer th:replace="Fragments/fragments::footer('#F5A918', 'white')"></footer>
-    <script src="/myscript.js"></script>
+    <script src="/js/teamPageJs.js"></script>
 </body>
 </html>

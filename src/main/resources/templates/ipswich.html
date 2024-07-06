@@ -16,6 +16,7 @@
     'https://www.youtube.com/user/officialitfc',
     'https://www.tiktok.com/@ipswichtown'
 )}"></header>
+    <section th:replace="Fragments/fragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#153C89', 'white', ${team.country},${team.competition})"></section>
     <main th:replace="~{Fragments/fragments::main(
     '/images/IpswichResources/ipswich-town-1440-x-960-wallpaper-f4f8jsa8nfy4wszm.webp',
     '/images/IpswichResources/history.jpg',
@@ -31,6 +32,6 @@
     '#051e50'
 )}"></main>
     <footer th:replace="Fragments/fragments::footer('#153C89', 'white')"></footer>
-    <script src="/myscript.js"></script>
+    <script src="/js/teamPageJs.js"></script>
 </body>
 </html>

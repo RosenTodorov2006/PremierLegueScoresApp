@@ -15,7 +15,7 @@
     'https://www.youtube.com/channel/UCU2PacFf99vhb3hNiYDmxww',
     'https://www.tiktok.com/@chelseafc'
 )}"></header>
-
+<section th:replace="Fragments/fragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#003492', 'white', ${team.country},${team.competition})"></section>
     <main th:replace="~{Fragments/fragments::main(
     '/images/ChelseaResources/851794-chelsea-wallpaper-2018-hd-1920x1080-computer.jpg',
     '/images/ChelseaResources/maxresdefault.jpg',
@@ -31,6 +31,6 @@
     '#2a6be2'
 )}"></main>
     <footer th:replace="Fragments/fragments::footer('#003492', 'white')"></footer>
-    <script src="/myscript.js"></script>
+    <script src="/js/teamPageJs.js"></script>
 </body>
 </html>

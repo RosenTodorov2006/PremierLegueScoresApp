@@ -16,6 +16,7 @@
     'https://www.youtube.com/@LCFC',
     'https://www.tiktok.com/@lcfc'
 )}"></header>
+    <section th:replace="Fragments/fragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#004c97', 'white', ${team.country},${team.competition})"></section>
     <main th:replace="~{Fragments/fragments::main(
     '/images/LeicesterResources/0_Champions-League-2.webp',
     '/images/LeicesterResources/EIOKHe5XsAAt-QP.jpg',
@@ -31,6 +32,6 @@
     '#FFFFFF'
 )}"></main>
     <footer th:replace="Fragments/fragments::footer('#004c97', 'white')"></footer>
-    <script src="/myscript.js"></script>
+    <script src="/js/teamPageJs.js"></script>
 </body>
 </html>

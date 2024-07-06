@@ -16,6 +16,8 @@
     'https://www.youtube.com/channel/UCAalMUm3LIf504ItA3rqfug',
     'https://www.tiktok.com/@brentfordfc'
 )}"></header>
+<section th:replace="Fragments/fragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#E31E27', 'white', ${team.country},${team.competition})"></section>
+
     <main th:replace="~{Fragments/fragments::main(
     '/images/BrentfordResources/wp10896436.jpg',
     '/images/BrentfordResources/FKHFg0hXIAIgeRM.jpg',
@@ -31,6 +33,6 @@
     '#a00910b4'
 )}"></main>
     <footer th:replace="Fragments/fragments::footer('#E31E27', 'white')"></footer>
-    <script src="/myscript.js"></script>
+    <script src="/js/teamPageJs.js"></script>
 </body>
 </html>

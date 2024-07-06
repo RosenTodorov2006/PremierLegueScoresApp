@@ -16,7 +16,7 @@
     'https://www.youtube.com/westhamunited',
     'https://www.tiktok.com/@westham'
 )}"></header>
-
+<section th:replace="Fragments/fragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#7A2739', 'white', ${team.country},${team.competition})"></section>
     <main th:replace="~{Fragments/fragments::main(
     '/images/WestHamResources/wp9934544.webp',
     '/images/WestHamResources/logoWestHam.png',
@@ -32,6 +32,6 @@
     '#FFFFFF'
 )}"></main>
     <footer th:replace="Fragments/fragments::footer('#7A2739', 'white')"></footer>
-    <script src="/myscript.js"></script>
+    <script src="/js/teamPageJs.js"></script>
 </body>
 </html>

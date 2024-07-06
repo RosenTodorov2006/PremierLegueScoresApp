@@ -16,7 +16,7 @@
     'https://www.youtube.com/channel/UC2VLfz92cTT8jHIFOecC-LA',
     'https://www.tiktok.com/@fulhamfc'
 )}"></header>
-
+<section th:replace="Fragments/fragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, 'black', 'white', ${team.country},${team.competition})"></section>
     <main th:replace="~{Fragments/fragments::main(
     '/images/FulhamResources/4d7bfe60-f206-11ec-9ca5-25aa8b1b033c.jpg',
     '/images/FulhamResources/history.png',
@@ -32,6 +32,6 @@
     '#FFFFFF'
 )}"></main>
     <footer th:replace="Fragments/fragments::footer('black', 'white')"></footer>
-    <script src="/myscript.js"></script>
+    <script src="/js/teamPageJs.js"></script>
 </body>
 </html>

@@ -16,6 +16,7 @@
          'https://www.youtube.com/@avfcofficial',
          'https://www.tiktok.com/@avfcofficial'
           )}"></header>
+    <section th:replace="Fragments/fragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#660433', '#87B7E8', ${team.country},${team.competition})"></section>
     <main th:replace="~{Fragments/fragments::main(
     '/images/AstonVillaResources/background.png',
     '/images/AstonVillaResources/Aston-Villa-Logo-history.png',
@@ -31,6 +32,6 @@
     '#a00910b4'
 )}"></main>
     <footer th:replace="Fragments/fragments::footer('#660433', '#87B7E8')"></footer>
-      <script src="/myscript.js"></script>
+      <script src="/js/teamPageJs.js"></script>
 </body>
 </html>

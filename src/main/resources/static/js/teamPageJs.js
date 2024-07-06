@@ -1,5 +1,6 @@
 document.getElementById('fans-button').addEventListener('click', function() {
     if (document.getElementById('fans-button').textContent === 'Read more') {
+        document.getElementById("smallClubInfo").style.display='none';
         // Запазване на оригиналните стойности преди да ги промените
         var cardHistoryDisplay = document.getElementById("card-history").style.display;
         var cardTrophiesDisplay = document.getElementById("card-trophies").style.display;
@@ -19,6 +20,7 @@ document.getElementById('fans-button').addEventListener('click', function() {
         document.getElementsByClassName('card-body')[1].style.display = 'flex';
     } else {
         // Възстановяване на оригиналните стилове
+        document.getElementById("smallClubInfo").style.display='block';
         document.querySelector('.info-fans').style.display = 'none';
         document.getElementById("card-fans").style.minWidth = cardFansMinWidth;
         document.getElementById("card-fans").style.height = cardFansHeight;
@@ -34,6 +36,7 @@ document.getElementById('fans-button').addEventListener('click', function() {
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 document.getElementById('trophies-button').addEventListener('click', function() {
     if (document.getElementById('trophies-button').textContent === 'Read more') {
+        document.getElementById("smallClubInfo").style.display='none';
         // Запазване на оригиналните стойности преди да ги промените
         var cardHistoryDisplay = document.getElementById("card-fans").style.display;
         var cardTrophiesDisplay = document.getElementById("card-history").style.display;
@@ -53,6 +56,7 @@ document.getElementById('trophies-button').addEventListener('click', function() 
         document.getElementsByClassName('card-body')[2].style.display = 'flex';
     } else {
         // Възстановяване на оригиналните стилове
+        document.getElementById("smallClubInfo").style.display='block';
         document.querySelector('.info-trophies').style.display = 'none';
         document.getElementById("card-trophies").style.minWidth = cardFansMinWidth;
         document.getElementById("card-trophies").style.height = cardFansHeight;
@@ -67,6 +71,7 @@ document.getElementById('trophies-button').addEventListener('click', function() 
     //------------------------------------------------------------------------------------------------------------------------------------------------------
 document.getElementById('history-button').addEventListener('click', function() {
     if (document.getElementById('history-button').textContent === 'Read more') {
+        document.getElementById("smallClubInfo").style.display='none';
         // Запазване на оригиналните стойности преди да ги промените
         var cardHistoryDisplay = document.getElementById("card-fans").style.display;
         var cardTrophiesDisplay = document.getElementById("card-trophies").style.display;
@@ -85,6 +90,7 @@ document.getElementById('history-button').addEventListener('click', function() {
         document.getElementById('history-button').textContent = 'Read less';
         document.getElementsByClassName('card-body')[0].style.display = 'flex';
     } else {
+        document.getElementById("smallClubInfo").style.display='block';
         // Възстановяване на оригиналните стилове
         document.querySelector('.info-history').style.display = 'none';
         document.getElementById("card-history").style.minWidth = cardFansMinWidth;

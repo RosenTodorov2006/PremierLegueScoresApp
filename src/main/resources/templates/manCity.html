@@ -17,6 +17,7 @@
     'https://www.youtube.com/@mancity',
     'https://www.tiktok.com/@mancity'
 )}"></header>
+    <section th:replace="Fragments/fragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#7DB0DB', 'white', ${team.country},${team.competition})"></section>
     <main th:replace="~{Fragments/fragments::main(
     '/images/ManCityResources/manwallpaper.png',
     '/images/ManCityResources/manCityHistory.png',
@@ -32,6 +33,6 @@
     '#FFFFFF'
 )}"></main>
     <footer th:replace="Fragments/fragments::footer('#7DB0DB', 'white')"></footer>
-    <script src="/myscript.js"></script>
+    <script src="/js/teamPageJs.js"></script>
 </body>
 </html>

@@ -16,6 +16,7 @@
     'https://www.youtube.com/channel/UCxvXjfiIHQ2O6saVx_ZFqnw',
     'https://www.tiktok.com/@southamptonfc'
 )}"></header>
+<section th:replace="Fragments/fragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#E91C3D', 'white', ${team.country},${team.competition})"></section>
     <main th:replace="~{Fragments/fragments::main(
     '/images/SouthamptonResources/southampton2.jpg',
     '/images/SouthamptonResources/maxresdefault.jpg',
@@ -31,6 +32,6 @@
     '#FFFFFF'
 )}"></main>
     <footer th:replace="Fragments/fragments::footer('#E91C3D', 'white')"></footer>
-    <script src="/myscript.js"></script>
+    <script src="/js/teamPageJs.js"></script>
 </body>
 </html>

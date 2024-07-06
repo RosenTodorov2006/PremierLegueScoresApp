@@ -16,6 +16,7 @@
     'https://www.youtube.com/EVERTON',
     'https://www.tiktok.com/@everton'
 )}"></header>
+<section th:replace="Fragments/fragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#0044C1', 'white', ${team.country},${team.competition})"></section>
     <main th:replace="~{Fragments/fragments::main(
     '/images/EvertonResources/sports-everton-wallpaper-preview.jpg',
     '/images/EvertonResources/history.jpg',
@@ -31,6 +32,6 @@
     '#FFFFFF'
 )}"></main>
     <footer th:replace="Fragments/fragments::footer('#0044C1', 'white')"></footer>
-    <script src="/myscript.js"></script>
+    <script src="/js/teamPageJs.js"></script>
 </body>
 </html>

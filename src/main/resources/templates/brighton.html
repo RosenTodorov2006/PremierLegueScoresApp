@@ -15,7 +15,7 @@
     'https://www.youtube.com/channel/UCf-cpC9WAdOsas19JHipukA',
     'https://www.tiktok.com/@officialbhafc'
 )}"></header>
-
+<section th:replace="Fragments/fragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#114D96', 'white', ${team.country},${team.competition})"></section>
     <main th:replace="~{Fragments/fragments::main(
     '/images/BrightonResources/background.png',
     '/images/BrightonResources/history.png',
@@ -31,6 +31,6 @@
     '#2a6be2'
 )}"></main>
     <footer th:replace="Fragments/fragments::footer('#114D96', 'white')"></footer>
-    <script src="/myscript.js"></script>
+    <script src="/js/teamPageJs.js"></script>
 </body>
 </html>

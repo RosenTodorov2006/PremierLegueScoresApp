@@ -1,6 +1,7 @@
 package bg.soft_uni.premierlegueapp.Inits;
 
 import bg.soft_uni.premierlegueapp.Models.Entities.*;
+import bg.soft_uni.premierlegueapp.Models.Entities.Enums.CompetitionNames;
 import bg.soft_uni.premierlegueapp.Models.Entities.Enums.TeamNames;
 import bg.soft_uni.premierlegueapp.Repositories.*;
 import jakarta.transaction.Transactional;
@@ -65,7 +66,7 @@ public class DataInit implements CommandLineRunner {
         }
 
         if (competitionRepository.count() == 0) {
-            competitionRepository.save(new Competition("Premier League"));
+            competitionRepository.save(new Competition(CompetitionNames.PremierLeague));
         }
 
         if (teamRepository.count() == 0) {
@@ -88,14 +89,16 @@ public class DataInit implements CommandLineRunner {
             Color white = colorRepository.findByName("White");
             Color black = colorRepository.findByName("Black");
             Color yellow = colorRepository.findByName("Yellow");
+            Competition competition = this.competitionRepository.findByName(CompetitionNames.PremierLeague);
 
             teamRepository.saveAll(List.of(
                     new Team(
+                            competition,
                             TeamNames.Arsenal,  // name
                             "ARS",  // initials
                             LocalDate.of(1886, 1, 1),  // created
                             100000000,  // budget
-                            "The History of Arsenal Football Club is one of the most illustrious and captivating narratives in the realm of football. Founded in 1886, Arsenal has amassed a plethora of titles and commendations, solidifying its standing among the English football elite. From its humble beginnings in Woolwich, South London, to its evolution into a global footballing powerhouse, Arsenal's journey is a testament to its enduring legacy and unwavering spirit.",  // historySmallInfo
+                            "The History of Arsenal Football Club is one of the most illustrious and captivating narratives in the realm of football. Founded in 1886, Arsenal has amassed a plethora of titles and commendations, solidifying its standing among the English football elite. From its humble beginnings in Woolwich, South London, to its evolution into a global footballing powerhouse.",  // historySmallInfo
                             "The club proudly calls one of the world's most iconic stadiums home - Highbury, a place where legions of fans convene to rally behind their team in every encounter.\n\nThroughout the years, Arsenal has forged a legendary reputation as one of the most triumphant and influential names in football annals. Garnering multiple titles in the English Premier League, including numerous league championships and cups, Arsenal has etched its name into the fabric of English football history.\n\nYet, Arsenal's true eminence shines brightest on the European stage. With a distinctive brand of play and resilience in the face of challenges, Arsenal has secured multiple European trophies and other prestigious honors.\n\nThe club is celebrated for its iconic footballers who have proudly sported the Arsenal colors, as well as its visionary leaders who have left an indelible imprint on the global football landscape.",  // historyBigInfo
                             "The fans of Arsenal Football Club, affectionately known as the 'Gooners', play a pivotal role in shaping the club's identity and triumphs. Revered for their unwavering dedication, fervent loyalty, and vocal backing, Arsenal fans ignite an electric atmosphere at every match, transforming the Emirates Stadium into a fortress.",  // fansSmallInfo
                             "In victory or defeat, Arsenal supporters stand shoulder to shoulder with their team, celebrating triumphs and weathering setbacks with equal passion. Their chants echo through the stands, their songs reverberate around the stadium, and their banners wave proudly, inspiring players and unsettling adversaries alike.\n\nThe connection between Arsenal and its fans transcends boundaries of geography and time. Whether at home or on the road, Gooners travel far and wide to rally behind their beloved club, painting stadiums red wherever they roam.\n\nBut being an Arsenal fan is more than just supporting a football team; it's about camaraderie, identity, and a shared love for the game. Gooners embody the spirit of North London - resilient, proud, and full of passion.\n\nArsenal and its fans share an unbreakable bond, fueled by their devotion to the game and pursuit of glory, ensuring the club's enduring legacy.",  // fansBigInfo
@@ -105,6 +108,7 @@ public class DataInit implements CommandLineRunner {
                             london  // town
                     ),
                     new Team(
+                            competition,
                             TeamNames.Chelsea,  // name
                             "CHE",  // initials
                             LocalDate.of(1905, 1, 1),  // created
@@ -119,6 +123,7 @@ public class DataInit implements CommandLineRunner {
                             london  // town
                     ),
                     new Team(
+                            competition,
                             TeamNames.LeicesterCity,  // name
                             "LEI",  // initials
                             LocalDate.of(1884, 1, 1),  // created
@@ -133,6 +138,7 @@ public class DataInit implements CommandLineRunner {
                             leicester  // town
                     ),
                     new Team(
+                            competition,
                             TeamNames.NottinghamForest,  // name
                             "NFFC",  // initials
                             LocalDate.of(1865, 1, 1),  // created
@@ -147,6 +153,7 @@ public class DataInit implements CommandLineRunner {
                             nottingham  // town
                     ),
                     new Team(
+                            competition,
                             TeamNames.Southampton,  // name
                             "SOU",  // initials
                             LocalDate.of(1885, 1, 1),  // created
@@ -161,6 +168,7 @@ public class DataInit implements CommandLineRunner {
                             southampton  // town
                     ),
                     new Team(
+                            competition,
                             TeamNames.Liverpool,  // name
                             "LIV",  // initials
                             LocalDate.of(1892, 1, 1),  // created
@@ -175,6 +183,7 @@ public class DataInit implements CommandLineRunner {
                             liverpool  // town
                     ),
                     new Team(
+                            competition,
                             TeamNames.CrystalPalace,  // name
                             "CP",  // initials
                             LocalDate.of(1905, 1, 1),  // created
@@ -189,6 +198,7 @@ public class DataInit implements CommandLineRunner {
                             london  // town
                     ),
                     new Team(
+                            competition,
                             TeamNames.AstonVilla,  // name
                             "AVFC",  // initials
                             LocalDate.of(1874, 1, 1),  // created
@@ -203,6 +213,7 @@ public class DataInit implements CommandLineRunner {
                             birmingham  // town
                     ),
                     new Team(
+                            competition,
                             TeamNames.BournemouthAFC,  // name
                             "BAFC",  // initials
                             LocalDate.of(1899, 1, 1),  // created
@@ -217,6 +228,7 @@ public class DataInit implements CommandLineRunner {
                             bournemouth  // town
                     ),
                     new Team(
+                            competition,
                             TeamNames.Everton,  // name
                             "EFC",  // initials
                             LocalDate.of(1878, 1, 1),  // created
@@ -231,6 +243,7 @@ public class DataInit implements CommandLineRunner {
                             everton  // town
                     ),
                     new Team(
+                            competition,
                             TeamNames.ManchesterCity,  // name
                             "MCFC",  // initials
                             LocalDate.of(1880, 1, 1),  // created
@@ -245,6 +258,7 @@ public class DataInit implements CommandLineRunner {
                             manchester  // town
                     ),
                     new Team(
+                            competition,
                             TeamNames.TottenhamHotspur,  // name
                             "THFC",  // initials
                             LocalDate.of(1882, 9, 5),  // created
@@ -259,6 +273,7 @@ public class DataInit implements CommandLineRunner {
                             london  // town
                     ),
                     new Team(
+                            competition,
                             TeamNames.Brentford,  // name
                             "BFC",  // initials
                             LocalDate.of(1889, 10, 10),  // created
@@ -273,6 +288,7 @@ public class DataInit implements CommandLineRunner {
                             brentford  // town
                     ),
                     new Team(
+                            competition,
                             TeamNames.Fulham,  // name
                             "FFC",  // initials
                             LocalDate.of(1879, 6, 30),  // created
@@ -287,6 +303,7 @@ public class DataInit implements CommandLineRunner {
                             london  // town
                     ),
                     new Team(
+                            competition,
                             TeamNames.ManchesterUnited,  // name
                             "MUFC",  // initials
                             LocalDate.of(1878, 12, 5),  // created
@@ -301,6 +318,7 @@ public class DataInit implements CommandLineRunner {
                             manchester  // town
                     ),
                     new Team(
+                            competition,
                             TeamNames.WestHamUnited,  // name
                             "WHUFC",  // initials
                             LocalDate.of(1895, 7, 5),  // created
@@ -315,6 +333,7 @@ public class DataInit implements CommandLineRunner {
                             london  // town
                     ),
                     new Team(
+                            competition,
                             TeamNames.BrightonHoveAlbion,  // name
                             "BHAFC",  // initials
                             LocalDate.of(1901, 8, 21),  // created
@@ -323,12 +342,13 @@ public class DataInit implements CommandLineRunner {
                             "From its early days at the Goldstone Ground to its modern home at the American Express Community Stadium, Brighton & Hove Albion has undergone a remarkable journey of growth and transformation. The club has weathered the highs and lows of professional football, experiencing moments of triumph and adversity along the way.\n\nBrighton & Hove Albion's rise to prominence culminated in its return to the top-flight of English football in 2017, marking a historic achievement for the club and its loyal supporters. The Seagulls have since established themselves as a competitive force in the Premier League, showcasing their talent and determination on the national stage.\n\nThroughout its history, Brighton & Hove Albion has been defined by its passionate fanbase, known affectionately as the 'Seagulls'. These dedicated supporters have stood by their team through thick and thin, filling stadiums with chants, songs, and a sea of blue and white.\n\nAs Brighton & Hove Albion continues to build upon its legacy, the club remains a symbol of pride and unity for the city and its fans. With each passing season, the Seagulls soar to new heights, driven by a commitment to excellence and a shared love for the beautiful game.",  // historyBigInfo
                             "The fans of Brighton & Hove Albion Football Club, affectionately known as the 'Seagulls', are the lifeblood of the team, infusing every match with passion, energy, and unwavering support. From the stands of the American Express Community Stadium to away matches across the country, the Seagulls faithful create an electric atmosphere that fuels the players on the pitch.",  // fansSmallInfo
                             "Renowned for their loyalty and dedication, Brighton & Hove Albion fans stand by their team through every twist and turn of the season, celebrating victories and rallying behind the players in times of challenge. Their chants echo through the stadium, their colors adorn the stands, and their unwavering support inspires players to give their all on the field.\n\nThe bond between Brighton & Hove Albion and its fans runs deep, transcending the boundaries of the football pitch. Whether at home or on the road, Seagulls supporters travel far and wide to show their allegiance, creating a sea of blue and white wherever they go.\n\nBeing a Brighton & Hove Albion fan is more than just supporting a football club; it's about community, camaraderie, and shared experiences. The Seagulls faithful embody the spirit of Brighton & Hove - vibrant, resilient, and full of pride.",  // fansBigInfo
-                            "Despite Brighton & Hove Albion Football Club never clinching major trophies in the top leagues or national cups, its journey through English football history is defined by resilience, commitment, and unwavering dedication to its supporters. Founded in 1901, the club has ingrained itself within its community, embodying the spirit of Brighton & Hove with every match played and every challenge faced.",  // trophiesSmallInfo
+                            "Despite Brighton & Hove Albion Football Club never clinching major trophies in the top leagues or national cups, its journey through English football history is defined by resilience, commitment, and unwavering dedication to its supporters. Founded in 1901, the club has ingrained itself within its community.",  // trophiesSmallInfo
                             "Throughout its existence, Brighton & Hove Albion has remained steadfast in its pursuit of excellence on the pitch, continuously striving to represent its community with pride and passion. Despite not achieving major silverware, the club's legacy is marked by memorable moments, unwavering support from its fans, and a commitment to its core values.\n\nAlthough Brighton & Hove Albion claimed the championship in the Second Division (Championship) during the seasons 1957/1958 and 2001/2002, it has yet to secure major trophies in the top leagues or national cups. Nonetheless, the club's journey is characterized by resilience, unity, and an enduring bond with its loyal supporters.\n\nAs Brighton & Hove Albion continues its journey in English football, its legacy is not defined solely by trophies but by the spirit, resilience, and unwavering dedication that have shaped its identity throughout history.",  // trophiesBigInfo
                             blue,  // kitColor
                             brighton  // town
                     ),
                     new Team(
+                            competition,
                             TeamNames.Wolverhampton,  // name
                             "Wolves",  // initials
                             LocalDate.of(1877, 8, 1),  // created
@@ -343,6 +363,7 @@ public class DataInit implements CommandLineRunner {
                             wolverhampton  // town
                     ),
                     new Team(
+                            competition,
                             TeamNames.NewcastleUnited,  // name
                             "NUFC",  // initials
                             LocalDate.of(1892, 12, 9),  // created
@@ -357,6 +378,7 @@ public class DataInit implements CommandLineRunner {
                             newCastle  // town
                     ),
                     new Team(
+                            competition,
                             TeamNames.Ipswich,  // name
                             "ITFC",  // initials
                             LocalDate.of(1878, 10, 16),  // created
