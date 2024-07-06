@@ -2,6 +2,7 @@ package bg.soft_uni.premierlegueapp.Inits;
 
 import bg.soft_uni.premierlegueapp.Models.Entities.*;
 import bg.soft_uni.premierlegueapp.Models.Entities.Enums.CompetitionNames;
+import bg.soft_uni.premierlegueapp.Models.Entities.Enums.RoleNames;
 import bg.soft_uni.premierlegueapp.Models.Entities.Enums.TeamNames;
 import bg.soft_uni.premierlegueapp.Repositories.*;
 import jakarta.transaction.Transactional;
@@ -10,6 +11,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 
 @Component
@@ -19,8 +21,10 @@ public class DataInit implements CommandLineRunner {
     private final TownRepository townRepository;
     private final CompetitionRepository competitionRepository;
     private final TeamRepository teamRepository;
+    private final RoleRepository roleRepository;
 
-    public DataInit(ColorRepository colorRepository, CountryRepository countryRepository, TownRepository townRepository, CompetitionRepository competitionRepository, TeamRepository teamRepository) {
+    public DataInit(RoleRepository roleRepository, ColorRepository colorRepository, CountryRepository countryRepository, TownRepository townRepository, CompetitionRepository competitionRepository, TeamRepository teamRepository) {
+        this.roleRepository = roleRepository;
         this.colorRepository = colorRepository;
         this.countryRepository = countryRepository;
         this.townRepository = townRepository;
@@ -30,6 +34,12 @@ public class DataInit implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        if(roleRepository.count()==0){
+            Arrays.stream(RoleNames.values())
+                    .map(Role::new)
+                    .forEach(this.roleRepository::save);
+        }
+
         if (colorRepository.count() == 0) {
             colorRepository.saveAll(List.of(
                     new Color("Red"),
