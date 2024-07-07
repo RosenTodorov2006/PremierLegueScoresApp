@@ -2,6 +2,7 @@ package bg.soft_uni.premierlegueapp.Web;
 
 import bg.soft_uni.premierlegueapp.Models.Dtos.LoginSeedDto;
 import bg.soft_uni.premierlegueapp.Models.Dtos.RegisterSeedDto;
+import bg.soft_uni.premierlegueapp.Services.TeamService;
 import bg.soft_uni.premierlegueapp.Services.UserService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
@@ -14,9 +15,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class UserController {
     private final UserService userService;
+    private final TeamService teamService;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, TeamService teamService) {
         this.userService = userService;
+        this.teamService = teamService;
     }
 
     @GetMapping("/register")
@@ -24,6 +27,7 @@ public class UserController {
         if(!model.containsAttribute("registerSeedDto")){
             model.addAttribute("registerSeedDto",  new RegisterSeedDto());
         }
+        model.addAttribute("teams", this.teamService.gelAllTeamsNames());
         return "register";
     }
     @PostMapping("/register")

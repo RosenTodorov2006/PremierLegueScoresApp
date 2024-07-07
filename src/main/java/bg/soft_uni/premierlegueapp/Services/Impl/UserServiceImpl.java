@@ -2,9 +2,12 @@ package bg.soft_uni.premierlegueapp.Services.Impl;
 
 import bg.soft_uni.premierlegueapp.Models.Dtos.LoginSeedDto;
 import bg.soft_uni.premierlegueapp.Models.Dtos.RegisterSeedDto;
+import bg.soft_uni.premierlegueapp.Models.Dtos.UserExportDto;
 import bg.soft_uni.premierlegueapp.Models.Entities.Enums.RoleNames;
+import bg.soft_uni.premierlegueapp.Models.Entities.Enums.TeamNames;
 import bg.soft_uni.premierlegueapp.Models.Entities.UserEntity;
 import bg.soft_uni.premierlegueapp.Repositories.RoleRepository;
+import bg.soft_uni.premierlegueapp.Repositories.TeamRepository;
 import bg.soft_uni.premierlegueapp.Services.UserService;
 import bg.soft_uni.premierlegueapp.Repositories.UserRepository;
 import org.modelmapper.ModelMapper;
@@ -19,12 +22,14 @@ public class UserServiceImpl implements UserService {
     private final RoleRepository roleRepository;
     private final ModelMapper modelMapper;
     private final PasswordEncoder passwordEncoder;
+    private final TeamRepository teamRepository;
 
-    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder, TeamRepository teamRepository) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.modelMapper = modelMapper;
         this.passwordEncoder = passwordEncoder;
+        this.teamRepository = teamRepository;
     }
 
     @Override
@@ -41,6 +46,7 @@ public class UserServiceImpl implements UserService {
         }else{
             map.setRole(this.roleRepository.findByName(RoleNames.USER).get());
         }
+        map.setFavouriteTeam(this.teamRepository.findByName(TeamNames.valueOf(registerSeedDto.getFavouriteTeam())).get());
         this.userRepository.save(map);
     }
 
@@ -54,5 +60,13 @@ public class UserServiceImpl implements UserService {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public UserExportDto getCurrentUserInfo(String name) {
+        UserEntity byName = this.userRepository.findByEmail(name).get();
+        UserExportDto map = this.modelMapper.map(byName, UserExportDto.class);
+        map.setFavouriteTeam(byName.getFavouriteTeam().getName().name());
+        return map;
     }
 }

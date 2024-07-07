@@ -8,6 +8,9 @@ import bg.soft_uni.premierlegueapp.Services.TeamService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class TeamServiceImpl implements TeamService {
     private final TeamRepository teamRepository;
@@ -28,5 +31,11 @@ public class TeamServiceImpl implements TeamService {
         map.setCompetition(team.getCompetition().getName().name());
         map.setCountry(team.getTown().getCountry().getName());
         return map;
+    }
+
+    @Override
+    public List<String> gelAllTeamsNames() {
+        return this.teamRepository.findAll().stream().map(team -> team.getName().name())
+                .collect(Collectors.toList());
     }
 }

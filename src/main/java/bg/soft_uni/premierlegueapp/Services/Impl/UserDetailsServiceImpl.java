@@ -8,6 +8,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class UserDetailsServiceImpl implements UserDetailsService {
     private final UserRepository userRepository;
 
@@ -25,9 +28,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return User
                 .withUsername(user.getEmail())
                 .password(user.getPassword())
-                // ToDo
-                .authorities(new SimpleGrantedAuthority("ROLE_USER"))
+                .authorities(getAllRoles(user))
                 .disabled(false)
                 .build();
+    }
+    private static List<SimpleGrantedAuthority> getAllRoles(UserEntity user) {
+        return List.of(new SimpleGrantedAuthority("ROLE_"+user.getRole().getName()));
     }
 }

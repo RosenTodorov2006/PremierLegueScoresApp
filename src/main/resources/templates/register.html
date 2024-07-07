@@ -28,6 +28,25 @@
                             <input th:field="*{email}" th:errorclass="'is-invalid alert-danger'" type="email" id="email" class="form-control form-control-lg" placeholder="Your Email"/>
                             <small th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="bg-danger text-light rounded">Invalid email!</small>
                           </div>
+
+                          <div data-mdb-input-init class="form-outline mb-4">
+                              <label class="h5">Age:</label>
+                              <input th:field="*{age}"
+                                     th:errorclass="is-invalid" required
+                                     type="number"
+                                     class="form-control form-control-lg"
+                                     placeholder="Age"
+                                     min="12" max="110">
+                              <small th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="bg-danger text-light rounded">Invalid age!</small>
+                          </div>
+
+                          <div data-mdb-input-init class="form-outline mb-4">
+                              <select id="userSelect" name="user" th:field="*{favouriteTeam}" class="form-control form-control-lg" th:errorclass="'is-invalid alert-danger'" required>
+                                  <option value="" selected>Select a team</option>
+                                  <option th:each="team : ${teams}" th:value="${team}" th:text="${team}"></option>
+                              </select>
+                              <small th:if="${#fields.hasErrors('favouriteTeam')}" th:errors="*{favouriteTeam}" class="bg-danger text-light rounded">Invalid team!</small>
+                          </div>
       
                         <div data-mdb-input-init class="form-outline mb-4">
                           <input th:field="*{password}" th:errorclass="'is-invalid alert-danger'" type="password" id="password" class="form-control form-control-lg" placeholder="Password"/>
@@ -38,6 +57,7 @@
                             <input th:field="*{confirmPassword}" th:errorclass="'is-invalid alert-danger'" id="password-repeat" type="password" class="form-control form-control-lg" placeholder="Repeat your password"/>
                             <small th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}" class="bg-danger text-light rounded">Invalid confirm password!</small>
                           </div>
+
                         <div class="pt-1 mb-4">
                                 <button data-mdb-button-init data-mdb-ripple-init class="btn btn-dark btn-lg btn-block" type="submit">Register</button>
                         </div>

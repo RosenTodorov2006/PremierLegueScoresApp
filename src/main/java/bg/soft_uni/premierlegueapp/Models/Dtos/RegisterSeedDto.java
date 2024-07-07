@@ -1,9 +1,6 @@
 package bg.soft_uni.premierlegueapp.Models.Dtos;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import org.hibernate.validator.constraints.Length;
 
 public class RegisterSeedDto {
@@ -19,6 +16,20 @@ public class RegisterSeedDto {
     @Length(min = 3, max = 20, message = "Confirm password length must be between 3 and 20 characters.")
     @NotNull
     private String confirmPassword;
+    @NotNull
+    @Min(value = 12, message = "Age must be between 0 and 110.")
+    @Max(value = 110, message = "Age must be between 0 and 110.")
+    private int age;
+    @NotBlank(message = "Invalid team.")
+    private String favouriteTeam;
+
+    public String getFavouriteTeam() {
+        return favouriteTeam;
+    }
+
+    public void setFavouriteTeam(String favouriteTeam) {
+        this.favouriteTeam = favouriteTeam;
+    }
 
     public String getName() {
         return name;
@@ -50,5 +61,13 @@ public class RegisterSeedDto {
 
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }

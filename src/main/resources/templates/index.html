@@ -44,11 +44,12 @@
                     <li><a href="/southampton"><img src="/images/logos/FC_Southampton.png" alt=""></a></li>
                 </ul>
             </nav>
-      <form th:action="@{/logout}" th:method="post"  sec:authorize="isAuthenticated()">
-        <button class="nav-link text-white active h5" type="submit" style="margin: 0;display: inline; font-size: 1.2em; text-decoration: none; font-weight: bold; background-color: #6e6ed8">Logout</button>
-      </form>
     </header>
     <main>
+      <div style="display: flex;flex-direction: column;align-self: center !important; height: 100%">
+        <a class="register-link" sec:authorize="isAuthenticated()" th:href="@{/profile}" style=";border-radius: 50%;align-self: self-start; margin: 1em;padding: 0.7em;display: flex; align-items: center; flex-direction: column;text-align: center;"><i style=" font-size: 2.6em;align-self: center" class="fa-solid fa-user"></i>Profile</a>
+        <a class="register-link" sec:authorize="isAuthenticated()" th:href="@{/chat}" style=";border-radius: 50%;align-self: self-start; margin: 1em;padding: 1em;display: flex; align-items: center; flex-direction: column;text-align: center;"><i style=" font-size: 2.3em;align-self: center" class="fa-solid fa-comments"></i>Chat</a>
+      </div>
       <div class="main">
         <div class="ranking">
           <p class="ranking-header">PREMIER LEGUE</p>
@@ -286,9 +287,22 @@
             <!-- Section: CTA -->
             <section class="register-footer">
               <p class="d-flex justify-content-center align-items-center">
-                <span class="me-3">Register for free</span>
-                  <a href="/login" class="register-link">Sign up!</a>
+                <span class="me-3">Already have an account? </span>
+                <a href="/login" class="register-link">Login here</a>
+                <span style="padding-inline: 0.3em"> Don't have one? </span>
+                  <a href="/register" class="register-link">Sign up</a>
+                <span style="padding-left: 0.3em"> now.</span>
               </p>
+            </section>
+            <!-- Section: CTA -->
+          </div>
+          <div class="container p-4 pb-0"  id="logout" sec:authorize="isAuthenticated()" style="padding: 0.6rem !important;">
+            <!-- Section: CTA -->
+            <section class="logout-footer">
+                <span class="me-3" style="display: inline">Logout for here </span>
+                <form th:action="@{/logout}" th:method="post"  sec:authorize="isAuthenticated()" style="display: inline">
+                  <button class="register-link" type="submit">Logout</button>
+                </form>
             </section>
             <!-- Section: CTA -->
           </div>

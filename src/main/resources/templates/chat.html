@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th='http://www.thymeleaf.org'
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Premier League App</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/fa/css/all.min.css">
+    <style>
+        body{
+            overflow: hidden;
+        }
+        .container {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+        }
+
+        #chat-box {
+            height: 75%;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .input-group {
+            margin-top: 10px; /* Малко разстояние между чата и въведеното съобщение */
+        }
+        #user-message {
+            background: linear-gradient(90deg,
+            #d0d03d 33.33%,
+            #4dff4d 50%,
+            #4dffff 66.66%,
+            #ab6bec 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+    </style>
+</head>
+<body style="display: flex; flex-direction: column; background-image: url('/images/chat.png'); background-size: 100% 100%;">
+<div class="button" style="padding-top: 1em;">
+    <a class="btn btn-primary px-4" style="margin: 1em;" th:href="@{'/'}">Back</a>
+</div>
+<div class="container mt-5" style="margin-top: 0 !important;">
+    <h2 class="mb-4" style="color: white">Football talk</h2>
+    <div id="chat-box" class="mb-3" style="background-color: #2f2f2f">
+        <ul>
+            <li th:each="message: ${allMessages}" style="display: flex; flex-direction: row; gap: 0.5em;padding-bottom: 0.5em; align-items: center;">
+                <span th:text="*{message.user+': '}" style="font-weight: bold; line-height: 1.2; color: #6e6ed8;"></span>
+                <span id="user-message" th:text="*{message.message}"></span>
+                <span style="color:#6e6ed8;" sec:authorize="hasRole('ADMIN')">|</span>
+                <div th:if="${message.userEmail!=currentEmail}">
+                    <form th:method="delete" th:action="@{/chat/{id}(id=*{message.id})}" sec:authorize="hasRole('ADMIN')">
+                        <button type="submit"><i class="fa-solid fa-trash"></i></button>
+                    </form>
+                </div>
+                <form th:method="delete" th:action="@{/chat/{id}(id=*{message.id})}" th:if="${message.userEmail==currentEmail}">
+                    <button type="submit"><i class="fa-solid fa-trash"></i></button>
+                </form>
+            </li>
+        </ul>
+    </div>
+    <div class="input-group">
+        <form th:method="post" th:action="@{/chat}" th:object="${addMessageDto}" style="width: 100%; display: flex; gap: 0.4em;">
+            <input th:field="*{userMessage}" type="text" id="message" class="form-control" placeholder="Your message"  style="background-color: #2f2f2f; color: white;">
+            <small th:if="${#fields.hasErrors('userMessage')}" th:errors="*{userMessage}" style="text-align: center" class="bg-danger text-light rounded">Invalid userMessage!</small>
+            <div class="input-group-append">
+                <button id="send-btn" class="btn btn-primary">Send</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
