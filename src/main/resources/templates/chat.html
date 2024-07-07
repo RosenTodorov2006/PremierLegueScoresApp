@@ -50,8 +50,12 @@
 <div class="button" style="padding-top: 1em;">
     <a class="btn btn-primary px-4" style="margin: 1em;" th:href="@{'/'}">Back</a>
 </div>
-<div class="container mt-5" style="margin-top: 0 !important;">
-    <h2 class="mb-4" style="color: white">Football talk</h2>
+<div class="container mt-5" style="margin-top: 0 !important;display: flex; flex-direction: column; gap: 1em;">
+<div style="display: flex; align-items: center;gap: 1em;">
+    <h2 class="mb-4" style="color: white; margin: 0 !important;">Football talk</h2>
+    <span  sec:authorize="hasRole('ADMIN')" style="color: white;">---</span>
+    <p sec:authorize="hasRole('ADMIN')" style="color: white; margin: 0 !important;">You are an admin and can also delete other people's messages</p>
+</div>
     <div id="chat-box" class="mb-3" style="background-color: #2f2f2f">
         <ul>
             <li th:each="message: ${allMessages}" style="display: flex; flex-direction: row; gap: 0.5em;padding-bottom: 0.5em; align-items: center;">
