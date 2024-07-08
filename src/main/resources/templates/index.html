@@ -28,107 +28,11 @@
             <thead>
             </thead>
             <tbody>
+            <tr th:each="team : ${positions}">
+              <th scope="row" class="no-padding" th:text="${team.position}"></th>
+              <td colspan="2" class="table-active no-padding" th:text="${team.name}"></td>
+              <td class="no-padding points" th:text="${team.points}"></td>
             </tr>
-            <tr>
-              <th scope="row" class="no-padding">1</th>
-              <td colspan="2" class="table-active no-padding">Manchester City</td>
-              <td class="no-padding points">73</td>
-          </tr>
-            <tr>
-              <th scope="row" class="no-padding">2</th>
-              <td colspan="2" class="table-active no-padding">Arsenal</td>
-              <td class="no-padding points">74</td>
-          </tr>
-            <tr>
-              <th scope="row" class="no-padding">3</th>
-              <td colspan="2" class="table-active no-padding">Liverpool</td>
-              <td class="no-padding points">71</td>
-          </tr>
-            <tr>
-              <th scope="row" class="no-padding">4</th>
-              <td colspan="2" class="table-active no-padding">AstonVilla</td>
-              <td class="no-padding points">60</td>
-          </tr>
-            <tr>
-              <th scope="row" class="no-padding">5</th>
-              <td colspan="2" class="table-active no-padding">Tottenham</td>
-              <td class="no-padding points">60</td>
-          </tr>
-              <tr>
-                <th scope="row" class="no-padding">6</th>
-                <td colspan="2" class="table-active no-padding">Newcastle United</td>
-                <td class="no-padding points">50</td>
-            </tr>
-              <tr>
-                <th scope="row" class="no-padding">7</th>
-                <td colspan="2" class="table-active no-padding">Manchester United</td>
-                <td class="no-padding points">48</td>
-            </tr>
-              <tr>
-                <th scope="row" class="no-padding">8</th>
-                <td colspan="2" class="table-active no-padding">West Ham United</td>
-                <td class="no-padding points">48</td>
-            </tr>
-              <tr>
-                <th scope="row" class="no-padding">9</th>
-                <td colspan="2" class="table-active no-padding">Chelsea</td>
-                <td class="no-padding points">44</td>
-            </tr>
-              <tr>
-                <th scope="row" class="no-padding">10</th>
-                <td colspan="2" class="table-active no-padding">Brighton</td>
-                <td class="no-padding points">44</td>
-            </tr>
-              <tr>
-                <th scope="row" class="no-padding">11</th>
-                <td colspan="2" class="table-active no-padding">Wolverhampton</td>
-                <td class="no-padding points">43</td>
-            </tr>
-                <tr>
-                  <th scope="row" class="no-padding">12</th>
-                  <td colspan="2" class="table-active no-padding">Fulham</td>
-                  <td class="no-padding points">42</td>
-              </tr>
-            <tr>
-              <th scope="row" class="no-padding">13</th>
-              <td colspan="2" class="table-active no-padding">Bournemouth</td>
-              <td class="no-padding points">42</td>
-          </tr>
-            <tr>
-              <th scope="row" class="no-padding">14</th>
-              <td colspan="2" class="table-active no-padding">Crystal Palace</td>
-              <td class="no-padding points">33</td>
-          </tr>
-            <tr>
-              <th scope="row" class="no-padding">15</th>
-              <td colspan="2" class="table-active no-padding">Brentford</td>
-              <td class="no-padding points">32</td>
-          </tr>
-            <tr>
-              <th scope="row" class="no-padding">16</th>
-              <td colspan="2" class="table-active no-padding">Everton</td>
-              <td class="no-padding points">27</td>
-          </tr>
-            <tr>
-              <th scope="row" class="no-padding">17</th>
-              <td colspan="2" class="table-active no-padding">Nottingham Forest</td>
-              <td class="no-padding points">26</td>
-          </tr>
-              <tr>
-                <th scope="row" class="no-padding">18</th>
-                <td colspan="2" class="table-active no-padding">Leeds United</td>
-                <td class="no-padding points">0</td>
-            </tr>
-            <tr>
-              <th scope="row" class="no-padding">19</th>
-              <td colspan="2" class="table-active no-padding">Ipswich</td>
-              <td class="no-padding points">0</td>
-          </tr>
-          <tr>
-            <th scope="row" class="no-padding">20</th>
-            <td colspan="2" class="table-active no-padding">Leicester</td>
-            <td class="no-padding points">0</td>
-        </tr>
             </tbody>
           </table>
     </div>

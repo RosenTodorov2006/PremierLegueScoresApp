@@ -8,8 +8,6 @@ import java.time.LocalDate;
 @Table
 @Entity(name = "teams")
 public class Team extends BaseEntity{
-    @Column
-    private int place;
     @Column(unique = true, nullable = false)
     @Enumerated(EnumType.STRING)
     private TeamNames name;
@@ -108,14 +106,6 @@ public class Team extends BaseEntity{
 
     public void setTown(Town town) {
         this.town = town;
-    }
-
-    public int getPlace() {
-        return place;
-    }
-
-    public void setPlace(int place) {
-        this.place = place;
     }
 
     public String getHistorySmallInfo() {
