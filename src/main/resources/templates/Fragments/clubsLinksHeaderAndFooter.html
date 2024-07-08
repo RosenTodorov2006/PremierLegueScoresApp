@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th='http://www.thymeleaf.org'
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header style="display: flex; flex-direction: row; justify-content: space-evenly; align-items: center; padding-inline: 2em" th:fragment="clubsLinksHeader">
+    <button id="teamsPages">Club pages</button>
+    <nav class="header-navbar">
+        <p>Club pages <i class="fa-solid fa-arrow-up-right-from-square"></i></p>
+
+        <ul id="teams-logos">
+            <li><a href="/liverpool"><img src="/images/logos/Liverpool-FC-logo.png" alt=""></a></li>
+
+            <li><a href="/arsenal"><img src="/images/logos/Arsenal-FC-logo.png" alt=""></a></li>
+            <li><a href="/astonVilla"><img src="/images/logos/Aston-Villa-FC-logo.png" alt=""></a></li>
+            <li><a href="/brentford"><img src="/images/logos/Brentford-FC-logo.png" alt=""></a></li>
+            <li><a href="/brighton"><img src="/images/logos/Brighton-Hove-Albion-logo.png" alt=""></a></li>
+            <li><a href="/chelsea"><img src="/images/logos/Chelsea-FC-logo.png" alt=""></a></li>
+            <li><a href="/crystalPalace"><img src="/images/logos/Crystal-Palace-FC-logo.png" alt=""></a></li>
+            <li><a href="/everton"><img src="/images/logos/Everton-FC-logo.png" alt=""></a></li>
+            <li><a href="/fulham"><img src="/images/logos/Fulham-FC-logo.png" alt=""></a></li>
+            <li><a href="/manCity"><img src="/images/logos/Manchester-City-FC-logo.png" alt=""></a></li>
+            <li><a href="/manUnited"><img src="/images/logos/Manchester-United-FC-logo.png" alt=""></a></li>
+            <li><a href="/newCastleUnited"><img src="/images/logos/Newcastle-United-logo.png" alt=""></a></li>
+            <li><a href="/tottenham"><img src="/images/logos/Tottenham-Hotspur-logo.png" alt=""></a></li>
+            <li><a href="/westHam"><img src="/images/logos/West-Ham-United-FC-logo.png" alt=""></a></li>
+            <li><a href="/wolverhampton"><img src="/images/logos/Wolverhampton-Wanderers-logo.png" alt=""></a></li>
+            <li><a href="/bournemouth"><img src="/images/logos/580b57fcd9996e24bc43c4de.png" alt=""></a></li>
+            <li><a href="/leicester"><img src="/images/logos/Leicester_City_crest.png" alt=""></a></li>
+            <li><a href="/ipswich"><img src="/images/logos/Ipswich_Town.svg.png" alt=""></a></li>
+            <li><a href="/nottinghamForest"><img src="/images/logos/Nottingham-Forest-FC-logo.png" alt=""></a></li>
+            <li><a href="/southampton"><img src="/images/logos/FC_Southampton.png" alt=""></a></li>
+        </ul>
+    </nav>
+</header>
+<section class="footer" th:fragment="homeFooter">
+        <div class="text-center p-3" id="copy" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2024 Copyright:
+            <a class="text-white" href="https://mdbootstrap.com/">LiveScores.com</a>
+        </div>
+</section>
+</body>
+</html>
