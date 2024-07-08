@@ -61,6 +61,9 @@ public class PositionServiceImpl implements PositionService {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
         JsonObject jsonObject = JsonParser.parseString(responseBody).getAsJsonObject();
         JsonArray matches = jsonObject.getAsJsonArray("matches");
+        if(matches==null){
+            return List.of();
+        }
         Deque<String> playedMatches = new ArrayDeque<>(); // Използваме стек за обратния ред
 
         for (JsonElement matchElement : matches) {
