@@ -98,6 +98,10 @@ table{
     color: #FFFFFF;
     text-align: center;
 }
+.table-white tr th, td{
+    padding-block: 0.1em !important;
+    height: 5%;
+}
 .points{
     background-color: #5F3363 !important;
     color: #FFFFFF !important;;
