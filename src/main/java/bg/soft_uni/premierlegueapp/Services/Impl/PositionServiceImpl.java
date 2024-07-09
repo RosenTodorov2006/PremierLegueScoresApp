@@ -1,5 +1,6 @@
 package bg.soft_uni.premierlegueapp.Services.Impl;
 
+import bg.soft_uni.premierlegueapp.Models.Dtos.MatchDto;
 import bg.soft_uni.premierlegueapp.Models.Dtos.PositionSeedDto;
 import bg.soft_uni.premierlegueapp.Services.PositionService;
 import com.google.gson.JsonArray;
@@ -49,7 +50,7 @@ public class PositionServiceImpl implements PositionService {
         }
          return positions;
     }
-    public List<PositionSeedDto> connectToApiAndGetLastMatches(){
+    public List<MatchDto> connectToApiAndGetLastMatches(){
         List<PositionSeedDto> positions = new ArrayList<>();
         String responseBody=this.restClient
                 .get()
@@ -57,18 +58,16 @@ public class PositionServiceImpl implements PositionService {
                 .header("X-Auth-Token", API_TOKEN)
                 .retrieve()
                 .body(String.class);
-        LocalDateTime currentTime = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
         JsonObject jsonObject = JsonParser.parseString(responseBody).getAsJsonObject();
         JsonArray matches = jsonObject.getAsJsonArray("matches");
         if(matches==null){
             return List.of();
         }
-        Deque<String> playedMatches = new ArrayDeque<>(); // Използваме стек за обратния ред
+        List<MatchDto> list = new ArrayList<>();
 
         for (JsonElement matchElement : matches) {
+            MatchDto matchDto = new MatchDto();
             JsonObject match = matchElement.getAsJsonObject();
-            String matchDate = match.get("utcDate").getAsString();
             String status = match.get("status").getAsString();
 
             if (status.equals("FINISHED")) {
@@ -79,13 +78,21 @@ public class PositionServiceImpl implements PositionService {
                 if (!scoreElement.isJsonNull()) {
                     String homeScore = match.getAsJsonObject("score").getAsJsonObject("fullTime").get("home").getAsString();
                     String awayScore = match.getAsJsonObject("score").getAsJsonObject("fullTime").get("away").getAsString();
-                    playedMatches.push(homeTeam + " " + homeScore + " - " + awayScore + " " + awayTeam);
+                    matchDto.setHomeTeam(homeTeam);
+                    matchDto.setAwayTeam(awayTeam);
+                    matchDto.setAwayGoals(awayScore);
+                    matchDto.setHomeGoals(homeScore);
+                    list.add(matchDto);
                 } else {
-                    playedMatches.push(homeTeam + " N/A - N/A " + awayTeam);
+                    matchDto.setHomeTeam(homeTeam);
+                    matchDto.setAwayTeam(awayTeam);
+                    matchDto.setAwayGoals("N/A");
+                    matchDto.setHomeGoals("N/A");
+                    list.add(matchDto);
                 }
             }
         }
-        return positions;
+        return list;
     }
 
     @Override
@@ -94,7 +101,7 @@ public class PositionServiceImpl implements PositionService {
     }
 
     @Override
-    public List<PositionSeedDto> getLastMatches() {
+    public List<MatchDto> getLastMatches() {
         return connectToApiAndGetLastMatches();
     }
 }

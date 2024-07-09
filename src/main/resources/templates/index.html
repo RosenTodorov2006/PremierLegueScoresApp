@@ -24,20 +24,18 @@
       <div class="main">
         <div class="ranking">
           <p class="ranking-header">PREMIER LEGUE</p>
-          <table class="table table-white">
-            <thead>
-            </thead>
-            <tbody>
-            <tr th:each="team : ${positions}">
-              <th scope="row" class="no-padding" th:text="${team.position}"></th>
-              <td colspan="2" class="table-active no-padding" th:text="${team.name}"></td>
-              <td class="no-padding points" th:text="${team.points}"></td>
-            </tr>
-            </tbody>
-          </table>
+            <table class="table table-white" id="rank">
+                <thead>
+                <tr>
+                </tr>
+                </thead>
+                <tbody class="standings-table">
+                <!-- Rows will be inserted here -->
+                </tbody>
+            </table>
     </div>
       <div class="middle-container">
-        <img src="logos\imgbin_premier-league-uefa-champions-league-manchester-city-f-c-trophy-leicester-city-f-c-png.png" alt="">
+        <img src="/images/logos/imgbin_premier-league-uefa-champions-league-manchester-city-f-c-trophy-leicester-city-f-c-png.png" alt="">
         <div class="content">
         <div class="video">
           <iframe width="420" height="250" src="https://www.youtube.com/embed/UFXRlCgykrw?si=Q17z4d3uezOOTzOf&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -50,107 +48,13 @@
 
       <section class="live-scores">
         <p>Live scores</p>
-        <table>
-          <thead></thead>
-          <tbody>
-            <tr>
-              <td>Liverpool</td>
-              <td>0:1</td>
-              <td>Crystal Place</td>
-            </tr>
-            <tr>
-              <td>Liverpool</td>
-              <td>0:1</td>
-              <td>Crystal Place</td>
-            </tr>
-            <tr>
-              <td>Liverpool</td>
-              <td>0:1</td>
-              <td>Crystal Place</td>
-            </tr>
-            <tr>
-              <td>Liverpool</td>
-              <td>0:1</td>
-              <td>Crystal Place</td>
-            </tr>
-            <tr>
-              <td>Liverpool</td>
-              <td>0:1</td>
-              <td>Crystal Place</td>
-            </tr>
-            <tr>
-              <td>Liverpool</td>
-              <td>0:1</td>
-              <td>Crystal Place</td>
-            </tr>
-            <tr>
-              <td>Liverpool</td>
-              <td>0:1</td>
-              <td>Crystal Place</td>
-            </tr>
-
-            <tr>
-              <td>Liverpool</td>
-              <td>0:1</td>
-              <td>Crystal Place</td>
-            </tr>
-            <tr>
-              <td>Liverpool</td>
-              <td>0:1</td>
-              <td>Crystal Place</td>
-            </tr>
-            <tr>
-              <td>Liverpool</td>
-              <td>0:1</td>
-              <td>Crystal Place</td>
-            </tr>
-            <tr>
-              <td>Liverpool</td>
-              <td>0:1</td>
-              <td>Crystal Place</td>
-            </tr>
-            <tr>
-              <td>Liverpool</td>
-              <td>0:1</td>
-              <td>Crystal Place</td>
-            </tr>
-            <tr>
-              <td>Liverpool</td>
-              <td>0:1</td>
-              <td>Crystal Place</td>
-            </tr>
-            <tr>
-              <td>Liverpool</td>
-              <td>0:1</td>
-              <td>Crystal Place</td>
-            </tr>
-            <tr>
-              <td>Liverpool</td>
-              <td>0:1</td>
-              <td>Crystal Place</td>
-            </tr>
-            <tr>
-              <td>Liverpool</td>
-              <td>0:1</td>
-              <td>Crystal Place</td>
-            </tr>
-            <tr>
-              <td>Liverpool</td>
-              <td>0:1</td>
-              <td>Crystal Place</td>
-            </tr>
-            <tr>
-              <td>Liverpool</td>
-              <td>0:1</td>
-              <td>Crystal Place</td>
-            </tr>
-            <tr>
-              <td>Liverpool</td>
-              <td>0:1</td>
-              <td>Crystal Place</td>
-            </tr>
-          </tbody>
-        </table>
+          <table class="table table-white" id="lastMatchesTable">
+              <thead>
+              </thead>
+              <tbody>
+              <!-- Rows will be inserted here -->
+              </tbody>
+          </table>
       </section>
     </div>
     </main>
@@ -186,5 +90,69 @@
         <!-- Footer -->
       </section>
     <script src="/js/indexJs.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            loadStandings();
+            loadLastMatches();
+
+            // Извикване на функциите на всеки 5 секунди
+            setInterval(() => {
+                loadStandings();
+                loadLastMatches();
+            }, 30000); // Времев интервал в милисекунди (5 секунди)
+
+            function loadStandings() {
+                fetch('/api/standings')
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Standings data:', data); // Проверка в конзолата за получените данни
+                        displayStandings(data); // Показване на данните за класирането
+                    })
+                    .catch(error => {
+                        console.error('Error fetching standings:', error);
+                    });
+            }
+
+            function displayStandings(standings) {
+                const standingsTableBody = document.querySelector('#rank tbody');
+                standingsTableBody.innerHTML = ''; // Изчистване на текущите данни
+                standings.forEach(team => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                <th scope="row">${team.position}</th>
+                <td colspan="2">${team.name}</td>
+                <td>${team.points}</td>
+            `;
+                    standingsTableBody.appendChild(row);
+                });
+            }
+
+            function loadLastMatches() {
+                fetch('/api/last-matches')
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Last matches data:', data); // Проверка в конзолата за получените данни
+                        displayLastMatches(data); // Показване на последните мачове
+                    })
+                    .catch(error => {
+                        console.error('Error fetching last matches:', error);
+                    });
+            }
+
+            function displayLastMatches(matches) {
+                const lastMatchesTableBody = document.querySelector('#lastMatchesTable tbody');
+                lastMatchesTableBody.innerHTML = ''; // Изчистване на текущите данни
+                matches.forEach(match => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                <td>${match.homeTeam} vs ${match.awayTeam}</td>
+                <td>${match.result}</td>
+            `;
+                    lastMatchesTableBody.appendChild(row);
+                });
+            }
+        });
+
+</script>
 </body>
 </html>
