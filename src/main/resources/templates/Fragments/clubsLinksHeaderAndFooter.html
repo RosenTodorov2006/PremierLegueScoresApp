@@ -10,7 +10,7 @@
 <header style="display: flex; flex-direction: row; justify-content: space-evenly; align-items: center; padding-inline: 2em" th:fragment="clubsLinksHeader">
     <button id="teamsPages">Club pages</button>
     <nav class="header-navbar">
-        <p>Club pages <i class="fa-solid fa-arrow-up-right-from-square"></i></p>
+        <p><span th:text="#{nav_bar_clubs}"></span> <i class="fa-solid fa-arrow-up-right-from-square"></i></p>
 
         <ul id="teams-logos">
             <li><a href="/liverpool"><img src="/images/logos/Liverpool-FC-logo.png" alt=""></a></li>
@@ -39,7 +39,7 @@
 </header>
 <section class="footer" th:fragment="homeFooter">
         <div class="text-center p-3" id="copy" style="background-color: rgba(0, 0, 0, 0.2);">
-            © 2024 Copyright:
+            © 2024 <span th:text="#{footer_copyright}"></span>:
             <a class="text-white" href="https://mdbootstrap.com/">LiveScores.com</a>
         </div>
 </section>

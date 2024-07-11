@@ -17,13 +17,22 @@
 <body>
 <header th:replace="Fragments/clubsLinksHeaderAndFooter::clubsLinksHeader"></header>
     <main>
-      <div style="display: flex;flex-direction: column;align-self: center !important; height: 100%">
-        <a class="register-link" sec:authorize="isAuthenticated()" th:href="@{/profile}" style=";border-radius: 50%;align-self: self-start; margin: 1em;padding: 0.7em;display: flex; align-items: center; flex-direction: column;text-align: center;"><i style=" font-size: 2.6em;align-self: center" class="fa-solid fa-user"></i>Profile</a>
-        <a class="register-link" sec:authorize="isAuthenticated()" th:href="@{/chat}" style=";border-radius: 50%;align-self: self-start; margin: 1em;padding: 1em;display: flex; align-items: center; flex-direction: column;text-align: center;"><i style=" font-size: 2.3em;align-self: center" class="fa-solid fa-comments"></i>Chat</a>
+      <div style="display: flex;flex-direction: column;align-self: center !important; height: 100%;">
+          <form th:method="get" style="border-radius: 50%; align-self: self-start; padding: 1em; display: flex; align-items: center; flex-direction: column; text-align: center; background-color: white;color: #37003C;">
+              <label class="text-white" for="lang" style="display: flex; align-items: center; margin-bottom: 0.5em;color: #37003C;flex-direction: column">
+                  <i class="fa-solid fa-language" style="margin-right: 0.5em;color: #37003C;font-size: 2.3em;"></i> <span style="color: #37003C;" th:text="#{nav_bar_language}">Language</span>
+              </label>
+              <select id="lang" name="lang" onchange="this.form.submit()" style="border-radius: 0.6em;border: 1px solid #37003C; width: 6.3em">
+                  <option value="en_US" th:selected="${#locale.toString()} == 'en_US'">English</option>
+                  <option value="bg_BG" th:selected="${#locale.toString()} == 'bg_BG'">Български</option>
+              </select>
+          </form>
+          <a class="register-link" sec:authorize="isAuthenticated()" th:href="@{/profile}" style=";border-radius: 50%;align-self: self-start; margin: 1em;padding: 0.7em;display: flex; align-items: center; flex-direction: column;text-align: center;"><i style=" font-size: 2.6em;align-self: center" class="fa-solid fa-user"></i><span th:text="#{profile}"></span></a>
+          <a class="register-link" sec:authorize="isAuthenticated()" th:href="@{/chat}" style=";border-radius: 50%;align-self: self-start; margin: 1em;padding: 1em;display: flex; align-items: center; flex-direction: column;text-align: center;"><i style=" font-size: 2.3em;align-self: center" class="fa-solid fa-comments"></i><span th:text="#{chat}"></span></a>
       </div>
       <div class="main">
         <div class="ranking">
-          <p class="ranking-header">PREMIER LEGUE</p>
+          <p class="ranking-header" th:text="#{table_ranking_title}">PREMIER LEAGUE</p>
             <table class="table table-white" id="rank">
                 <thead>
                 <tr>
@@ -41,13 +50,13 @@
           <iframe width="420" height="250" src="https://www.youtube.com/embed/UFXRlCgykrw?si=Q17z4d3uezOOTzOf&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
         <div class="info">
-          <p>The Premier Anflian League - the epitome of football culture and competitiveness. Established in 1920, it attracts millions of fans with its elegant matches and iconic teams. Experience the thrilling moments and the passion of football with us.</p>
+          <p th:text="#{home_page_info}">The Premier Anflian League - the epitome of football culture and competitiveness. Established in 1920, it attracts millions of fans with its elegant matches and iconic teams. Experience the thrilling moments and the passion of football with us.</p>
         </div>
       </div>
       </div>
 
       <section class="live-scores">
-        <p>Live scores</p>
+        <p th:text="#{table_matches_title}" style="font-size: 1.6em">Live scores</p>
           <table class="table table-white" id="lastMatchesTable">
               <thead>
               </thead>
@@ -66,11 +75,10 @@
             <!-- Section: CTA -->
             <section class="register-footer">
               <p class="d-flex justify-content-center align-items-center">
-                <span class="me-3">Already have an account? </span>
-                <a href="/login" class="register-link">Login here</a>
-                <span style="padding-inline: 0.3em"> Don't have one? </span>
-                  <a href="/register" class="register-link">Sign up</a>
-                <span style="padding-left: 0.3em"> now.</span>
+                <span class="me-3" th:text="#{footer_have_account_question}">Already have an account? </span>
+                <a href="/login" th:text="#{footer_login_button}"class="register-link">Login here</a>
+                <span style="padding-inline: 0.3em" th:text="#{footer_dont_have_account_question}"> Don't have one? </span>
+                  <a href="/register" class="register-link" th:text="#{footer_sign_button}">Sign up</a>
               </p>
             </section>
             <!-- Section: CTA -->
@@ -78,9 +86,9 @@
           <div class="container p-4 pb-0"  id="logout" sec:authorize="isAuthenticated()" style="padding: 0.6rem !important;">
             <!-- Section: CTA -->
             <section class="logout-footer">
-                <span class="me-3" style="display: inline">Logout for here </span>
+                <span class="me-3" style="display: inline" th:text="#{footer_logout_text}">Logout for here </span>
                 <form th:action="@{/logout}" th:method="post"  sec:authorize="isAuthenticated()" style="display: inline">
-                  <button class="register-link" type="submit">Logout</button>
+                  <button class="register-link" type="submit" th:text="#{footer_logout}">Logout</button>
                 </form>
             </section>
             <!-- Section: CTA -->
@@ -98,7 +106,7 @@
             setInterval(() => {
                 loadStandings();
                 loadLastMatches();
-            }, 30000);
+            }, 49000);
 
             function loadStandings() {
                 fetch('/api/standings')
@@ -111,16 +119,71 @@
                     });
             }
 
+            const teamNamesBG = {
+                "Bournemouth": "Борнемут",
+                "Arsenal FC": "Арсенал",
+                "Aston Villa FC": "Астън Вила",
+                "Brentford": "Брентфорд",
+                "Brighton & Hove Albion FC": "Брайтън & Хоув Албиън",
+                "Chelsea FC": "Челси",
+                "Crystal Palace FC": "Кристъл Палас",
+                "Everton FC": "Евертън",
+                "Fulham FC": "Фулъм",
+                "Ipswich Town FC": "Ипсуич Таун",
+                "Leicester City FC": "Лестър Сити",
+                "Liverpool FC": "Ливърпул",
+                "Manchester City FC": "Манчестър Сити",
+                "Manchester United FC": "Манчестър Юнайтед",
+                "Newcastle United FC": "Нюкасъл Юнайтед",
+                "Nottingham Forest FC": "Нотингам Форест",
+                "Southampton FC": "Саутхамптън",
+                "Tottenham Hotspur FC": "Тотнъм Хотспър",
+                "West Ham United FC": "Уест Хям Юнайтед",
+                "Wolverhampton Wanderers FC": "Уулвърхямптън Уондърърс"
+            };
+
+            const teamNamesEN = {
+                "Bournemouth": "Bournemouth",
+                "Arsenal FC": "Arsenal FC",
+                "Aston Villa FC": "Aston Villa FC",
+                "Brentford": "Brentford",
+                "Brighton & Hove Albion FC": "Brighton & Hove Albion FC",
+                "Chelsea FC": "Chelsea FC",
+                "Crystal Palace FC": "Crystal Palace FC",
+                "Everton FC": "Everton FC",
+                "Fulham FC": "Fulham FC",
+                "Ipswich Town FC": "Ipswich Town FC",
+                "Leicester City FC": "Leicester City FC",
+                "Liverpool FC": "Liverpool FC",
+                "Manchester City FC": "Manchester City FC",
+                "Manchester United FC": "Manchester United FC",
+                "Newcastle United FC": "Newcastle United FC",
+                "Nottingham Forest FC": "Nottingham Forest FC",
+                "Southampton FC": "Southampton FC",
+                "Tottenham Hotspur FC": "Tottenham Hotspur FC",
+                "West Ham United FC": "West Ham United FC",
+                "Wolverhampton Wanderers FC": "Wolverhampton Wanderers FC"
+            };
+
+            function getLanguageFromURL() {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get('lang') || 'en_US';
+            }
+
             function displayStandings(standings) {
+                const lang = getLanguageFromURL();
+                const teamNames = lang === 'bg_BG' ? teamNamesBG : teamNamesEN;
+
                 const standingsTableBody = document.querySelector('#rank tbody');
                 standingsTableBody.innerHTML = ''; // Изчистване на текущите данни
                 standings.forEach(team => {
                     const row = document.createElement('tr');
+                    const translatedName = teamNames[team.name] || team.name; // Получаване на преведеното име или оригиналното име
                     row.innerHTML = `
-                <th scope="row">${team.position}</th>
-                <td colspan="2">${team.name}</td>
-                <td>${team.points}</td>
-            `;
+            <th scope="row">${team.position}</th>
+            <td colspan="2">${translatedName}</td>
+            <td>${team.points}</td>
+        `;
                     standingsTableBody.appendChild(row);
                 });
             }
@@ -138,14 +201,19 @@
             }
 
             function displayLastMatches(matches) {
+                const lang = getLanguageFromURL();
+                const teamNames = lang === 'bg_BG' ? teamNamesBG : teamNamesEN;
+
                 const lastMatchesTableBody = document.querySelector('#lastMatchesTable tbody');
                 lastMatchesTableBody.innerHTML = ''; // Изчистване на текущите данни
                 matches.forEach(match => {
                     const row = document.createElement('tr');
+                    const translatedHomeTeam = teamNames[match.homeTeam] || match.homeTeam;
+                    const translatedAwayTeam = teamNames[match.awayTeam] || match.awayTeam;
                     row.innerHTML = `
-                <td>${match.homeTeam} vs ${match.awayTeam}</td>
-                <td>${match.result}</td>
-            `;
+            <td>${translatedHomeTeam} vs ${translatedAwayTeam}</td>
+            <td>${match.result}</td>
+        `;
                     lastMatchesTableBody.appendChild(row);
                 });
             }
