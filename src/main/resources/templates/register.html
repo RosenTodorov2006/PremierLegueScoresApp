@@ -20,12 +20,12 @@
                         <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">CREATE AN ACOUNT</h5>
       
                         <div data-mdb-input-init class="form-outline mb-4">
-                          <input th:field="*{name}" th:errorclass="'is-invalid alert-danger'" id="form2Example17" class="form-control form-control-lg" placeholder="Your Name"/>
+                          <input required minlength="3" maxlength="20" th:field="*{name}" th:errorclass="'is-invalid alert-danger'" id="form2Example17" class="form-control form-control-lg" placeholder="Your Name"/>
                             <small th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="bg-danger text-light rounded">Invalid name!</small>
                         </div>
 
                         <div data-mdb-input-init class="form-outline mb-4">
-                            <input th:field="*{email}" th:errorclass="'is-invalid alert-danger'" type="email" id="email" class="form-control form-control-lg" placeholder="Your Email"/>
+                            <input type="email" required th:field="*{email}" th:errorclass="'is-invalid alert-danger'" id="email" class="form-control form-control-lg" placeholder="Your Email"/>
                             <small th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="bg-danger text-light rounded">Invalid email!</small>
                           </div>
 
@@ -36,7 +36,8 @@
                                      type="number"
                                      class="form-control form-control-lg"
                                      placeholder="Age"
-                                     min="12" max="110">
+                                     min="12" max="110"
+                              >
                               <small th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="bg-danger text-light rounded">Invalid age!</small>
                           </div>
 
@@ -49,12 +50,12 @@
                           </div>
       
                         <div data-mdb-input-init class="form-outline mb-4">
-                          <input th:field="*{password}" th:errorclass="'is-invalid alert-danger'" type="password" id="password" class="form-control form-control-lg" placeholder="Password"/>
+                          <input required minlength="3" maxlength="20"  th:field="*{password}" th:errorclass="'is-invalid alert-danger'" type="password" id="password" class="form-control form-control-lg" placeholder="Password"/>
                             <small th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="bg-danger text-light rounded">Invalid password!</small>
                         </div>
 
                         <div data-mdb-input-init class="form-outline mb-4">
-                            <input th:field="*{confirmPassword}" th:errorclass="'is-invalid alert-danger'" id="password-repeat" type="password" class="form-control form-control-lg" placeholder="Repeat your password"/>
+                            <input required minlength="3" maxlength="20"  th:field="*{confirmPassword}" th:errorclass="'is-invalid alert-danger'" id="password-repeat" type="password" class="form-control form-control-lg" placeholder="Repeat your password"/>
                             <small th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}" class="bg-danger text-light rounded">Invalid confirm password!</small>
                           </div>
 
