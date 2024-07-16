@@ -167,24 +167,13 @@ td{
     background-color: #FFFFFF;
     border-radius: 1em;
     flex-basis: 15%;
-    overflow: hidden;
     height: 100%;
+    overflow: scroll;
 }
 
-.live-scores tbody{
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    padding: 0.3em;
-}
-.live-scores tbody tr{
-    display: flex;
-    gap: 0.9em;
-    padding: 0.5em;
-}
 .live-scores table{
     min-width: 100%;
-    display: flex;
+    overflow: scroll;
     color: #37003C;
     overflow-y: auto;
 }

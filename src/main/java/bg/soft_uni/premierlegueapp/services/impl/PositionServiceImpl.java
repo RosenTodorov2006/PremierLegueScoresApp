@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PositionServiceImpl implements PositionService {
@@ -46,20 +47,23 @@ public class PositionServiceImpl implements PositionService {
          return positions;
     }
     public List<MatchDto> connectToApiAndGetLastMatches(){
-        List<PositionSeedDto> positions = new ArrayList<>();
-        String responseBody=this.restClient
+        String responseBody = this.restClient
                 .get()
-                .uri("https://api.football-data.org/v4/competitions/PL/standings")
+                .uri("https://api.football-data.org/v4/competitions/PL/matches")
                 .header("X-Auth-Token", API_TOKEN)
                 .retrieve()
                 .body(String.class);
-        JsonObject jsonObject = JsonParser.parseString(responseBody).getAsJsonObject();
-        JsonArray matches = jsonObject.getAsJsonArray("matches");
-        if(matches==null){
+        if (responseBody == null) {
             return List.of();
         }
-        List<MatchDto> list = new ArrayList<>();
 
+        JsonObject jsonObject = JsonParser.parseString(responseBody).getAsJsonObject();
+        JsonArray matches = jsonObject.getAsJsonArray("matches");
+
+        List<MatchDto> list = new ArrayList<>();
+        if(matches.isJsonNull() || matches.isEmpty()){
+            return List.of();
+        }
         for (JsonElement matchElement : matches) {
             MatchDto matchDto = new MatchDto();
             JsonObject match = matchElement.getAsJsonObject();
@@ -69,7 +73,7 @@ public class PositionServiceImpl implements PositionService {
                 String homeTeam = match.getAsJsonObject("homeTeam").get("name").getAsString();
                 String awayTeam = match.getAsJsonObject("awayTeam").get("name").getAsString();
 
-                JsonElement scoreElement = match.getAsJsonObject("score").get("fullTime");
+                JsonElement scoreElement = match.getAsJsonObject("score").getAsJsonObject("fullTime");
                 if (!scoreElement.isJsonNull()) {
                     String homeScore = match.getAsJsonObject("score").getAsJsonObject("fullTime").get("home").getAsString();
                     String awayScore = match.getAsJsonObject("score").getAsJsonObject("fullTime").get("away").getAsString();
@@ -77,14 +81,21 @@ public class PositionServiceImpl implements PositionService {
                     matchDto.setAwayTeam(awayTeam);
                     matchDto.setAwayGoals(awayScore);
                     matchDto.setHomeGoals(homeScore);
-                    list.add(matchDto);
                 } else {
                     matchDto.setHomeTeam(homeTeam);
                     matchDto.setAwayTeam(awayTeam);
                     matchDto.setAwayGoals("N/A");
                     matchDto.setHomeGoals("N/A");
-                    list.add(matchDto);
                 }
+                list.add(matchDto);
+            }else if(status.equals("TIMED")){
+                String homeTeam = match.getAsJsonObject("homeTeam").get("name").getAsString();
+                String awayTeam = match.getAsJsonObject("awayTeam").get("name").getAsString();
+                matchDto.setHomeTeam(homeTeam);
+                matchDto.setAwayTeam(awayTeam);
+                matchDto.setHomeGoals("N/A");
+                matchDto.setAwayGoals("N/A");
+                list.add(matchDto);
             }
         }
         return list;

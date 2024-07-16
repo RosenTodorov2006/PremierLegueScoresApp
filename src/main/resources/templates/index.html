@@ -206,14 +206,20 @@
 
                 const lastMatchesTableBody = document.querySelector('#lastMatchesTable tbody');
                 lastMatchesTableBody.innerHTML = ''; // Изчистване на текущите данни
+
                 matches.forEach(match => {
                     const row = document.createElement('tr');
                     const translatedHomeTeam = teamNames[match.homeTeam] || match.homeTeam;
                     const translatedAwayTeam = teamNames[match.awayTeam] || match.awayTeam;
-                    row.innerHTML = `
-            <td>${translatedHomeTeam} vs ${translatedAwayTeam}</td>
-            <td>${match.result}</td>
-        `;
+                    const homeGoals = match.homeGoals;
+                    const awayGoals = match.awayGoals;
+
+                    const matchResult = `${translatedHomeTeam} ${homeGoals}:${awayGoals} ${translatedAwayTeam}`;
+
+                    const cell = document.createElement('td');
+                    cell.textContent = matchResult;
+                    row.appendChild(cell);
+
                     lastMatchesTableBody.appendChild(row);
                 });
             }
