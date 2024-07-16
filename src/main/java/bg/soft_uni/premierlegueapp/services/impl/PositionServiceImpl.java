@@ -84,8 +84,8 @@ public class PositionServiceImpl implements PositionService {
                 } else {
                     matchDto.setHomeTeam(homeTeam);
                     matchDto.setAwayTeam(awayTeam);
-                    matchDto.setAwayGoals("N/A");
-                    matchDto.setHomeGoals("N/A");
+                    matchDto.setAwayGoals("-");
+                    matchDto.setHomeGoals("-");
                 }
                 list.add(matchDto);
             }else if(status.equals("TIMED")){

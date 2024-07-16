@@ -168,14 +168,26 @@ td{
     border-radius: 1em;
     flex-basis: 15%;
     height: 100%;
-    overflow: scroll;
+    overflow-y: scroll;
 }
-
+.live-scores tr{
+    border-bottom: 5px solid #37003C !important;
+}
 .live-scores table{
     min-width: 100%;
     overflow: scroll;
     color: #37003C;
     overflow-y: auto;
+}
+.live-scores td{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.live-scores td:nth-child(2){
+    background-color:  #6e6ed8;
+    color: white;
+
 }
 .live-scores tbody tr:not(:last-child){
     border-bottom: 1px solid #37003C;
