@@ -39,7 +39,7 @@ public class MessageServiceImpl implements MessageService {
     public List<ExportMessageDto> getAllMessagesSortedByCreated() {
         return this.messageRepository.findAll().stream().map(message -> {
             ExportMessageDto map = this.modelMapper.map(message, ExportMessageDto.class);
-            map.setUser(message.getUser().getName());
+            map.setUser(message.getUser().getUsername());
             map.setUserEmail(message.getUser().getEmail());
             return map;
         }).sorted(Comparator.comparing(ExportMessageDto::getCreated)).collect(Collectors.toList());

@@ -20,8 +20,8 @@
                         <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">CREATE AN ACOUNT</h5>
       
                         <div data-mdb-input-init class="form-outline mb-4">
-                          <input required minlength="3" maxlength="20" th:field="*{name}" th:errorclass="'is-invalid alert-danger'" id="form2Example17" class="form-control form-control-lg" placeholder="Your Name"/>
-                            <small th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="bg-danger text-light rounded">Invalid name!</small>
+                          <input required minlength="3" maxlength="20" th:field="*{username}" th:errorclass="'is-invalid alert-danger'" id="form2Example17" class="form-control form-control-lg" placeholder="Username"/>
+                            <small th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="bg-danger text-light rounded">Invalid name!</small>
                         </div>
 
                         <div data-mdb-input-init class="form-outline mb-4">

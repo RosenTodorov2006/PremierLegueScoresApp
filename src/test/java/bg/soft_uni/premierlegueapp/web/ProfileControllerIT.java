@@ -54,7 +54,7 @@ public class ProfileControllerIT {
         userEntity.setRole(roleRepository.findByName(RoleNames.USER).get());
         userEntity.setFavouriteTeam(teamRepository.findByName(TeamNames.Chelsea).get());
         userEntity.setPassword(USER_PASSWORD);
-        userEntity.setName(USER_NAME);
+        userEntity.setUsername(USER_NAME);
         userRepository.save(userEntity);
 
         mockMvc.perform(MockMvcRequestBuilders.get("/profile"))

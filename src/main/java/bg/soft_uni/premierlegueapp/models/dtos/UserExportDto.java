@@ -1,17 +1,17 @@
 package bg.soft_uni.premierlegueapp.models.dtos;
 
 public class UserExportDto {
-    private String name;
+    private String username;
     private String email;
     private int age;
     private String favouriteTeam;
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {

@@ -61,7 +61,7 @@ public class UserControllerIT {
 
         UserEntity userEntity = userRepository.findByEmail(EMAIL).get();
         Assertions.assertEquals(1, userRepository.count());
-        Assertions.assertEquals(userEntity.getName(), NAME);
+        Assertions.assertEquals(userEntity.getUsername(), NAME);
         Assertions.assertEquals(userEntity.getEmail(), EMAIL);
         Assertions.assertEquals(userEntity.getFavouriteTeam().getName(), TeamNames.Chelsea);
         Assertions.assertEquals(userEntity.getAge(), AGE);

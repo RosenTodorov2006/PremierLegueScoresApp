@@ -32,8 +32,7 @@ public class UserController {
     }
     @PostMapping("/register")
     public String registerAndSaveInDataBase(@Valid RegisterSeedDto registerSeedDto, BindingResult bindingResult, RedirectAttributes redirectAttributes){
-        if(bindingResult.hasErrors() || !registerSeedDto.getConfirmPassword().equals(registerSeedDto.getPassword())
-                || this.userService.invalidNameOrEmail(registerSeedDto.getName(), registerSeedDto.getEmail())){
+        if(bindingResult.hasErrors()){
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.registerSeedDto", bindingResult);
             redirectAttributes.addFlashAttribute("registerSeedDto", registerSeedDto);
             return "redirect:/register";

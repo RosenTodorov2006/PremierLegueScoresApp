@@ -62,7 +62,7 @@ public class ChatControllerIT {
         userEntity.setRole(this.roleRepository.findByName(RoleNames.ADMIN).get());
         userEntity.setFavouriteTeam(teamRepository.findAll().get(0));
         userEntity.setPassword(CURRENT_USER_PASSWORD);
-        userEntity.setName(USERNAME);
+        userEntity.setUsername(USERNAME);
         userRepository.save(userEntity);
         Assertions.assertEquals(userRepository.count(), 1);
 
@@ -79,6 +79,6 @@ public class ChatControllerIT {
         Assertions.assertTrue(optionalMessage.isPresent());
         Message currentMessage = optionalMessage.get();
         Assertions.assertEquals(currentMessage.getMessage(), USER_MESSAGE_FIELD_VALUE);
-        Assertions.assertEquals(currentMessage.getUser().getName(), USERNAME);
+        Assertions.assertEquals(currentMessage.getUser().getUsername(), USERNAME);
     }
 }

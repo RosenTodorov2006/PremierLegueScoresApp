@@ -5,11 +5,13 @@ import bg.soft_uni.premierlegueapp.models.dtos.RegisterSeedDto;
 import bg.soft_uni.premierlegueapp.models.dtos.UserExportDto;
 
 public interface UserService {
-    boolean invalidNameOrEmail(String name, String email);
+    boolean isValidEmail(String email);
 
     void register(RegisterSeedDto registerSeedDto);
 
     boolean invalidData(LoginSeedDto loginSeedDto);
 
     UserExportDto getCurrentUserInfo(String name);
+
+    boolean isValidUsername(String username);
 }

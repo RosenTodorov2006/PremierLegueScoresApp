@@ -1,14 +1,19 @@
 package bg.soft_uni.premierlegueapp.models.dtos;
 
+import bg.soft_uni.premierlegueapp.validation.annotations.UniqueEmail;
+import bg.soft_uni.premierlegueapp.validation.annotations.UniqueUsername;
+import bg.soft_uni.premierlegueapp.validation.annotations.ValidPasswords;
 import jakarta.validation.constraints.*;
 import org.hibernate.validator.constraints.Length;
-
+@ValidPasswords
 public class RegisterSeedDto {
     @Size(min = 3, max = 20, message = "Name length must be between 3 and 20 characters.")
     @NotNull
-    private String name;
+    @UniqueUsername
+    private String username;
     @Email(message = "Invalid email.")
     @NotBlank(message = "Invalid email.")
+    @UniqueEmail
     private String email;
     @Length(min = 3, max = 20, message = "Password length must be between 3 and 20 characters.")
     @NotNull
@@ -31,12 +36,12 @@ public class RegisterSeedDto {
         this.favouriteTeam = favouriteTeam;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {

@@ -33,8 +33,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean invalidNameOrEmail(String name, String email) {
-        return this.userRepository.existsByNameOrEmail(name, email);
+    public boolean isValidEmail(String email) {
+        return this.userRepository.findByEmail(email).isEmpty();
     }
 
     @Override
@@ -68,5 +68,10 @@ public class UserServiceImpl implements UserService {
         UserExportDto map = this.modelMapper.map(byName, UserExportDto.class);
         map.setFavouriteTeam(byName.getFavouriteTeam().getName().name());
         return map;
+    }
+
+    @Override
+    public boolean isValidUsername(String username) {
+        return this.userRepository.findByUsername(username).isEmpty();
     }
 }

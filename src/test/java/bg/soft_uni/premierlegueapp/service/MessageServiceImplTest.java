@@ -11,13 +11,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static org.mockito.Mockito.*;
 
@@ -45,7 +43,7 @@ public class MessageServiceImplTest {
         exportMessageDto.setMessage(message.getMessage());
         messageService = new MessageServiceImpl(messageRepository, userRepository, modelMapper);
         user = new UserEntity();
-        user.setName(USER_NAME);
+        user.setUsername(USER_NAME);
         message.setUser(user);
     }
     @Test
