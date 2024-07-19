@@ -15,7 +15,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </head>
 <body>
-<header th:replace="Fragments/clubsLinksHeaderAndFooter::clubsLinksHeader"></header>
+<header th:replace="~{Fragments/clubsLinksHeaderAndFooter::clubsLinksHeader}"></header>
     <main>
       <div style="display: flex;flex-direction: column;align-self: center !important; height: 100%;">
           <form th:method="get" style="border-radius: 50%; align-self: self-start; padding: 1em; display: flex; align-items: center; flex-direction: column; text-align: center; background-color: white;color: #37003C;">
@@ -93,7 +93,7 @@
             </section>
             <!-- Section: CTA -->
           </div>
-          <div th:replace="Fragments/clubsLinksHeaderAndFooter::homeFooter"></div>
+          <div th:replace="~{Fragments/clubsLinksHeaderAndFooter::homeFooter}"></div>
         </footer>
         <!-- Footer -->
       </section>
