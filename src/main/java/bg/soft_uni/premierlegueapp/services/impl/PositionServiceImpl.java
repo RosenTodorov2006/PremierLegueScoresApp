@@ -7,12 +7,14 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PositionServiceImpl implements PositionService {
@@ -22,8 +24,8 @@ public class PositionServiceImpl implements PositionService {
     public PositionServiceImpl(@Qualifier("generalRestClient") RestClient restClient) {
         this.restClient = restClient;
     }
-
-    public List<PositionSeedDto> connectToApiAndGetStandings() {
+    @Cacheable("standing")
+    public List<PositionSeedDto> getStanding() {
         List<PositionSeedDto> positions = new ArrayList<>();
         String responseBody=this.restClient
                 .get()
@@ -47,7 +49,8 @@ public class PositionServiceImpl implements PositionService {
         }
          return positions;
     }
-    public List<MatchDto> connectToApiAndGetLastMatches(){
+    @Cacheable("matches")
+    public List<MatchDto> getLastMatches(){
         String responseBody = this.restClient
                 .get()
                 .uri("https://api.football-data.org/v4/competitions/PL/matches")
@@ -102,13 +105,4 @@ public class PositionServiceImpl implements PositionService {
         return list;
     }
 
-    @Override
-    public List<PositionSeedDto> getStanding() {
-        return connectToApiAndGetStandings();
-    }
-
-    @Override
-    public List<MatchDto> getLastMatches() {
-        return connectToApiAndGetLastMatches();
-    }
 }
