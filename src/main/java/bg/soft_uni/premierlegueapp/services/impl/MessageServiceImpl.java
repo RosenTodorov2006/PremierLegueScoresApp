@@ -18,12 +18,10 @@ import java.util.List;
 @Service
 public class MessageServiceImpl implements MessageService {
     private final UserRepository userRepository;
-    private final ModelMapper modelMapper;
     private final RestClient chatRestClient;
 
-    public MessageServiceImpl(UserRepository userRepository, ModelMapper modelMapper,@Qualifier("chatRestClient") RestClient restClient) {
+    public MessageServiceImpl(UserRepository userRepository,@Qualifier("chatRestClient") RestClient restClient) {
         this.userRepository = userRepository;
-        this.modelMapper = modelMapper;
         this.chatRestClient = restClient;
     }
 

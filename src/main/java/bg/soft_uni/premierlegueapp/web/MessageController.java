@@ -14,10 +14,10 @@ import java.security.Principal;
 import java.util.List;
 
 @Controller
-public class ChatController {
+public class MessageController {
     private final MessageService messagesService;
 
-    public ChatController(MessageService messagesService) {
+    public MessageController(MessageService messagesService) {
         this.messagesService = messagesService;
     }
 
