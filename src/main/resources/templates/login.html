@@ -18,7 +18,7 @@
 
                                 <form th:action="@{/login}" th:method="post" th:object="${loginSeedDto}">
 
-                                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">SIGN INTO YOUR ACCOUNT:</h5>
+                                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">SIGN INTO YOUR ACCOUNT</h5>
                                     <strong th:if="${invalidData}" class="bg-blur rounded alert-danger">
                                         Wrong username or password.
                                     </strong>
