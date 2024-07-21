@@ -8,8 +8,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @EnableScheduling
 @EnableCaching
-public class PremierLegueAppApplication {
+public class PremierLeagueAppApplication {
     public static void main(String[] args) {
-        SpringApplication.run(PremierLegueAppApplication.class, args);
+        SpringApplication.run(PremierLeagueAppApplication.class, args);
     }
 }
