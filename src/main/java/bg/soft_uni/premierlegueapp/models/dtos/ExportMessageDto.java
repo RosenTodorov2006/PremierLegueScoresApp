@@ -10,7 +10,8 @@ public class ExportMessageDto {
     private String userEmail;
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime created;
-    private String user;
+    private long userId;
+    private String username;
 
     public String getMessage() {
         return message;
@@ -28,12 +29,12 @@ public class ExportMessageDto {
         this.created = created;
     }
 
-    public String getUser() {
-        return user;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
     public long getId() {
@@ -50,5 +51,13 @@ public class ExportMessageDto {
 
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

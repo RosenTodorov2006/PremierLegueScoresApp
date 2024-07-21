@@ -23,7 +23,7 @@ public class StandingController {
             threshold = 2000
     )
     @GetMapping("/standings")
-    public List<PositionSeedDto> getStandings() {
+    public List<PositionSeedDto> getStandings() throws InterruptedException {
         List<PositionSeedDto> standing = positionService.getStanding();
         return standing;
     }

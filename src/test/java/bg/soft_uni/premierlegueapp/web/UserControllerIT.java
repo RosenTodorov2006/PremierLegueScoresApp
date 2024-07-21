@@ -2,7 +2,6 @@ package bg.soft_uni.premierlegueapp.web;
 
 import bg.soft_uni.premierlegueapp.models.entities.enums.TeamNames;
 import bg.soft_uni.premierlegueapp.models.entities.UserEntity;
-import bg.soft_uni.premierlegueapp.repositories.MessageRepository;
 import bg.soft_uni.premierlegueapp.repositories.UserRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -30,11 +29,8 @@ public class UserControllerIT {
     private MockMvc mockMvc;
     @Autowired
     private UserRepository userRepository;
-    @Autowired
-    private MessageRepository messageRepository;
     @AfterEach
     void clear(){
-        this.messageRepository.deleteAll();
         this.userRepository.deleteAll();
     }
     @Test
@@ -50,7 +46,7 @@ public class UserControllerIT {
         Assertions.assertEquals(0, userRepository.count());
         mockMvc.perform(MockMvcRequestBuilders.post("/register")
                         .with(csrf())
-                        .param("name", NAME)
+                        .param("username", NAME)
                         .param("email", EMAIL)
                         .param("password", PASSWORD)
                         .param("confirmPassword", PASSWORD)

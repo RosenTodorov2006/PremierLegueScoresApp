@@ -7,6 +7,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class PositionServiceImpl implements PositionService {
     private final static String API_TOKEN = "98b87d90b96e4bac9b5b758a5e557508";
     private final RestClient restClient;
 
-    public PositionServiceImpl(RestClient restClient) {
+    public PositionServiceImpl(@Qualifier("generalRestClient") RestClient restClient) {
         this.restClient = restClient;
     }
 

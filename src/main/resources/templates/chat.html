@@ -59,7 +59,7 @@
     <div id="chat-box" class="mb-3" style="background-color: #2f2f2f">
         <ul>
             <li th:each="message: ${allMessages}" style="display: flex; flex-direction: row; gap: 0.5em;padding-bottom: 0.5em; align-items: center;">
-                <span th:text="*{message.user+': '}" style="font-weight: bold; line-height: 1.2; color: #6e6ed8;"></span>
+                <span th:text="*{message.username+': '}" style="font-weight: bold; line-height: 1.2; color: #6e6ed8;"></span>
                 <span id="user-message" th:text="*{message.message}"></span>
                 <span style="color:#6e6ed8;" sec:authorize="hasRole('ADMIN')">|</span>
                 <div th:if="${message.userEmail!=currentEmail}">

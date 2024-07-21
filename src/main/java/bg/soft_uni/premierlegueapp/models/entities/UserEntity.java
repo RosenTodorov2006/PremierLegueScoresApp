@@ -21,8 +21,6 @@ public class UserEntity extends BaseEntity{
     @ManyToOne(optional = false)
     @JoinColumn(referencedColumnName = "id", name = "favourite_team")
     private Team favouriteTeam;
-    @OneToMany(mappedBy = "user")
-    private List<Message> message;
 
     public Role getRole() {
         return role;
@@ -72,12 +70,5 @@ public class UserEntity extends BaseEntity{
         this.favouriteTeam = favouriteTeam;
     }
 
-    public List<Message> getMessage() {
-        return message;
-    }
-
-    public void setMessage(List<Message> message) {
-        this.message = message;
-    }
 
 }

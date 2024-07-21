@@ -11,8 +11,5 @@ public class  ApplicationConfiguration {
     public ModelMapper modelMapper(){
         return new ModelMapper();
     }
-    @Bean
-    public RestClient restClient(){
-        return RestClient.create();
-    }
+
 }
