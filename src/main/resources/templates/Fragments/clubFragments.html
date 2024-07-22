@@ -25,12 +25,20 @@
                 <a th:style="'color: white !important;'"
                    onmouseover="this.style.color='rgb(79,143,35)';"
                    onmouseout="this.style.color='white';"
+                   th:href="@{/}">
+                    Home page <i class="fa-solid fa-house"></i>
+                </a>
+            </li>
+            <li>
+                <a th:style="'color: white !important;'"
+                   onmouseover="this.style.color='rgb(79,143,35)';"
+                   onmouseout="this.style.color='white';"
                    th:href="${linkTickets}">
                     Tickets <i class="fa-solid fa-arrow-up-right-from-square"></i>
                 </a>
             </li>
             <li class="off_site">
-                <a th:style="'color: white !important; border-inline: 1px solid white; padding-inline: 0.5em;'"
+                <a th:style="'color: white !important;'"
                    onmouseover="this.style.color='rgb(79,143,35)';"
                    onmouseout="this.style.color='white';"
                    th:href="${linkSite}">
