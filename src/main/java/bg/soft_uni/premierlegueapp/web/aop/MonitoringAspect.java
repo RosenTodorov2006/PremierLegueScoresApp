@@ -1,5 +1,6 @@
 package bg.soft_uni.premierlegueapp.web.aop;
 
+import bg.soft_uni.premierlegueapp.validation.annotations.WarnIfExecutionExceeds;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -16,7 +17,7 @@ import java.lang.reflect.Method;
 @Component
 public class MonitoringAspect {
     private final static Logger LOGGER = LoggerFactory.getLogger(MonitoringAspect.class);
-    @Pointcut("@annotation(WarnIfExecutionExceeds)")
+    @Pointcut("@annotation(bg.soft_uni.premierlegueapp.validation.annotations.WarnIfExecutionExceeds)")
     void onWarnExecutionTimeExceeds(){}
     @Around("onWarnExecutionTimeExceeds()")
     Object monitorExecutionTime(ProceedingJoinPoint pjp) throws Throwable {

@@ -3,7 +3,7 @@ package bg.soft_uni.premierlegueapp.web;
 import bg.soft_uni.premierlegueapp.models.dtos.MatchDto;
 import bg.soft_uni.premierlegueapp.models.dtos.PositionSeedDto;
 import bg.soft_uni.premierlegueapp.services.PositionService;
-import bg.soft_uni.premierlegueapp.web.aop.WarnIfExecutionExceeds;
+import bg.soft_uni.premierlegueapp.validation.annotations.WarnIfExecutionExceeds;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

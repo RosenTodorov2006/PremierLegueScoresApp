@@ -1,8 +1,11 @@
 package bg.soft_uni.premierlegueapp.services.impl;
 
+import bg.soft_uni.premierlegueapp.exceptions.ResourceNotFoundException;
 import bg.soft_uni.premierlegueapp.models.dtos.LoginSeedDto;
 import bg.soft_uni.premierlegueapp.models.dtos.RegisterSeedDto;
 import bg.soft_uni.premierlegueapp.models.dtos.UserExportDto;
+import bg.soft_uni.premierlegueapp.models.entities.Role;
+import bg.soft_uni.premierlegueapp.models.entities.Team;
 import bg.soft_uni.premierlegueapp.models.entities.enums.RoleNames;
 import bg.soft_uni.premierlegueapp.models.entities.enums.TeamNames;
 import bg.soft_uni.premierlegueapp.models.entities.UserEntity;
@@ -39,35 +42,54 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void register(RegisterSeedDto registerSeedDto) {
-        UserEntity map = this.modelMapper.map(registerSeedDto, UserEntity.class);
-        map.setPassword(this.passwordEncoder.encode(registerSeedDto.getPassword()));
+        UserEntity userEntity = this.modelMapper.map(registerSeedDto, UserEntity.class);
+        userEntity.setPassword(this.passwordEncoder.encode(registerSeedDto.getPassword()));
         if(this.userRepository.count()==0){
-            map.setRole(this.roleRepository.findByName(RoleNames.ADMIN).get());
+            Optional<Role> optionalRole = this.roleRepository.findByName(RoleNames.ADMIN);
+            if(optionalRole.isEmpty()){
+                throw new ResourceNotFoundException("ROLE NOT FOUND!");
+            }
+            Role role = optionalRole.get();
+            userEntity.setRole(role);
         }else{
-            map.setRole(this.roleRepository.findByName(RoleNames.USER).get());
+            Optional<Role> optionalRole = this.roleRepository.findByName(RoleNames.USER);
+            if(optionalRole.isEmpty()){
+                throw new ResourceNotFoundException("ROLE NOT FOUND!");
+            }
+            Role role = optionalRole.get();
+            userEntity.setRole(role);
         }
-        map.setFavouriteTeam(this.teamRepository.findByName(TeamNames.valueOf(registerSeedDto.getFavouriteTeam())).get());
-        this.userRepository.save(map);
+        Optional<Team> optionalTeam = this.teamRepository.findByName(TeamNames.valueOf(registerSeedDto.getFavouriteTeam()));
+        if(optionalTeam.isEmpty()){
+            throw new ResourceNotFoundException("TEAM NOT FOUND!");
+        }
+        Team team = optionalTeam.get();
+        userEntity.setFavouriteTeam(team);
+        this.userRepository.save(userEntity);
     }
 
     @Override
     public boolean invalidData(LoginSeedDto loginSeedDto) {
-        Optional<UserEntity> byEmail = this.userRepository.findByEmail(loginSeedDto.getEmail());
-        if(byEmail.isEmpty()){
+        Optional<UserEntity> userByEmail = this.userRepository.findByEmail(loginSeedDto.getEmail());
+        if(userByEmail.isEmpty()){
             return true;
         }
-        if(!this.passwordEncoder.matches(loginSeedDto.getPassword(), byEmail.get().getPassword())){
+        if(!this.passwordEncoder.matches(loginSeedDto.getPassword(), userByEmail.get().getPassword())){
             return true;
         }
         return false;
     }
 
     @Override
-    public UserExportDto getCurrentUserInfo(String name) {
-        UserEntity byName = this.userRepository.findByEmail(name).get();
-        UserExportDto map = this.modelMapper.map(byName, UserExportDto.class);
-        map.setFavouriteTeam(byName.getFavouriteTeam().getName().name());
-        return map;
+    public UserExportDto getCurrentUserInfo(String email) {
+        Optional<UserEntity> optionalUserEntity = this.userRepository.findByEmail(email);
+        if(optionalUserEntity.isEmpty()){
+            throw new ResourceNotFoundException("USER NOT FOUND!");
+        }
+        UserEntity userEntity = optionalUserEntity.get();
+        UserExportDto userExportDto = this.modelMapper.map(userEntity, UserExportDto.class);
+        userExportDto.setFavouriteTeam(userEntity.getFavouriteTeam().getName().name());
+        return userExportDto;
     }
 
     @Override

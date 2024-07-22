@@ -19,7 +19,7 @@ public class SecurityConfiguration {
                         authorizeRequests ->
                                 authorizeRequests
                                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                                        .requestMatchers("/", "/login", "/register", "/login-error", "/api/standings", "/api/last-matches").permitAll()
+                                        .requestMatchers("/", "/login", "/register", "/login-error", "/api/standings", "/api/last-matches", "/error").permitAll()
                                         .anyRequest()
                                         .authenticated()
                 )
@@ -44,9 +44,5 @@ public class SecurityConfiguration {
     public PasswordEncoder passwordEncoder() {
         return Pbkdf2PasswordEncoder
                 .defaultsForSpringSecurity_v5_8();
-    }
-    @Bean
-    public UserDetailsServiceImpl userDetailsService(UserRepository userRepository) {
-        return new UserDetailsServiceImpl(userRepository);
     }
 }

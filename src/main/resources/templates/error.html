@@ -35,7 +35,7 @@
 <body>
 <header th:replace="Fragments/clubsLinksHeaderAndFooter::clubsLinksHeader"></header>
     <main>
-        <strong>We can't find the page you are looking for.</strong>
+        <strong th:text="${errorMessage}"></strong>
         <strong>Sorry for the inconvenience.</strong>
         <div class="button" style="padding-top: 1em;">
             <a class="btn btn-primary px-4" th:href="@{'/'}">Back to home page</a>

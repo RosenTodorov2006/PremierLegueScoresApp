@@ -1,4 +1,4 @@
-package bg.soft_uni.premierlegueapp.web.aop;
+package bg.soft_uni.premierlegueapp.validation.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

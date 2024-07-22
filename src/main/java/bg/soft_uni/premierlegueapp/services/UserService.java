@@ -11,7 +11,7 @@ public interface UserService {
 
     boolean invalidData(LoginSeedDto loginSeedDto);
 
-    UserExportDto getCurrentUserInfo(String name);
+    UserExportDto getCurrentUserInfo(String email);
 
     boolean isValidUsername(String username);
 }
