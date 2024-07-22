@@ -35,10 +35,8 @@ public class PositionServiceImpl implements PositionService {
         JsonElement jsonElement = JsonParser.parseString(responseBody);
         JsonObject jsonObject = jsonElement.getAsJsonObject();
 
-        // Извличане на класирането от JSON
         JsonArray standings = jsonObject.getAsJsonArray("standings").get(0).getAsJsonObject().getAsJsonArray("table");
 
-        // Извличане на имената и точките на отборите и извеждане на нов ред
         for (JsonElement team : standings) {
             JsonObject teamObject = team.getAsJsonObject().getAsJsonObject("team");
             String name = teamObject.get("name").getAsString();
