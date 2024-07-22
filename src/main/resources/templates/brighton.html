@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head th:replace="Fragments/fragments::head"></head>
+<head th:replace="~{Fragments/clubFragments::head}"></head>
 <body>
-<header th:replace="~{Fragments/fragments :: header(
+<header th:replace="~{Fragments/clubFragments :: header(
     '#114D96',
     '/images/BrightonResources/brighton-club-logo-symbol-premier-league-football-abstract-design-illustration-with-blue-background-free-vector.jpg',
     '/images/BrightonResources/trophies.png',
@@ -15,8 +15,8 @@
     'https://www.youtube.com/channel/UCf-cpC9WAdOsas19JHipukA',
     'https://www.tiktok.com/@officialbhafc'
 )}"></header>
-<section th:replace="Fragments/fragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#114D96', 'white', ${team.country},${team.competition})"></section>
-    <main th:replace="~{Fragments/fragments::main(
+<section th:replace="~{Fragments/clubFragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#114D96', 'white', ${team.country},${team.competition})}"></section>
+    <main th:replace="~{Fragments/clubFragments::main(
     '/images/BrightonResources/background.png',
     '/images/BrightonResources/history.png',
     '/images/BrightonResources/_90678312_rexfeatures_5685412h.jpg',
@@ -30,7 +30,7 @@
     '#114D96',
     '#2a6be2'
 )}"></main>
-    <footer th:replace="Fragments/fragments::footer('#114D96', 'white')"></footer>
+    <footer th:replace="~{Fragments/clubFragments::footer('#114D96', 'white')}"></footer>
     <script src="/js/teamPageJs.js"></script>
 </body>
 </html>

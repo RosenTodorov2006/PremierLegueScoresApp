@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head th:replace="Fragments/fragments::head"></head>
+<head th:replace="~{Fragments/clubFragments::head}"></head>
 <body>
-<header th:replace="~{Fragments/fragments :: header(
+<header th:replace="~{Fragments/clubFragments :: header(
     '#D73435',
     '/images/NottingamResources/nottingham-forest-fc-club-symbol-white-logo-premier-league-football-abstract-design-illustration-with-red-background-free-vector.jpg',
     '/images/NottingamResources/imgonline-com-ua-twotoone-72wJtU51AQG2P3.jpg',
@@ -15,8 +15,8 @@
     'https://www.youtube.com/channel/UCyAxjuAr8f_BFDGCO3Htbxw',
     'https://www.tiktok.com/@officialnffc'
 )}"></header>
-<section th:replace="Fragments/fragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#D73435', 'white', ${team.country},${team.competition})"></section>
-    <main th:replace="~{Fragments/fragments::main(
+<section th:replace="~{Fragments/clubFragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#D73435', 'white', ${team.country},${team.competition})}"></section>
+    <main th:replace="~{Fragments/clubFragments::main(
       '/images/NottingamResources/7116f590-faa5-11eb-8fb1-d74153ecd170.jpg',
       '/images/NottingamResources/maxresdefault.jpg',
       '/images/NottingamResources/_124973383_60c5e80ee485e3519fffa10374f0ccbf77c33137.jpg',
@@ -30,7 +30,7 @@
       '#D73435',
       'white'
      )}"></main>
-    <footer th:replace="Fragments/fragments::footer('#D73435', 'white')"></footer>
+    <footer th:replace="~{Fragments/clubFragments::footer('#D73435', 'white')}"></footer>
     <script src="/js/teamPageJs.js"></script>
 </body>
 </html>

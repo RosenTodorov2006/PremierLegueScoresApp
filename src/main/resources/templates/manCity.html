@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head th:replace="Fragments/fragments::head"></head>
+<head th:replace="~{Fragments/clubFragments::head}"></head>
 
 
 <body>
-    <header th:replace="~{Fragments/fragments :: header(
+    <header th:replace="~{Fragments/clubFragments :: header(
     '#6EACDD',
     '/images/ManCityResources/logo.png',
     '/images/ManCityResources/trophiesManCity.png',
@@ -17,8 +17,8 @@
     'https://www.youtube.com/@mancity',
     'https://www.tiktok.com/@mancity'
 )}"></header>
-    <section th:replace="Fragments/fragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#7DB0DB', 'white', ${team.country},${team.competition})"></section>
-    <main th:replace="~{Fragments/fragments::main(
+    <section th:replace="~{Fragments/clubFragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#7DB0DB', 'white', ${team.country},${team.competition})}"></section>
+    <main th:replace="~{Fragments/clubFragments::main(
     '/images/ManCityResources/manwallpaper.png',
     '/images/ManCityResources/manCityHistory.png',
     '/images/ManCityResources/manCityFans.png',
@@ -32,7 +32,7 @@
     '#7DB0DB',
     '#FFFFFF'
 )}"></main>
-    <footer th:replace="Fragments/fragments::footer('#7DB0DB', 'white')"></footer>
+    <footer th:replace="~{Fragments/clubFragments::footer('#7DB0DB', 'white')}"></footer>
     <script src="/js/teamPageJs.js"></script>
 </body>
 </html>

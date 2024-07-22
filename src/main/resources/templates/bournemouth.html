@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head th:replace="Fragments/fragments::head"></head>
+<head th:replace="~{Fragments/clubFragments::head}"></head>
 
 <body>
-    <header th:replace="~{Fragments/fragments::header(
+    <header th:replace="~{Fragments/clubFragments::header(
     '#CA0B0F',
      '/images/BournemouthResources/logog.webp',
       '/images/BournemouthResources/troph (1).png',
@@ -16,8 +16,8 @@
          'https://www.youtube.com/channel/UCeOCuVSSweaEj6oVtJZEKQw',
          'https://www.tiktok.com/@afcb'
           )}"></header>
-    <section th:replace="Fragments/fragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#CA0B0F', 'white', ${team.country},${team.competition})"></section>
-    <main th:replace="~{Fragments/fragments::main(
+    <section th:replace="~{Fragments/clubFragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#CA0B0F', 'white', ${team.country},${team.competition})}"></section>
+    <main th:replace="~{Fragments/clubFragments::main(
     '/images/BournemouthResources/wp4227156-afc-bournemouth-wallpapers.jpg',
     '/images/BournemouthResources/history.png',
     '/images/BournemouthResources/C8VTmuAXUAA1hNM.jpg',
@@ -31,7 +31,7 @@
     '#660433',
     '#a00910b4'
 )}"></main>
-    <footer th:replace="Fragments/fragments::footer('#CA0B0F', 'white')"></footer>
+    <footer th:replace="~{Fragments/clubFragments::footer('#CA0B0F', 'white')}"></footer>
     <script src="/js/teamPageJs.js"></script>
 </body>
 </html>

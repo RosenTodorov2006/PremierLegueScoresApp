@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head th:replace="Fragments/fragments::head"></head>
+<head th:replace="~{Fragments/clubFragments::head}"></head>
 
 <body>
     <header  style="background-color: #03529B;">
@@ -21,8 +21,8 @@
             </ul>
         </nav>
     </header>
-    <section th:replace="Fragments/fragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#03529B', 'white', ${team.country},${team.competition})"></section>
-    <main th:replace="~{Fragments/fragments::main(
+    <section th:replace="~{Fragments/clubFragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#03529B', 'white', ${team.country},${team.competition})}"></section>
+    <main th:replace="~{Fragments/clubFragments::main(
     '/images/CeystalPalaceResources/gettyimages-899395030.webp',
     '/images/CeystalPalaceResources/Crystal-Palace.png',
     '/images/CeystalPalaceResources/eafa88e52f7523bc86df580bc997a612.jpg',
@@ -36,7 +36,7 @@
     '#03529B',
     '#a00910b4'
 )}"></main>
-    <footer th:replace="Fragments/fragments::footer('#03529B', 'white')"></footer>
+    <footer th:replace="~{Fragments/clubFragments::footer('#03529B', 'white')}"></footer>
     <script src="/js/teamPageJs.js"></script>
 </body>
 </html>

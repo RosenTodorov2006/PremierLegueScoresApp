@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head th:replace="Fragments/fragments::head"></head>
+<head th:replace="~{Fragments/clubFragments::head}"></head>
 
 <body>
-<header th:replace="~{Fragments/fragments :: header(
+<header th:replace="~{Fragments/clubFragments :: header(
     'black',
     '/images/FulhamResources/fc-fulham-club-logo-symbol-premier-league-football-abstract-design-illustration-with-black-background-free-vector.jpg',
     '/images/FulhamResources/png.png',
@@ -16,8 +16,8 @@
     'https://www.youtube.com/channel/UC2VLfz92cTT8jHIFOecC-LA',
     'https://www.tiktok.com/@fulhamfc'
 )}"></header>
-<section th:replace="Fragments/fragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, 'black', 'white', ${team.country},${team.competition})"></section>
-    <main th:replace="~{Fragments/fragments::main(
+<section th:replace="~{Fragments/clubFragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, 'black', 'white', ${team.country},${team.competition})}"></section>
+    <main th:replace="~{Fragments/clubFragments::main(
     '/images/FulhamResources/4d7bfe60-f206-11ec-9ca5-25aa8b1b033c.jpg',
     '/images/FulhamResources/history.png',
     '/images/FulhamResources/fulham-fc-we-are-banner-bkzif8pmreha0t7v.jpg',
@@ -31,7 +31,7 @@
     'black',
     '#FFFFFF'
 )}"></main>
-    <footer th:replace="Fragments/fragments::footer('black', 'white')"></footer>
+    <footer th:replace="~{Fragments/clubFragments::footer('black', 'white')}"></footer>
     <script src="/js/teamPageJs.js"></script>
 </body>
 </html>

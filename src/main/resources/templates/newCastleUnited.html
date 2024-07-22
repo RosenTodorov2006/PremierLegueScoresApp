@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head th:replace="Fragments/fragments::head"></head>
+<head th:replace="~{Fragments/clubFragments::head}"></head>
 
 <body>
-<header th:replace="~{Fragments/fragments :: header(
+<header th:replace="~{Fragments/clubFragments :: header(
     'black',
     '/images/NweCastleResources/logo.png',
     '/images/NweCastleResources/honours.thumb.jpg.a196315e5c46e332f8a85ff805a3d46d.jpg',
@@ -16,8 +16,8 @@
     'https://www.youtube.com/@NUFC',
     'https://www.tiktok.com/@nufc'
 )}"></header>
-<section th:replace="Fragments/fragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, 'black', 'white', ${team.country},${team.competition})"></section>
-    <main th:replace="~{Fragments/fragments::main(
+<section th:replace="~{Fragments/clubFragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, 'black', 'white', ${team.country},${team.competition})}"></section>
+    <main th:replace="~{Fragments/clubFragments::main(
           '/images/NweCastleResources/c.webp',
           '/images/NweCastleResources/maxresdefault.jpg',
           '/images/NweCastleResources/fans-with-scarves-during-display-1080x608.jpg',
@@ -31,7 +31,7 @@
           'black',
           '#FFFFFF'
       )}"></main>
-    <footer th:replace="Fragments/fragments::footer('black', 'white')"></footer>
+    <footer th:replace="~{Fragments/clubFragments::footer('black', 'white')}"></footer>
     <script src="/js/teamPageJs.js"></script>
 </body>
 </html>

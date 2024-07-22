@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head th:replace="Fragments/fragments::head"></head>
+<head th:replace="~{Fragments/clubFragments::head}"></head>
 
 <body>
-<header th:replace="~{Fragments/fragments :: header(
+<header th:replace="~{Fragments/clubFragments :: header(
     '#7A2739',
     '/images/WestHamResources/logo.png',
     '/images/WestHamResources/file9WFY9L1P.jpg',
@@ -16,8 +16,8 @@
     'https://www.youtube.com/westhamunited',
     'https://www.tiktok.com/@westham'
 )}"></header>
-<section th:replace="Fragments/fragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#7A2739', 'white', ${team.country},${team.competition})"></section>
-    <main th:replace="~{Fragments/fragments::main(
+<section th:replace="~{Fragments/clubFragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#7A2739', 'white', ${team.country},${team.competition})}"></section>
+    <main th:replace="~{Fragments/clubFragments::main(
     '/images/WestHamResources/wp9934544.webp',
     '/images/WestHamResources/logoWestHam.png',
     '/images/WestHamResources/busparade1600.jpg',
@@ -31,7 +31,7 @@
     '#7A2739',
     '#FFFFFF'
 )}"></main>
-    <footer th:replace="Fragments/fragments::footer('#7A2739', 'white')"></footer>
+    <footer th:replace="~{Fragments/clubFragments::footer('#7A2739', 'white')}"></footer>
     <script src="/js/teamPageJs.js"></script>
 </body>
 </html>

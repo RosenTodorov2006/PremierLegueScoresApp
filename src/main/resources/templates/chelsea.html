@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head th:replace="Fragments/fragments::head"></head>
+<head th:replace="~{Fragments/clubFragments::head}"></head>
 <body>
-<header th:replace="~{Fragments/fragments :: header(
+<header th:replace="~{Fragments/clubFragments :: header(
     '#003492',
     '/images/ChelseaResources/logo.png',
     '/images/ChelseaResources/trophies.png',
@@ -15,8 +15,8 @@
     'https://www.youtube.com/channel/UCU2PacFf99vhb3hNiYDmxww',
     'https://www.tiktok.com/@chelseafc'
 )}"></header>
-<section th:replace="Fragments/fragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#003492', 'white', ${team.country},${team.competition})"></section>
-    <main th:replace="~{Fragments/fragments::main(
+<section th:replace="~{Fragments/clubFragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#003492', 'white', ${team.country},${team.competition})}"></section>
+    <main th:replace="~{Fragments/clubFragments::main(
     '/images/ChelseaResources/851794-chelsea-wallpaper-2018-hd-1920x1080-computer.jpg',
     '/images/ChelseaResources/maxresdefault.jpg',
     '/images/ChelseaResources/45854682_605.jpg',
@@ -30,7 +30,7 @@
     '#003492',
     '#2a6be2'
 )}"></main>
-    <footer th:replace="Fragments/fragments::footer('#003492', 'white')"></footer>
+    <footer th:replace="~{Fragments/clubFragments::footer('#003492', 'white')}"></footer>
     <script src="/js/teamPageJs.js"></script>
 </body>
 </html>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head th:replace="Fragments/fragments::head"></head>
+<head th:replace="~{Fragments/clubFragments::head}"></head>
 
 <body>
-<header th:replace="~{Fragments/fragments :: header(
+<header th:replace="~{Fragments/clubFragments :: header(
     '#1E2551',
     '/images/TottenhamResources/totLogo.png',
     '/images/TottenhamResources/trTot.png',
@@ -16,8 +16,8 @@
     'https://www.youtube.com/spursofficial',
     'https://www.tiktok.com/@spursofficial'
 )}"></header>
-<section th:replace="Fragments/fragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#1E2551', 'white', ${team.country},${team.competition})"></section>
-    <main th:replace="~{Fragments/fragments::main(
+<section th:replace="~{Fragments/clubFragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#1E2551', 'white', ${team.country},${team.competition})}"></section>
+    <main th:replace="~{Fragments/clubFragments::main(
     '/images/TottenhamResources/241659-2500x1478-desktop-hd-tottenham-hotspur-fc-background-photo.jpg',
     '/images/TottenhamResources/TotHistory.png',
     '/images/TottenhamResources/IMG_2023-09-16-163455-1100x640.jpeg',
@@ -31,7 +31,7 @@
     '#1E2551',
     '#FFFFFF'
 )}"></main>
-    <footer th:replace="Fragments/fragments::footer('#1E2551', 'white')"></footer>
+    <footer th:replace="~{Fragments/clubFragments::footer('#1E2551', 'white')}"></footer>
     <script src="/js/teamPageJs.js"></script>
 </body>
 </html>

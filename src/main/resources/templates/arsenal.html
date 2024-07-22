@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head th:replace="Fragments/fragments::head"></head>
+<head th:replace="~{Fragments/clubFragments::head}"></head>
 <body>
-    <header th:replace="~{Fragments/fragments::header(
+    <header th:replace="~{Fragments/clubFragments::header(
     '#E12128',
      '/images/ArsenalResources/arsenal-logo.png',
       '/images/ArsenalResources/arsenal-trophies.png',
@@ -15,8 +15,8 @@
          'https://www.youtube.com/@arsenal',
          'https://www.tiktok.com/@arsenal'
           )}"></header>
-    <section th:replace="Fragments/fragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#E12128', 'white', ${team.country},${team.competition})"></section>
-    <main th:replace="~{Fragments/fragments::main(
+    <section th:replace="~{Fragments/clubFragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#E12128', 'white', ${team.country},${team.competition})}"></section>
+    <main th:replace="~{Fragments/clubFragments::main(
     '/images/ArsenalResources/photo-1577224682146-dd7843c88d33.avif',
     '/images/ArsenalResources/history.png.jpeg',
     '/images/ArsenalResources/arsenalFans.png',
@@ -30,7 +30,7 @@
     '#E12128',
     '#a00910b4'
 )}"></main>
-    <footer th:replace="Fragments/fragments::footer('#E12128', 'white')"></footer>
+    <footer th:replace="~{Fragments/clubFragments::footer('#E12128', 'white')}"></footer>
       <script src="/js/teamPageJs.js"></script>
 </body>
 </html>

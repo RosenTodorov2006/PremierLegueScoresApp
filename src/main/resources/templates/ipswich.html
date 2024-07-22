@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head th:replace="Fragments/fragments::head"></head>
+<head th:replace="~{Fragments/clubFragments::head}"></head>
 
 <body>
-    <header th:replace="~{Fragments/fragments :: header(
+    <header th:replace="~{Fragments/clubFragments :: header(
     '#153C89',
     '/images/IpswichResources/11645_o.jpg',
     '/images/IpswichResources/4.jpg.184b16b10402b7ed512e3b938c760e79.jpg',
@@ -16,8 +16,8 @@
     'https://www.youtube.com/user/officialitfc',
     'https://www.tiktok.com/@ipswichtown'
 )}"></header>
-    <section th:replace="Fragments/fragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#153C89', 'white', ${team.country},${team.competition})"></section>
-    <main th:replace="~{Fragments/fragments::main(
+    <section th:replace="~{Fragments/clubFragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#153C89', 'white', ${team.country},${team.competition})}"></section>
+    <main th:replace="~{Fragments/clubFragments::main(
     '/images/IpswichResources/ipswich-town-1440-x-960-wallpaper-f4f8jsa8nfy4wszm.webp',
     '/images/IpswichResources/history.jpg',
     '/images/IpswichResources/20326079-2884-48ac-89b3-2b079d035764.png',
@@ -31,7 +31,7 @@
     '#153C89',
     '#051e50'
 )}"></main>
-    <footer th:replace="Fragments/fragments::footer('#153C89', 'white')"></footer>
+    <footer th:replace="~{Fragments/clubFragments::footer('#153C89', 'white')}"></footer>
     <script src="/js/teamPageJs.js"></script>
 </body>
 </html>
