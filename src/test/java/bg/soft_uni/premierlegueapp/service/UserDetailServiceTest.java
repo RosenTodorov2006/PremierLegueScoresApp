@@ -27,6 +27,7 @@ public class UserDetailServiceTest {
     private final static String EMAIL = "random@fmail.com";
     private final static String PASSWORD = "123";
     private final static String FAKE_EMAIL = "fake";
+    private final static int EXPECTED_SIZE=1;
     @Mock
     private UserRepository userRepository;
 
@@ -56,7 +57,7 @@ public class UserDetailServiceTest {
         Assertions.assertEquals(testUser.getPassword(), userDetails.getPassword());
         String expectedRoles = "ROLE_"+testUser.getRole().getName();
         List<String> list = userDetails.getAuthorities().stream().map(GrantedAuthority::getAuthority).toList();
-        Assertions.assertEquals(1, list.size());
+        Assertions.assertEquals(EXPECTED_SIZE, list.size());
         Assertions.assertEquals(expectedRoles, list.get(0));
     }
     @Test

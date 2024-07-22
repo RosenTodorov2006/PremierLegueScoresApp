@@ -24,6 +24,8 @@ public class UserControllerIT {
     private static final String PASSWORD = "password";
     private static final String FAVOURITE_TEAM = TeamNames.Chelsea.name();
     private static final int AGE = 16;
+    private final static int EXPECTED_SIZE=1;
+    private final static int EXPECTED_SIZE_ZERO=0;
     private static final String CONFIRM_PASSWORD = "random";
     @Autowired
     private MockMvc mockMvc;
@@ -56,11 +58,11 @@ public class UserControllerIT {
                 .andExpect(view().name("redirect:/login"));
 
         UserEntity userEntity = userRepository.findByEmail(EMAIL).get();
-        Assertions.assertEquals(1, userRepository.count());
-        Assertions.assertEquals(userEntity.getUsername(), NAME);
-        Assertions.assertEquals(userEntity.getEmail(), EMAIL);
-        Assertions.assertEquals(userEntity.getFavouriteTeam().getName(), TeamNames.Chelsea);
-        Assertions.assertEquals(userEntity.getAge(), AGE);
+        Assertions.assertEquals(EXPECTED_SIZE, userRepository.count());
+        Assertions.assertEquals(NAME,userEntity.getUsername());
+        Assertions.assertEquals(EMAIL,userEntity.getEmail());
+        Assertions.assertEquals(TeamNames.Chelsea, userEntity.getFavouriteTeam().getName());
+        Assertions.assertEquals(AGE, userEntity.getAge());
     }
     @Test
     void registerAndSaveInDataBaseInvalidPasswordTest() throws Exception {
@@ -75,7 +77,7 @@ public class UserControllerIT {
                         .param("age", String.valueOf(AGE)))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/register"));
-        Assertions.assertEquals(0, userRepository.count());
+        Assertions.assertEquals(EXPECTED_SIZE_ZERO, userRepository.count());
     }
     @Test
     void loginTest() throws Exception {
