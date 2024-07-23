@@ -1,5 +1,6 @@
 package bg.soft_uni.premierlegueapp.services.impl;
 
+import bg.soft_uni.premierlegueapp.configuration.FootballApiConfiguration;
 import bg.soft_uni.premierlegueapp.models.dtos.MatchDto;
 import bg.soft_uni.premierlegueapp.models.dtos.PositionSeedDto;
 import bg.soft_uni.premierlegueapp.services.PositionService;
@@ -17,19 +18,20 @@ import java.util.List;
 
 @Service
 public class PositionServiceImpl implements PositionService {
-    private final static String API_TOKEN = "98b87d90b96e4bac9b5b758a5e557508";
     private final RestClient restClient;
+    private final FootballApiConfiguration footballApiConfiguration;
 
-    public PositionServiceImpl(@Qualifier("generalRestClient") RestClient restClient) {
+    public PositionServiceImpl(@Qualifier("generalRestClient") RestClient restClient, FootballApiConfiguration footballApiConfiguration) {
         this.restClient = restClient;
+        this.footballApiConfiguration = footballApiConfiguration;
     }
     @Cacheable("standing")
     public List<PositionSeedDto> getStanding() {
         List<PositionSeedDto> positions = new ArrayList<>();
         String responseBody=this.restClient
                 .get()
-                .uri("https://api.football-data.org/v4/competitions/PL/standings")
-                .header("X-Auth-Token", API_TOKEN)
+                .uri(footballApiConfiguration.getUrl()+"standings")
+                .header("X-Auth-Token", footballApiConfiguration.getKey())
                 .retrieve()
                 .body(String.class);
         JsonElement jsonElement = JsonParser.parseString(responseBody);
@@ -50,8 +52,8 @@ public class PositionServiceImpl implements PositionService {
     public List<MatchDto> getLastMatches(){
         String responseBody = this.restClient
                 .get()
-                .uri("https://api.football-data.org/v4/competitions/PL/matches")
-                .header("X-Auth-Token", API_TOKEN)
+                .uri(footballApiConfiguration.getUrl()+"matches")
+                .header("X-Auth-Token", this.footballApiConfiguration.getKey())
                 .retrieve()
                 .body(String.class);
         if (responseBody == null) {
