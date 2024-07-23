@@ -33,7 +33,7 @@
     </style>
 </head>
 <body>
-<header th:replace="~{Fragments/clubsLinksHeaderAndFooter::clubsLinksHeader}"></header>
+<header th:replace="~{Fragments/clubsLinksHeaderAndFooterFragments::clubsLinksHeader}"></header>
     <main>
         <strong th:text="${errorMessage}"></strong>
         <strong>Sorry for the inconvenience.</strong>
@@ -42,7 +42,7 @@
         </div>
     </main>
 <footer class="text-center text-white" style="background-color: #5F3363;">
-    <div th:replace="Fragments/clubsLinksHeaderAndFooter::homeFooter"></div>
+    <div th:replace="Fragments/clubsLinksHeaderAndFooterFragments::homeFooter"></div>
 </footer>
 <script src="/js/indexJs.js"></script>
 </body>
