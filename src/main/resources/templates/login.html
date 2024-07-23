@@ -3,7 +3,10 @@
       xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{Fragments/LoginAndRegisterHead::loginAndRegisterHead}"></head>
 <body>
-<section class="vh-100" style="background-image: url('/images/RegisterPagesResources/zigzag-purple-background-epl-english-premier-league-thumbnail-video-print-web-background-free-vector.jpg'); background-size: 100% 100%;">
+<section class="vh-100" style="background-image: url('/images/RegisterPagesResources/zigzag-purple-background-epl-english-premier-league-thumbnail-video-print-web-background-free-vector.jpg'); background-size: 100% 100%; display: flex; padding: 1em;">
+    <div class="button" style="padding-top: 1em;">
+        <a class="btn btn-primary px-4" th:href="@{'/'}">Back</a>
+    </div>
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col col-xl-10" style="min-width: 100%;">
