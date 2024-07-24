@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Проверка и задаване на езика при зареждане на страницата
+    checkAndSetLanguage();
+
+    // Зареждане на данните
     loadStandings();
     loadLastMatches();
 
@@ -7,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         loadLastMatches();
     }, 49000);
 
+    // Функция за зареждане на таблицата с класиране
     function loadStandings() {
         fetch('/api/standings')
             .then(response => response.json())
@@ -18,6 +23,19 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     }
 
+    // Функция за зареждане на последните мачове
+    function loadLastMatches() {
+        fetch('/api/last-matches')
+            .then(response => response.json())
+            .then(data => {
+                displayLastMatches(data);
+            })
+            .catch(error => {
+                console.error('Error fetching last matches:', error);
+            });
+    }
+
+    // Преводи на отборите
     const teamNamesBG = {
         "AFC Bournemouth": "Борнемут",
         "Arsenal FC": "Арсенал",
@@ -64,48 +82,60 @@ document.addEventListener("DOMContentLoaded", function () {
         "Wolverhampton Wanderers FC": "Wolverhampton Wanderers"
     };
 
-    function getLanguageFromURL() {
+    // Функция за получаване на езика от URL или локално съхранение
+    function getLanguage() {
         const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get('lang') || 'en_US';
+        const langFromURL = urlParams.get('lang');
+        const langFromStorage = localStorage.getItem('selectedLanguage');
+        return langFromURL || langFromStorage || 'en_US';
     }
 
+    // Функция за запазване на избрания език и презареждане на данните
+    function setLanguage(lang) {
+        localStorage.setItem('selectedLanguage', lang);
+        const url = new URL(window.location);
+        url.searchParams.set('lang', lang);
+        window.location = url.toString();
+    }
+
+    // Функция за проверка и задаване на езика при зареждане на страницата
+    function checkAndSetLanguage() {
+        const lang = getLanguage();
+        localStorage.setItem('selectedLanguage', lang);
+        const url = new URL(window.location);
+        if (url.searchParams.get('lang') !== lang) {
+            url.searchParams.set('lang', lang);
+            window.location = url.toString();
+        }
+    }
+
+    // Функция за показване на таблицата с класиране
     function displayStandings(standings) {
-        const lang = getLanguageFromURL();
+        const lang = getLanguage();
         const teamNames = lang === 'bg_BG' ? teamNamesBG : teamNamesEN;
 
         const standingsTableBody = document.querySelector('#rank tbody');
-        standingsTableBody.innerHTML = ''; // Изчистване на текущите данни
+        standingsTableBody.innerHTML = '';
         standings.forEach(team => {
             const row = document.createElement('tr');
-            const translatedName = teamNames[team.name] || team.name; // Получаване на преведеното име или оригиналното име
+            const translatedName = teamNames[team.name] || team.name;
             row.innerHTML = `
-            <th scope="row">${team.position}</th>
-            <td colspan="2">${translatedName}</td>
-            <td>${team.points}</td>
-        `;
+                <th scope="row">${team.position}</th>
+                <td colspan="2">${translatedName}</td>
+                <td>${team.points}</td>
+            `;
             standingsTableBody.appendChild(row);
         });
     }
 
-    function loadLastMatches() {
-        fetch('/api/last-matches')
-            .then(response => response.json())
-            .then(data => {
-                console.log('Last matches data:', data); // Проверка в конзолата за получените данни
-                displayLastMatches(data); // Показване на последните мачове
-            })
-            .catch(error => {
-                console.error('Error fetching last matches:', error);
-            });
-    }
-
+    // Функция за показване на последните мачове
     function displayLastMatches(matches) {
-        const lang = getLanguageFromURL();
+        const lang = getLanguage();
         const teamNames = lang === 'bg_BG' ? teamNamesBG : teamNamesEN;
         const noDataText = lang === 'bg_BG' ? "-" : "N/A";
 
         const lastMatchesTableBody = document.querySelector('#lastMatchesTable tbody');
-        lastMatchesTableBody.innerHTML = ''; // Изчистване на текущите данни
+        lastMatchesTableBody.innerHTML = '';
 
         matches.forEach(match => {
             const row = document.createElement('tr');
@@ -114,7 +144,6 @@ document.addEventListener("DOMContentLoaded", function () {
             const homeGoals = match.homeGoals !== "N/A" ? match.homeGoals : noDataText;
             const awayGoals = match.awayGoals !== "N/A" ? match.awayGoals : noDataText;
 
-            // Създаване на клетки за домакинския отбор, резултата и гостуващия отбор
             const homeTeamCell = document.createElement('td');
             homeTeamCell.textContent = translatedHomeTeam;
 
@@ -124,12 +153,10 @@ document.addEventListener("DOMContentLoaded", function () {
             const awayTeamCell = document.createElement('td');
             awayTeamCell.textContent = translatedAwayTeam;
 
-            // Добавяне на клетките към реда
             row.appendChild(homeTeamCell);
             row.appendChild(resultCell);
             row.appendChild(awayTeamCell);
 
-            // Добавяне на реда към таблицата
             lastMatchesTableBody.appendChild(row);
         });
     }
