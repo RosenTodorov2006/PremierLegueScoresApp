@@ -4,23 +4,18 @@
 <head th:replace="~{Fragments/clubFragments::head}"></head>
 
 <body>
-    <header  style="background-color: #03529B;">
-        <div class="photos" style="gap: 2em;">
-            <img src="/images/CeystalPalaceResources/south-london-englandseptember-18-2023crystal-600nw-2363472517.webp" alt="">
-            <img class = "trophies" src="/images/CeystalPalaceResources/snapedit_1713895512888.png" alt="">
-        </div>
-        <nav>
-            <ul>
-                <li ><a style = "color: white !important;" onmouseover="this.style.color='#EE1B24';" onmouseout="this.style.color='white';" href="https://www.cpfc.co.uk/tickets/">Tickets <i class="fa-solid fa-arrow-up-right-from-square"></i></a></li>
-                <li class="off_site"><a style = "color: white !important; border-inline: 1px solid white; padding-inline: 0.5em;" onmouseover="this.style.color='#EE1B24';" onmouseout="this.style.color='white';" href="https://www.cpfc.co.uk">Official site <i class="fa-solid fa-arrow-up-right-from-square"></i></a></li>
-                <li><a style = "color: white !important" onmouseover="this.style.color='#EE1B24';" onmouseout="this.style.color='white';" href="https://twitter.com/cpfc"><i class="fa-brands fa-twitter"></i></a></li>
-                <li><a style = "color: white !important" onmouseover="this.style.color='#EE1B24';" onmouseout="this.style.color='white';" href="https://www.instagram.com/cpfc/"><i class="fa-brands fa-instagram"></i></a></li>
-                <li><a style = "color: white !important" onmouseover="this.style.color='#EE1B24';" onmouseout="this.style.color='white';" href="https://www.facebook.com/officialcpfc/"><i class="fa-brands fa-facebook"></i></a></li>
-                <li><a style = "color: white !important" onmouseover="this.style.color='#EE1B24';" onmouseout="this.style.color='white';" href="https://www.youtube.com/channel/UCWB9N0012fG6bGyj486Qxmg"><i class="fa-brands fa-youtube"></i></a></li>
-                <li><a style = "color: white !important" onmouseover="this.style.color='#EE1B24';" onmouseout="this.style.color='white';" href="https://www.tiktok.com/@cpfc"><i class="fa-brands fa-tiktok"></i></a></i></li>
-            </ul>
-        </nav>
-    </header>
+    <header th:replace="~{Fragments/clubFragments :: header(
+    '#03529B',
+    '/images/CeystalPalaceResources/south-london-englandseptember-18-2023crystal-600nw-2363472517.webp',
+    '/images/CeystalPalaceResources/snapedit_1713895512888.png',
+    'https://www.cpfc.co.uk/tickets/',
+    'https://www.cpfc.co.uk',
+    'https://twitter.com/cpfc',
+    'https://www.instagram.com/cpfc/',
+    'https://www.facebook.com/officialcpfc/',
+    'https://www.youtube.com/channel/UCWB9N0012fG6bGyj486Qxmg',
+    'https://www.tiktok.com/@cpfc'
+)}"></header>
     <section th:replace="~{Fragments/clubFragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#03529B', 'white', ${team.country},${team.competition})}"></section>
     <main th:replace="~{Fragments/clubFragments::main(
     '/images/CeystalPalaceResources/gettyimages-899395030.webp',
