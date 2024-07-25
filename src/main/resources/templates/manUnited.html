@@ -8,13 +8,13 @@
     '#8E0000',
     '/images/ManUnitedResources/logoManUnd.png',
     '/images/ManUnitedResources/50508439821.png',
-    'https://tickets.manutd.com/en-GB/categories/home-tickets',
-    'https://www.manutd.com',
-    'https://twitter.com/ManUtd',
-    'https://www.instagram.com/manchesterunited/',
-    'https://www.facebook.com/manchesterunited/',
-    'https://www.youtube.com/manutd',
-    'https://www.tiktok.com/@manutd'
+         ${links.getTicketsLink()},
+         ${links.getOfficialSiteLink()},
+         ${links.getTwitterLink()},
+         ${links.getInstagramLink()},
+         ${links.getFacebookLink()},
+         ${links.getYoutubeLink()},
+         ${links.getTiktokLink()}
 )}"></header>
     <section th:replace="~{Fragments/clubFragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#DF1A21', 'white', ${team.country},${team.competition})}"></section>
     <main th:replace="~{Fragments/clubFragments::main(

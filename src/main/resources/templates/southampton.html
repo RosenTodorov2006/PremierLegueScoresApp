@@ -8,13 +8,13 @@
     '#E91C3D',
     '/images/SouthamptonResources/southampton-club-logo-symbol-premier-league-football-abstract-design-illustration-with-red-background-free-vector.jpg',
     '/images/SouthamptonResources/trophies.png',
-    'https://www.southamptonfc.com/en/matches/mens-team',
-    'https://www.southamptonfc.com/en',
-    'https://x.com/southamptonfc',
-    'https://www.instagram.com/southamptonfc/',
-    'https://www.facebook.com/southamptonfc/',
-    'https://www.youtube.com/channel/UCxvXjfiIHQ2O6saVx_ZFqnw',
-    'https://www.tiktok.com/@southamptonfc'
+         ${links.getTicketsLink()},
+         ${links.getOfficialSiteLink()},
+         ${links.getTwitterLink()},
+         ${links.getInstagramLink()},
+         ${links.getFacebookLink()},
+         ${links.getYoutubeLink()},
+         ${links.getTiktokLink()}
 )}"></header>
 <section th:replace="~{Fragments/clubFragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#E91C3D', 'white', ${team.country},${team.competition})}"></section>
     <main th:replace="~{Fragments/clubFragments::main(

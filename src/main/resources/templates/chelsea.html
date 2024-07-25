@@ -7,13 +7,13 @@
     '#003492',
     '/images/ChelseaResources/logo.png',
     '/images/ChelseaResources/trophies.png',
-    'https://www.chelseafc.com/en/tickets/mens-tickets',
-    'https://www.chelseafc.com/en',
-    'https://twitter.com/ChelseaFC',
-    'https://www.instagram.com/chelseafc/',
-    'https://www.facebook.com/ChelseaFC/',
-    'https://www.youtube.com/channel/UCU2PacFf99vhb3hNiYDmxww',
-    'https://www.tiktok.com/@chelseafc'
+         ${links.getTicketsLink()},
+         ${links.getOfficialSiteLink()},
+         ${links.getTwitterLink()},
+         ${links.getInstagramLink()},
+         ${links.getFacebookLink()},
+         ${links.getYoutubeLink()},
+         ${links.getTiktokLink()}
 )}"></header>
 <section th:replace="~{Fragments/clubFragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#003492', 'white', ${team.country},${team.competition})}"></section>
     <main th:replace="~{Fragments/clubFragments::main(

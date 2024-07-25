@@ -1,28 +1,12 @@
-package bg.soft_uni.premierlegueapp.models.entities;
+package bg.soft_uni.premierlegueapp.models.dtos;
 
 import bg.soft_uni.premierlegueapp.models.entities.enums.CompetitionNames;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
 
-@Table
-@Entity(name = "competitions")
-public class Competition extends BaseEntity{
-    @Column
-    @Enumerated(EnumType.STRING)
+public class CompetitionExportDto {
     private CompetitionNames name;
-    @Column(name = "video_url")
     private String videoUrl;
-    @Column(name = "trophy_url")
     private String trophyUrl;
-
-    public Competition(CompetitionNames name, String videoUrl, String trophyUrl) {
-        this.name = name;
-        this.videoUrl = videoUrl;
-        this.trophyUrl = trophyUrl;
-    }
-
-    public Competition() {
-
-    }
 
     public CompetitionNames getName() {
         return name;

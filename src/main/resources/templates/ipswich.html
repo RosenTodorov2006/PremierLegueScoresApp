@@ -8,13 +8,13 @@
     '#153C89',
     '/images/IpswichResources/11645_o.jpg',
     '/images/IpswichResources/4.jpg.184b16b10402b7ed512e3b938c760e79.jpg',
-    'https://tickets.avfc.co.uk/en-GB/categories/home-tickets',
-    'https://www.itfc.co.uk',
-    'https://twitter.com/ipswichtown',
-    'https://www.instagram.com/ipswichtown/',
-    'https://www.facebook.com/officialitfc/',
-    'https://www.youtube.com/user/officialitfc',
-    'https://www.tiktok.com/@ipswichtown'
+         ${links.getTicketsLink()},
+         ${links.getOfficialSiteLink()},
+         ${links.getTwitterLink()},
+         ${links.getInstagramLink()},
+         ${links.getFacebookLink()},
+         ${links.getYoutubeLink()},
+         ${links.getTiktokLink()}
 )}"></header>
     <section th:replace="~{Fragments/clubFragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#153C89', 'white', ${team.country},${team.competition})}"></section>
     <main th:replace="~{Fragments/clubFragments::main(

@@ -9,7 +9,6 @@ public interface UserService {
 
     void register(RegisterSeedDto registerSeedDto);
 
-    boolean invalidData(LoginSeedDto loginSeedDto);
 
     UserExportDto getCurrentUserInfo(String email);
 

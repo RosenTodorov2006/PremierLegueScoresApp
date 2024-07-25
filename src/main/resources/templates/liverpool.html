@@ -8,13 +8,13 @@
     '#D71921',
     '/images/LiverpoolResources/liverpool-fc-logo-027452BE2B-seeklogo.com.png',
     '/images/LiverpoolResources/trophies.png',
-    'https://www.liverpoolfc.com/tickets/tickets-availability',
-    'https://www.liverpoolfc.com/',
-    'https://twitter.com/lfc?',
-    'https://www.instagram.com/liverpoolfc/',
-    'https://www.facebook.com/LiverpoolFC/',
-    'https://www.youtube.com/channel/UC9LQwHZoucFT94I2h6JOcjw',
-    'https://www.tiktok.com/@liverpoolfc'
+         ${links.getTicketsLink()},
+         ${links.getOfficialSiteLink()},
+         ${links.getTwitterLink()},
+         ${links.getInstagramLink()},
+         ${links.getFacebookLink()},
+         ${links.getYoutubeLink()},
+         ${links.getTiktokLink()}
 )}"></header>
     <section th:replace="~{Fragments/clubFragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#D71921', 'white', ${team.country},${team.competition})}"></section>
     <main th:replace="~{Fragments/clubFragments::main(

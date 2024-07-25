@@ -8,13 +8,13 @@
     '#E31E27',
     '/images/BrentfordResources/brentford-club-logo-symbol-premier-league-football-abstract-design-illustration-with-red-background-free-vector.jpg',
     '/images/BrentfordResources/trophies.png',
-    'https://www.brentfordfc.com/en/ticket-information',
-    'https://www.brentfordfc.com/en',
-    'https://twitter.com/brentfordfc',
-    'https://www.instagram.com/brentfordfc/',
-    'https://www.facebook.com/brentfordfootballclub1889/',
-    'https://www.youtube.com/channel/UCAalMUm3LIf504ItA3rqfug',
-    'https://www.tiktok.com/@brentfordfc'
+         ${links.getTicketsLink()},
+         ${links.getOfficialSiteLink()},
+         ${links.getTwitterLink()},
+         ${links.getInstagramLink()},
+         ${links.getFacebookLink()},
+         ${links.getYoutubeLink()},
+         ${links.getTiktokLink()}
 )}"></header>
 <section th:replace="~{Fragments/clubFragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#E31E27', 'white', ${team.country},${team.competition})}"></section>
 

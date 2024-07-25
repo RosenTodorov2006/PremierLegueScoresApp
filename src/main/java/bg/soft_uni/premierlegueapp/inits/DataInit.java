@@ -1,5 +1,6 @@
 package bg.soft_uni.premierlegueapp.inits;
 
+import bg.soft_uni.premierlegueapp.exceptions.ResourceNotFoundException;
 import bg.soft_uni.premierlegueapp.models.entities.*;
 import bg.soft_uni.premierlegueapp.models.entities.enums.CompetitionNames;
 import bg.soft_uni.premierlegueapp.models.entities.enums.RoleNames;
@@ -20,14 +21,16 @@ public class DataInit implements CommandLineRunner {
     private final CompetitionRepository competitionRepository;
     private final TeamRepository teamRepository;
     private final RoleRepository roleRepository;
+    private final ClubSocialMediaRepository clubSocialMediaRepository;
 
-    public DataInit(RoleRepository roleRepository, ColorRepository colorRepository, CountryRepository countryRepository, TownRepository townRepository, CompetitionRepository competitionRepository, TeamRepository teamRepository) {
+    public DataInit(RoleRepository roleRepository, ColorRepository colorRepository, CountryRepository countryRepository, TownRepository townRepository, CompetitionRepository competitionRepository, TeamRepository teamRepository, ClubSocialMediaRepository clubSocialMediaRepository) {
         this.roleRepository = roleRepository;
         this.colorRepository = colorRepository;
         this.countryRepository = countryRepository;
         this.townRepository = townRepository;
         this.competitionRepository = competitionRepository;
         this.teamRepository = teamRepository;
+        this.clubSocialMediaRepository = clubSocialMediaRepository;
     }
 
     @Override
@@ -54,7 +57,7 @@ public class DataInit implements CommandLineRunner {
         }
 
         if (townRepository.count() == 0) {
-            Country england = countryRepository.findByName("England");
+            Country england = countryRepository.getByName("England");
             townRepository.saveAll(List.of(
                     new Town("London", england),
                     new Town("Leicester", england),
@@ -74,30 +77,30 @@ public class DataInit implements CommandLineRunner {
         }
 
         if (competitionRepository.count() == 0) {
-            competitionRepository.save(new Competition(CompetitionNames.PremierLeague));
+            competitionRepository.save(new Competition(CompetitionNames.PremierLeague, "https://www.youtube.com/embed/UFXRlCgykrw?si=Q17z4d3uezOOTzOf&autoplay=1", "/images/logos/imgbin_premier-league-uefa-champions-league-manchester-city-f-c-trophy-leicester-city-f-c-png.png"));
         }
 
         if (teamRepository.count() == 0) {
-            Town london = townRepository.findByName("London");
-            Town leicester = townRepository.findByName("Leicester");
-            Town nottingham = townRepository.findByName("Nottingham");
-            Town southampton = townRepository.findByName("Southampton");
-            Town liverpool = townRepository.findByName("Liverpool");
-            Town manchester = townRepository.findByName("Manchester");
-            Town brentford = townRepository.findByName("Brentford");
-            Town brighton = townRepository.findByName("Brighton");
-            Town wolverhampton = townRepository.findByName("Wolverhampton");
-            Town ipswich = townRepository.findByName("Ipswich");
-            Town birmingham = townRepository.findByName("Birmingham");
-            Town bournemouth = townRepository.findByName("Bournemouth");
-            Town everton = townRepository.findByName("Everton");
-            Town newCastle = townRepository.findByName("Newcastle upon Tyne");
-            Color red = colorRepository.findByName("Red");
-            Color blue = colorRepository.findByName("Blue");
-            Color white = colorRepository.findByName("White");
-            Color black = colorRepository.findByName("Black");
-            Color yellow = colorRepository.findByName("Yellow");
-            Competition competition = this.competitionRepository.findByName(CompetitionNames.PremierLeague);
+            Town london = townRepository.getByName("London");
+            Town leicester = townRepository.getByName("Leicester");
+            Town nottingham = townRepository.getByName("Nottingham");
+            Town southampton = townRepository.getByName("Southampton");
+            Town liverpool = townRepository.getByName("Liverpool");
+            Town manchester = townRepository.getByName("Manchester");
+            Town brentford = townRepository.getByName("Brentford");
+            Town brighton = townRepository.getByName("Brighton");
+            Town wolverhampton = townRepository.getByName("Wolverhampton");
+            Town ipswich = townRepository.getByName("Ipswich");
+            Town birmingham = townRepository.getByName("Birmingham");
+            Town bournemouth = townRepository.getByName("Bournemouth");
+            Town everton = townRepository.getByName("Everton");
+            Town newCastle = townRepository.getByName("Newcastle upon Tyne");
+            Color red = colorRepository.getByName("Red");
+            Color blue = colorRepository.getByName("Blue");
+            Color white = colorRepository.getByName("White");
+            Color black = colorRepository.getByName("Black");
+            Color yellow = colorRepository.getByName("Yellow");
+            Competition competition = this.competitionRepository.getByName(CompetitionNames.PremierLeague);
             teamRepository.saveAll(List.of(
                     new Team(
                             competition,
@@ -398,6 +401,209 @@ public class DataInit implements CommandLineRunner {
                             "Under the management of the legendary Sir Alf Ramsey, Ipswich FC experienced its golden era. Ramsey guided the team to the Football League First Division title in the 1961-1962 season, marking the club's first top-flight championship. This triumph was followed by further success in the 1970s under manager Bobby Robson, who led Ipswich to victory in the FA Cup in 1978 and the UEFA Cup in 1981.\n\nThroughout the years, Ipswich FC has seen its fair share of ups and downs, experiencing periods of both glory and struggle. Despite facing relegation from the Premier League in the early 2000s, the club has maintained a passionate and dedicated fan base, known for their unwavering support through thick and thin.\n\nToday, Ipswich FC continues to compete in the Football League, striving to reclaim its former glory and solidify its place among the elite clubs in English football.",  // trophiesBigInfo
                             blue,  // kitColor
                             ipswich  // town
+                    )
+            ));
+        }
+        if(clubSocialMediaRepository.count() == 0){
+            this.clubSocialMediaRepository.saveAll(List.of(
+                    new ClubSocialMedia(teamRepository.findByName(TeamNames.Arsenal).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                            "https://www.arsenal.com/tickets?field_arsenal_team_target_id=1&revision_information=",
+                            "https://www.arsenal.com/",
+                            "https://twitter.com/arsenal",
+                            "https://www.instagram.com/arsenal/",
+                            "https://www.facebook.com/Arsenal/",
+                            "https://www.youtube.com/@arsenal",
+                            "https://www.tiktok.com/@arsenal"
+                    ),
+
+                    new ClubSocialMedia(teamRepository.findByName(TeamNames.AstonVilla).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                            "https://tickets.avfc.co.uk/en-GB/categories/home-tickets",
+                            "https://www.avfc.co.uk/",
+                            "https://twitter.com/AVFCOfficial",
+                            "https://www.instagram.com/avfcofficial/",
+                            "https://www.facebook.com/avfcofficial/?locale",
+                            "https://www.youtube.com/@avfcofficial",
+                            "https://www.tiktok.com/@avfcofficial"
+                    ),
+
+                    new ClubSocialMedia(teamRepository.findByName(TeamNames.BournemouthAFC).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                            "https://tickets.afcb.co.uk/content",
+                            "https://www.afcb.co.uk",
+                            "https://twitter.com/afcbournemouth",
+                            "https://www.instagram.com/afcb/",
+                            "https://www.facebook.com/afcb/",
+                            "https://www.youtube.com/channel/UCeOCuVSSweaEj6oVtJZEKQw",
+                            "https://www.tiktok.com/@afcb"
+                    ),
+
+                    new ClubSocialMedia(teamRepository.findByName(TeamNames.Brentford).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                            "https://www.brentfordfc.com/en/ticket-information",
+                            "https://www.brentfordfc.com/en",
+                            "https://twitter.com/brentfordfc",
+                            "https://www.instagram.com/brentfordfc/",
+                            "https://www.facebook.com/brentfordfootballclub1889/",
+                            "https://www.youtube.com/channel/UCAalMUm3LIf504ItA3rqfug",
+                            "https://www.tiktok.com/@brentfordfc"
+                    ),
+
+                    new ClubSocialMedia(teamRepository.findByName(TeamNames.BrightonHoveAlbion).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                            "https://tickets.brightonandhovealbion.com",
+                            "https://www.brightonandhovealbion.com",
+                            "https://twitter.com/OfficialBHAFC",
+                            "https://www.instagram.com/officialbhafc/",
+                            "https://www.facebook.com/officialbhafc/",
+                            "https://www.youtube.com/channel/UCf-cpC9WAdOsas19JHipukA",
+                            "https://www.tiktok.com/@officialbhafc"
+                    ),
+
+                    new ClubSocialMedia(teamRepository.findByName(TeamNames.Chelsea).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                            "https://www.chelseafc.com/en/tickets/mens-tickets",
+                            "https://www.chelseafc.com/en",
+                            "https://twitter.com/ChelseaFC",
+                            "https://www.instagram.com/chelseafc/",
+                            "https://www.facebook.com/ChelseaFC/",
+                            "https://www.youtube.com/channel/UCU2PacFf99vhb3hNiYDmxww",
+                            "https://www.tiktok.com/@chelseafc"
+                    ),
+
+                    new ClubSocialMedia(teamRepository.findByName(TeamNames.CrystalPalace).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                            "https://www.cpfc.co.uk/tickets/",
+                            "https://www.cpfc.co.uk",
+                            "https://twitter.com/cpfc",
+                            "https://www.instagram.com/cpfc/",
+                            "https://www.facebook.com/officialcpfc/",
+                            "https://www.youtube.com/channel/UCWB9N0012fG6bGyj486Qxmg",
+                            "https://www.tiktok.com/@cpfc"
+                    ),
+
+                    new ClubSocialMedia(teamRepository.findByName(TeamNames.Everton).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                            "https://www.evertonfc.com/tickets-hospitality",
+                            "https://www.evertonfc.com/home",
+                            "https://twitter.com/everton",
+                            "https://www.instagram.com/everton/",
+                            "https://www.facebook.com/Everton/",
+                            "https://www.youtube.com/EVERTON",
+                            "https://www.tiktok.com/@everton"
+                    ),
+
+                    new ClubSocialMedia(teamRepository.findByName(TeamNames.Fulham).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                            "https://www.fulhamfc.com/tickets-and-hospitality/match-tickets/",
+                            "https://www.fulhamfc.com",
+                            "https://twitter.com/fulhamfc",
+                            "https://www.instagram.com/fulhamfc/",
+                            "https://www.facebook.com/FulhamFC/",
+                            "https://www.youtube.com/channel/UC2VLfz92cTT8jHIFOecC-LA",
+                            "https://www.tiktok.com/@fulhamfc"
+                    ),
+
+                    new ClubSocialMedia(teamRepository.findByName(TeamNames.Ipswich).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                            "https://tickets.avfc.co.uk/en-GB/categories/home-tickets",
+                            "https://www.itfc.co.uk",
+                            "https://twitter.com/ipswichtown",
+                            "https://www.instagram.com/ipswichtown/",
+                            "https://www.facebook.com/officialitfc/",
+                            "https://www.youtube.com/user/officialitfc",
+                            "https://www.tiktok.com/@ipswichtown"
+                    ),
+
+                    new ClubSocialMedia(teamRepository.findByName(TeamNames.LeicesterCity).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                            "https://tickets.lcfc.com/en-gb/categories/home%20tickets",
+                            "https://www.lcfc.com/?lang=EN",
+                            "https://twitter.com/LCFC",
+                            "https://www.instagram.com/lcfc/",
+                            "https://www.facebook.com/lcfc/",
+                            "https://www.youtube.com/@LCFC",
+                            "https://www.tiktok.com/@lcfc"
+                    ),
+
+                    new ClubSocialMedia(teamRepository.findByName(TeamNames.Liverpool).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                            "https://www.liverpoolfc.com/tickets/tickets-availability",
+                            "https://www.liverpoolfc.com/",
+                            "https://twitter.com/lfc",
+                            "https://www.instagram.com/liverpoolfc/",
+                            "https://www.facebook.com/LiverpoolFC/",
+                            "https://www.youtube.com/channel/UC9LQwHZoucFT94I2h6JOcjw",
+                            "https://www.tiktok.com/@liverpoolfc"
+                    ),
+
+                    new ClubSocialMedia(teamRepository.findByName(TeamNames.ManchesterCity).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                            "https://www.mancity.com/tickets/mens",
+                            "https://www.mancity.com",
+                            "https://twitter.com/mancity",
+                            "https://www.instagram.com/mancity/",
+                            "https://www.facebook.com/mancity/",
+                            "https://www.youtube.com/@mancity",
+                            "https://www.tiktok.com/@mancity"
+                    ),
+
+                    new ClubSocialMedia(teamRepository.findByName(TeamNames.ManchesterUnited).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                            "https://tickets.manutd.com/en-GB/categories/home-tickets",
+                            "https://www.manutd.com",
+                            "https://twitter.com/ManUtd",
+                            "https://www.instagram.com/manchesterunited/",
+                            "https://www.facebook.com/manchesterunited/",
+                            "https://www.youtube.com/manutd",
+                            "https://www.tiktok.com/@manutd"
+                    ),
+
+                    new ClubSocialMedia(teamRepository.findByName(TeamNames.NewcastleUnited).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                            "https://www.newcastleunited.com/tickets/on-sale-dates/",
+                            "https://www.newcastleunited.com",
+                            "https://twitter.com/NUFC",
+                            "https://www.instagram.com/nufc/",
+                            "https://www.facebook.com/newcastleunited",
+                            "https://www.youtube.com/@NUFC",
+                            "https://www.tiktok.com/@nufc"
+                    ),
+
+                    new ClubSocialMedia(teamRepository.findByName(TeamNames.NottinghamForest).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                            "https://www.nottinghamforest.co.uk/category/tickets",
+                            "https://www.nottinghamforest.co.uk",
+                            "https://twitter.com/NFFC",
+                            "https://www.instagram.com/officialnffc/",
+                            "https://www.facebook.com/officialnffc/",
+                            "https://www.youtube.com/channel/UCyAxjuAr8f_BFDGCO3Htbxw",
+                            "https://www.tiktok.com/@officialnffc"
+                    ),
+
+                    new ClubSocialMedia(teamRepository.findByName(TeamNames.Southampton).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                            "https://www.southamptonfc.com/en/matches/mens-team",
+                            "https://www.southamptonfc.com/en",
+                            "https://x.com/southamptonfc",
+                            "https://www.instagram.com/southamptonfc/",
+                            "https://www.facebook.com/southamptonfc/",
+                            "https://www.youtube.com/channel/UCxvXjfiIHQ2O6saVx_ZFqnw",
+                            "https://www.tiktok.com/@southamptonfc"
+                    ),
+
+                    new ClubSocialMedia(teamRepository.findByName(TeamNames.TottenhamHotspur).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                            "https://www.tottenhamhotspur.com/tickets/buy-tickets/home-tickets/",
+                            "https://www.tottenhamhotspur.com/",
+                            "https://twitter.com/SpursOfficial",
+                            "https://www.instagram.com/spursofficial/",
+                            "https://www.facebook.com/TottenhamHotspur/",
+                            "https://www.youtube.com/spursofficial",
+                            "https://www.tiktok.com/@spursofficial"
+                    ),
+
+                    new ClubSocialMedia(teamRepository.findByName(TeamNames.WestHamUnited).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                            "https://www.whufc.com/tickets/home-matches",
+                            "https://www.whufc.com",
+                            "https://twitter.com/westham",
+                            "https://www.instagram.com/westham/",
+                            "https://www.facebook.com/WestHam/",
+                            "https://www.youtube.com/westhamunited",
+                            "https://www.tiktok.com/@westham"
+                    ),
+
+                    new ClubSocialMedia(teamRepository.findByName(TeamNames.Wolverhampton).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                            "https://www.wolves.co.uk/tickets/",
+                            "https://www.wolves.co.uk",
+                            "https://twitter.com/Wolves",
+                            "https://www.instagram.com/wolves/",
+                            "https://www.facebook.com/wolves/",
+                            "https://www.youtube.com/channel/UCQ7Lqg5Czh5djGK6iOG53KQ",
+                            "https://www.tiktok.com/@wolves"
                     )
             ));
         }

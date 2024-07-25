@@ -9,13 +9,13 @@
     '#6EACDD',
     '/images/ManCityResources/logo.png',
     '/images/ManCityResources/trophiesManCity.png',
-    'https://www.mancity.com/tickets/mens',
-    'https://www.mancity.com',
-    'https://twitter.com/mancity',
-    'https://www.instagram.com/mancity/',
-    'https://www.facebook.com/mancity/',
-    'https://www.youtube.com/@mancity',
-    'https://www.tiktok.com/@mancity'
+         ${links.getTicketsLink()},
+         ${links.getOfficialSiteLink()},
+         ${links.getTwitterLink()},
+         ${links.getInstagramLink()},
+         ${links.getFacebookLink()},
+         ${links.getYoutubeLink()},
+         ${links.getTiktokLink()}
 )}"></header>
     <section th:replace="~{Fragments/clubFragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#7DB0DB', 'white', ${team.country},${team.competition})}"></section>
     <main th:replace="~{Fragments/clubFragments::main(

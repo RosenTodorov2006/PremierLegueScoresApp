@@ -8,13 +8,13 @@
     '#03529B',
     '/images/CeystalPalaceResources/south-london-englandseptember-18-2023crystal-600nw-2363472517.webp',
     '/images/CeystalPalaceResources/snapedit_1713895512888.png',
-    'https://www.cpfc.co.uk/tickets/',
-    'https://www.cpfc.co.uk',
-    'https://twitter.com/cpfc',
-    'https://www.instagram.com/cpfc/',
-    'https://www.facebook.com/officialcpfc/',
-    'https://www.youtube.com/channel/UCWB9N0012fG6bGyj486Qxmg',
-    'https://www.tiktok.com/@cpfc'
+         ${links.getTicketsLink()},
+         ${links.getOfficialSiteLink()},
+         ${links.getTwitterLink()},
+         ${links.getInstagramLink()},
+         ${links.getFacebookLink()},
+         ${links.getYoutubeLink()},
+         ${links.getTiktokLink()}
 )}"></header>
     <section th:replace="~{Fragments/clubFragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#03529B', 'white', ${team.country},${team.competition})}"></section>
     <main th:replace="~{Fragments/clubFragments::main(

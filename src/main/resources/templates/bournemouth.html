@@ -8,13 +8,13 @@
     '#CA0B0F',
      '/images/BournemouthResources/logog.webp',
       '/images/BournemouthResources/troph (1).png',
-         'https://tickets.afcb.co.uk/content',
-         'https://www.afcb.co.uk',
-         'https://twitter.com/afcbournemouth',
-         'https://www.instagram.com/afcb/',
-         'https://www.facebook.com/afcb/',
-         'https://www.youtube.com/channel/UCeOCuVSSweaEj6oVtJZEKQw',
-         'https://www.tiktok.com/@afcb'
+         ${links.getTicketsLink()},
+         ${links.getOfficialSiteLink()},
+         ${links.getTwitterLink()},
+         ${links.getInstagramLink()},
+         ${links.getFacebookLink()},
+         ${links.getYoutubeLink()},
+         ${links.getTiktokLink()}
           )}"></header>
     <section th:replace="~{Fragments/clubFragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#CA0B0F', 'white', ${team.country},${team.competition})}"></section>
     <main th:replace="~{Fragments/clubFragments::main(

@@ -8,13 +8,13 @@
     'black',
     '/images/NweCastleResources/logo.png',
     '/images/NweCastleResources/honours.thumb.jpg.a196315e5c46e332f8a85ff805a3d46d.jpg',
-    'https://www.newcastleunited.com/tickets/on-sale-dates/',
-    'https://www.newcastleunited.com',
-    'https://twitter.com/NUFC',
-    'https://www.instagram.com/nufc/',
-    'https://www.facebook.com/newcastleunited',
-    'https://www.youtube.com/@NUFC',
-    'https://www.tiktok.com/@nufc'
+         ${links.getTicketsLink()},
+         ${links.getOfficialSiteLink()},
+         ${links.getTwitterLink()},
+         ${links.getInstagramLink()},
+         ${links.getFacebookLink()},
+         ${links.getYoutubeLink()},
+         ${links.getTiktokLink()}
 )}"></header>
 <section th:replace="~{Fragments/clubFragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, 'black', 'white', ${team.country},${team.competition})}"></section>
     <main th:replace="~{Fragments/clubFragments::main(

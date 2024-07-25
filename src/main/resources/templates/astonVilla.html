@@ -8,13 +8,13 @@
     '#660433',
      '/images/AstonVillaResources/logo.png.png',
       '/images/AstonVillaResources/trophies.png',
-         'https://tickets.avfc.co.uk/en-GB/categories/home-tickets',
-         'https://www.avfc.co.uk/',
-         'https://twitter.com/AVFCOfficial',
-         'https://www.instagram.com/avfcofficial/',
-         'https://www.facebook.com/avfcofficial/?locale',
-         'https://www.youtube.com/@avfcofficial',
-         'https://www.tiktok.com/@avfcofficial'
+         ${links.getTicketsLink()},
+         ${links.getOfficialSiteLink()},
+         ${links.getTwitterLink()},
+         ${links.getInstagramLink()},
+         ${links.getFacebookLink()},
+         ${links.getYoutubeLink()},
+         ${links.getTiktokLink()}
           )}"></header>
     <section th:replace="~{Fragments/clubFragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#660433', '#87B7E8', ${team.country},${team.competition})}"></section>
     <main th:replace="~{Fragments/clubFragments::main(

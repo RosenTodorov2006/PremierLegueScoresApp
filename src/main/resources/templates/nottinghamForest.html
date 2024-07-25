@@ -7,13 +7,13 @@
     '#D73435',
     '/images/NottingamResources/nottingham-forest-fc-club-symbol-white-logo-premier-league-football-abstract-design-illustration-with-red-background-free-vector.jpg',
     '/images/NottingamResources/imgonline-com-ua-twotoone-72wJtU51AQG2P3.jpg',
-    'https://www.nottinghamforest.co.uk/category/tickets',
-    'https://www.nottinghamforest.co.uk',
-    'https://twitter.com/NFFC',
-    'https://www.instagram.com/officialnffc/',
-    'https://www.facebook.com/officialnffc/',
-    'https://www.youtube.com/channel/UCyAxjuAr8f_BFDGCO3Htbxw',
-    'https://www.tiktok.com/@officialnffc'
+         ${links.getTicketsLink()},
+         ${links.getOfficialSiteLink()},
+         ${links.getTwitterLink()},
+         ${links.getInstagramLink()},
+         ${links.getFacebookLink()},
+         ${links.getYoutubeLink()},
+         ${links.getTiktokLink()}
 )}"></header>
 <section th:replace="~{Fragments/clubFragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#D73435', 'white', ${team.country},${team.competition})}"></section>
     <main th:replace="~{Fragments/clubFragments::main(

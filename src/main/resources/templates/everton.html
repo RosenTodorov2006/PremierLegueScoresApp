@@ -8,13 +8,13 @@
     '#0044C1',
     '/images/EvertonResources/unnamed.webp',
     '/images/EvertonResources/snapedit_1713901075068.png',
-    'https://www.evertonfc.com/tickets-hospitality',
-    'https://www.evertonfc.com/home',
-    'https://twitter.com/everton',
-    'https://www.instagram.com/everton/',
-    'https://www.facebook.com/Everton/',
-    'https://www.youtube.com/EVERTON',
-    'https://www.tiktok.com/@everton'
+         ${links.getTicketsLink()},
+         ${links.getOfficialSiteLink()},
+         ${links.getTwitterLink()},
+         ${links.getInstagramLink()},
+         ${links.getFacebookLink()},
+         ${links.getYoutubeLink()},
+         ${links.getTiktokLink()}
 )}"></header>
 <section th:replace="~{Fragments/clubFragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#0044C1', 'white', ${team.country},${team.competition})}"></section>
     <main th:replace="~{Fragments/clubFragments::main(

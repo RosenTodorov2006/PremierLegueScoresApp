@@ -8,13 +8,13 @@
     '#7A2739',
     '/images/WestHamResources/logo.png',
     '/images/WestHamResources/file9WFY9L1P.jpg',
-    'https://www.whufc.com/tickets/home-matches',
-    'https://www.whufc.com',
-    'https://twitter.com/westham',
-    'https://www.instagram.com/westham/',
-    'https://www.facebook.com/WestHam/',
-    'https://www.youtube.com/westhamunited',
-    'https://www.tiktok.com/@westham'
+         ${links.getTicketsLink()},
+         ${links.getOfficialSiteLink()},
+         ${links.getTwitterLink()},
+         ${links.getInstagramLink()},
+         ${links.getFacebookLink()},
+         ${links.getYoutubeLink()},
+         ${links.getTiktokLink()}
 )}"></header>
 <section th:replace="~{Fragments/clubFragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#7A2739', 'white', ${team.country},${team.competition})}"></section>
     <main th:replace="~{Fragments/clubFragments::main(

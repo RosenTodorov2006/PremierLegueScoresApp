@@ -8,13 +8,13 @@
     'black',
     '/images/FulhamResources/fc-fulham-club-logo-symbol-premier-league-football-abstract-design-illustration-with-black-background-free-vector.jpg',
     '/images/FulhamResources/png.png',
-    'https://www.fulhamfc.com/tickets-and-hospitality/match-tickets/',
-    'https://www.fulhamfc.com',
-    'https://twitter.com/fulhamfc',
-    'https://www.instagram.com/fulhamfc/',
-    'https://www.facebook.com/FulhamFC/',
-    'https://www.youtube.com/channel/UC2VLfz92cTT8jHIFOecC-LA',
-    'https://www.tiktok.com/@fulhamfc'
+         ${links.getTicketsLink()},
+         ${links.getOfficialSiteLink()},
+         ${links.getTwitterLink()},
+         ${links.getInstagramLink()},
+         ${links.getFacebookLink()},
+         ${links.getYoutubeLink()},
+         ${links.getTiktokLink()}
 )}"></header>
 <section th:replace="~{Fragments/clubFragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, 'black', 'white', ${team.country},${team.competition})}"></section>
     <main th:replace="~{Fragments/clubFragments::main(

@@ -7,13 +7,13 @@
     '#E12128',
      '/images/ArsenalResources/arsenal-logo.png',
       '/images/ArsenalResources/arsenal-trophies.png',
-         'https://www.arsenal.com/tickets?field_arsenal_team_target_id=1&revision_information=',
-         'https://www.arsenal.com/',
-         'https://twitter.com/arsenal',
-         'https://www.instagram.com/arsenal/',
-         'https://www.facebook.com/Arsenal/',
-         'https://www.youtube.com/@arsenal',
-         'https://www.tiktok.com/@arsenal'
+         ${links.getTicketsLink()},
+         ${links.getOfficialSiteLink()},
+         ${links.getTwitterLink()},
+         ${links.getInstagramLink()},
+         ${links.getFacebookLink()},
+         ${links.getYoutubeLink()},
+         ${links.getTiktokLink()}
           )}"></header>
     <section th:replace="~{Fragments/clubFragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#E12128', 'white', ${team.country},${team.competition})}"></section>
     <main th:replace="~{Fragments/clubFragments::main(

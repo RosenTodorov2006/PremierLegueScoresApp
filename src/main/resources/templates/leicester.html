@@ -8,13 +8,13 @@
     '#004c97',
     '/images/LeicesterResources/logo.png',
     '/images/LeicesterResources/trphies.png',
-    'https://tickets.lcfc.com/en-gb/categories/home%20tickets',
-    'https://www.lcfc.com/?lang=EN',
-    'https://twitter.com/LCFC',
-    'https://www.instagram.com/lcfc/',
-    'https://www.facebook.com/lcfc/',
-    'https://www.youtube.com/@LCFC',
-    'https://www.tiktok.com/@lcfc'
+         ${links.getTicketsLink()},
+         ${links.getOfficialSiteLink()},
+         ${links.getTwitterLink()},
+         ${links.getInstagramLink()},
+         ${links.getFacebookLink()},
+         ${links.getYoutubeLink()},
+         ${links.getTiktokLink()}
 )}"></header>
     <section th:replace="~{Fragments/clubFragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#004c97', 'white', ${team.country},${team.competition})}"></section>
     <main th:replace="~{Fragments/clubFragments::main(

@@ -69,18 +69,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean invalidData(LoginSeedDto loginSeedDto) {
-        Optional<UserEntity> userByEmail = this.userRepository.findByEmail(loginSeedDto.getEmail());
-        if(userByEmail.isEmpty()){
-            return true;
-        }
-        if(!this.passwordEncoder.matches(loginSeedDto.getPassword(), userByEmail.get().getPassword())){
-            return true;
-        }
-        return false;
-    }
-
-    @Override
     public UserExportDto getCurrentUserInfo(String email) {
         Optional<UserEntity> optionalUserEntity = this.userRepository.findByEmail(email);
         if(optionalUserEntity.isEmpty()){

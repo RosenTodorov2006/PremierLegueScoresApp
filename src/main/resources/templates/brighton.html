@@ -7,13 +7,13 @@
     '#114D96',
     '/images/BrightonResources/brighton-club-logo-symbol-premier-league-football-abstract-design-illustration-with-blue-background-free-vector.jpg',
     '/images/BrightonResources/trophies.png',
-    'https://tickets.brightonandhovealbion.com',
-    'https://www.brightonandhovealbion.com',
-    'https://twitter.com/OfficialBHAFC',
-    'https://www.instagram.com/officialbhafc/',
-    'https://www.facebook.com/officialbhafc/',
-    'https://www.youtube.com/channel/UCf-cpC9WAdOsas19JHipukA',
-    'https://www.tiktok.com/@officialbhafc'
+         ${links.getTicketsLink()},
+         ${links.getOfficialSiteLink()},
+         ${links.getTwitterLink()},
+         ${links.getInstagramLink()},
+         ${links.getFacebookLink()},
+         ${links.getYoutubeLink()},
+         ${links.getTiktokLink()}
 )}"></header>
 <section th:replace="~{Fragments/clubFragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#114D96', 'white', ${team.country},${team.competition})}"></section>
     <main th:replace="~{Fragments/clubFragments::main(

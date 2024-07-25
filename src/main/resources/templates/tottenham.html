@@ -8,13 +8,13 @@
     '#1E2551',
     '/images/TottenhamResources/totLogo.png',
     '/images/TottenhamResources/trTot.png',
-    'https://www.tottenhamhotspur.com/tickets/buy-tickets/home-tickets/',
-    'https://www.tottenhamhotspur.com/',
-    'https://twitter.com/SpursOfficial',
-    'https://www.instagram.com/spursofficial/',
-    'https://www.facebook.com/TottenhamHotspur/',
-    'https://www.youtube.com/spursofficial',
-    'https://www.tiktok.com/@spursofficial'
+         ${links.getTicketsLink()},
+         ${links.getOfficialSiteLink()},
+         ${links.getTwitterLink()},
+         ${links.getInstagramLink()},
+         ${links.getFacebookLink()},
+         ${links.getYoutubeLink()},
+         ${links.getTiktokLink()}
 )}"></header>
 <section th:replace="~{Fragments/clubFragments::teamSmallInfo(${team.name}, ${team.initials}, ${team.created}, ${team.kitColor}, ${team.town}, ${team.budget}, '#1E2551', 'white', ${team.country},${team.competition})}"></section>
     <main th:replace="~{Fragments/clubFragments::main(

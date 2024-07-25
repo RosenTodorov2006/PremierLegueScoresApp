@@ -39,15 +39,14 @@
                 </tr>
                 </thead>
                 <tbody class="standings-table">
-                <!-- Rows will be inserted here -->
                 </tbody>
             </table>
     </div>
       <div class="middle-container">
-        <img src="/images/logos/imgbin_premier-league-uefa-champions-league-manchester-city-f-c-trophy-leicester-city-f-c-png.png" alt="">
+        <img th:src="${competition.trophyUrl}" alt="">
         <div class="content">
         <div class="video">
-          <iframe width="420" height="250" src="https://www.youtube.com/embed/UFXRlCgykrw?si=Q17z4d3uezOOTzOf&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <iframe width="420" height="250" th:src="${competition.videoUrl}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
         <div class="info">
           <p th:text="#{home_page_info}">The Premier Anflian League - the epitome of football culture and competitiveness. Established in 1920, it attracts millions of fans with its elegant matches and iconic teams. Experience the thrilling moments and the passion of football with us.</p>
@@ -61,18 +60,14 @@
               <thead>
               </thead>
               <tbody>
-              <!-- Rows will be inserted here -->
               </tbody>
           </table>
       </section>
     </div>
     </main>
     <section class="footer">
-        <!-- Footer -->
         <footer class="text-center text-white" style="background-color: #5F3363;">
-          <!-- Grid container -->
           <div class="container p-4 pb-0"  id="regist" sec:authorize="!isAuthenticated()">
-            <!-- Section: CTA -->
             <section class="register-footer">
               <p class="d-flex justify-content-center align-items-center">
                 <span class="me-3" th:text="#{footer_have_account_question}">Already have an account? </span>
@@ -81,21 +76,17 @@
                   <a href="/register" class="register-link" th:text="#{footer_sign_button}">Sign up</a>
               </p>
             </section>
-            <!-- Section: CTA -->
           </div>
           <div class="container p-4 pb-0"  id="logout" sec:authorize="isAuthenticated()" style="padding: 0.6rem !important;">
-            <!-- Section: CTA -->
             <section class="logout-footer">
                 <span class="me-3" style="display: inline" th:text="#{footer_logout_text}">Logout for here </span>
                 <form th:action="@{/logout}" th:method="post"  sec:authorize="isAuthenticated()" style="display: inline">
                   <button class="register-link" type="submit" th:text="#{footer_logout}">Logout</button>
                 </form>
             </section>
-            <!-- Section: CTA -->
           </div>
           <div th:replace="~{Fragments/clubsLinksHeaderAndFooterFragments::homeFooter}"></div>
         </footer>
-        <!-- Footer -->
       </section>
     <script src="/js/indexJs.js"></script>
     <script src="/js/teams.js"></script>
