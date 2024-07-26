@@ -6,5 +6,5 @@ import bg.soft_uni.premierlegueapp.models.entities.enums.TeamNames;
 import java.util.List;
 
 public interface ClubSocialMediaService {
-    LinksExportDto findLinkByTeamName(TeamNames teamName);
+    LinksExportDto findLinksByTeamName(TeamNames teamName);
 }

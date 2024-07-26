@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @Service
 public class CompetitionServiceImpl implements CompetitionService {
+    private final static String YOU_TUBE_LINK="https://www.youtube.com/embed/";
     private final CompetitionRepository competitionRepository;
     private final ModelMapper modelMapper;
 
@@ -29,8 +30,8 @@ public class CompetitionServiceImpl implements CompetitionService {
         }
         Competition competition = optionalCompetition.get();
         CompetitionExportDto map = this.modelMapper.map(competition, CompetitionExportDto.class);
-        if(!map.getVideoUrl().contains("https://www.youtube.com/embed/")){
-            map.setVideoUrl("https://www.youtube.com/embed/"+competition.getVideoUrl());
+        if(!map.getVideoUrl().contains(YOU_TUBE_LINK)){
+            map.setVideoUrl(YOU_TUBE_LINK+competition.getVideoUrl());
         }
         return map;
     }
