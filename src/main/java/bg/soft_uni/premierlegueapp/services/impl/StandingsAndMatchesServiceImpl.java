@@ -3,7 +3,7 @@ package bg.soft_uni.premierlegueapp.services.impl;
 import bg.soft_uni.premierlegueapp.configuration.FootballApiConfiguration;
 import bg.soft_uni.premierlegueapp.models.dtos.MatchDto;
 import bg.soft_uni.premierlegueapp.models.dtos.PositionSeedDto;
-import bg.soft_uni.premierlegueapp.services.PositionService;
+import bg.soft_uni.premierlegueapp.services.StandingsAndMatchesService;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -17,11 +17,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class PositionServiceImpl implements PositionService {
+public class StandingsAndMatchesServiceImpl implements StandingsAndMatchesService {
     private final RestClient restClient;
     private final FootballApiConfiguration footballApiConfiguration;
 
-    public PositionServiceImpl(@Qualifier("generalRestClient") RestClient restClient, FootballApiConfiguration footballApiConfiguration) {
+    public StandingsAndMatchesServiceImpl(@Qualifier("generalRestClient") RestClient restClient, FootballApiConfiguration footballApiConfiguration) {
         this.restClient = restClient;
         this.footballApiConfiguration = footballApiConfiguration;
     }

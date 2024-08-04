@@ -5,7 +5,7 @@ import bg.soft_uni.premierlegueapp.models.dtos.PositionSeedDto;
 
 import java.util.List;
 
-public interface PositionService {
+public interface StandingsAndMatchesService {
     List<PositionSeedDto> getStanding();
 
     List<MatchDto> getLastMatches();
