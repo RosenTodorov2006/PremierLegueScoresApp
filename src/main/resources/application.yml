@@ -37,3 +37,4 @@ football:
   api:
     key: 98b87d90b96e4bac9b5b758a5e557508
     url: "https://api.football-data.org/v4/competitions/PL/"
+    header: "X-Auth-Token"

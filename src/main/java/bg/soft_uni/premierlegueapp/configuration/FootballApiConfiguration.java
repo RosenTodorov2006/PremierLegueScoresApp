@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 public class FootballApiConfiguration {
     private String key;
     private String url;
+    private String header;
 
     public String getKey() {
         return key;
@@ -23,5 +24,13 @@ public class FootballApiConfiguration {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getHeader() {
+        return header;
+    }
+
+    public void setHeader(String header) {
+        this.header = header;
     }
 }
