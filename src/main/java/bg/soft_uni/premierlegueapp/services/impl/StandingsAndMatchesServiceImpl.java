@@ -1,7 +1,6 @@
 package bg.soft_uni.premierlegueapp.services.impl;
 
 import bg.soft_uni.premierlegueapp.configuration.FootballApiConfiguration;
-import bg.soft_uni.premierlegueapp.exceptions.ResourceNotFoundException;
 import bg.soft_uni.premierlegueapp.models.dtos.MatchDto;
 import bg.soft_uni.premierlegueapp.models.dtos.PositionSeedDto;
 import bg.soft_uni.premierlegueapp.services.StandingsAndMatchesService;
