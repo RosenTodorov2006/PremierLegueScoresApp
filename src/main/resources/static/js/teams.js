@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Проверка и задаване на езика при зареждане на страницата
     checkAndSetLanguage();
 
-    // Зареждане на данните
     loadStandings();
     loadLastMatches();
 
@@ -11,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
         loadLastMatches();
     }, 49000);
 
-    // Функция за зареждане на таблицата с класиране
     function loadStandings() {
         fetch('/api/standings')
             .then(response => response.json())
@@ -23,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     }
 
-    // Функция за зареждане на последните мачове
     function loadLastMatches() {
         fetch('/api/last-matches')
             .then(response => response.json())
@@ -35,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     }
 
-    // Преводи на отборите
     const teamNamesBG = {
         "AFC Bournemouth": "Борнемут",
         "Arsenal FC": "Арсенал",
@@ -82,7 +77,6 @@ document.addEventListener("DOMContentLoaded", function () {
         "Wolverhampton Wanderers FC": "Wolverhampton Wanderers"
     };
 
-    // Функция за получаване на езика от URL или локално съхранение
     function getLanguage() {
         const urlParams = new URLSearchParams(window.location.search);
         const langFromURL = urlParams.get('lang');
@@ -90,15 +84,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return langFromURL || langFromStorage || 'en_US';
     }
 
-    // Функция за запазване на избрания език и презареждане на данните
-    function setLanguage(lang) {
-        localStorage.setItem('selectedLanguage', lang);
-        const url = new URL(window.location);
-        url.searchParams.set('lang', lang);
-        window.location = url.toString();
-    }
-
-    // Функция за проверка и задаване на езика при зареждане на страницата
     function checkAndSetLanguage() {
         const lang = getLanguage();
         localStorage.setItem('selectedLanguage', lang);
@@ -109,7 +94,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Функция за показване на таблицата с класиране
     function displayStandings(standings) {
         const lang = getLanguage();
         const teamNames = lang === 'bg_BG' ? teamNamesBG : teamNamesEN;
@@ -128,7 +112,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Функция за показване на последните мачове
     function displayLastMatches(matches) {
         const lang = getLanguage();
         const teamNames = lang === 'bg_BG' ? teamNamesBG : teamNamesEN;
