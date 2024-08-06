@@ -15,7 +15,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String index(Model model){
-        model.addAttribute("competition", competitionService.findInfoByCompetitionName(CompetitionNames.PremierLeague));
+        model.addAttribute("competition", this.competitionService.findInfoByCompetitionName(CompetitionNames.PremierLeague));
         return "index";
     }
 }

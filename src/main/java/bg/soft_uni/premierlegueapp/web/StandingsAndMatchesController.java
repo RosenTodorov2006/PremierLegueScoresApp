@@ -24,7 +24,7 @@ public class StandingsAndMatchesController {
     )
     @GetMapping("/standings")
     public List<PositionSeedDto> getStandings() {
-        List<PositionSeedDto> standing = positionService.getStanding();
+        List<PositionSeedDto> standing = this.positionService.getStanding();
         return standing;
     }
     @WarnIfExecutionExceeds(
@@ -32,6 +32,6 @@ public class StandingsAndMatchesController {
     )
     @GetMapping("/last-matches")
     public List<MatchDto> getLastMatches() {
-        return positionService.getLastMatches();
+        return this.positionService.getLastMatches();
     }
 }

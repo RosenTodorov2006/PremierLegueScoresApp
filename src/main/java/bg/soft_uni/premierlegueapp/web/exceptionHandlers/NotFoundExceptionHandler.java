@@ -21,7 +21,7 @@ public class NotFoundExceptionHandler {
         modelAndView.setViewName("error");
         String message = "An unexpected error occurred in the application: "+ex.getMessage();
         modelAndView.addObject("errorMessage", ex.getMessage());
-        applicationEventPublisher.publishEvent(new ErrorLoggingEvent(this, message));
+        this.applicationEventPublisher.publishEvent(new ErrorLoggingEvent(this, message));
         return modelAndView;
     }
 }

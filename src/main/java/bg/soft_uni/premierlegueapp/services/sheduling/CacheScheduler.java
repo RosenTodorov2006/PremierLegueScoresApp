@@ -18,12 +18,12 @@ public class CacheScheduler {
         clearCaches();
     }
     private void clearCaches() {
-        Cache standingCache = cacheManager.getCache("standing");
+        Cache standingCache = this.cacheManager.getCache("standing");
         if (standingCache != null) {
             standingCache.clear();
         }
 
-        Cache matchesCache = cacheManager.getCache("matches");
+        Cache matchesCache = this.cacheManager.getCache("matches");
         if (matchesCache != null) {
             matchesCache.clear();
         }

@@ -44,7 +44,7 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public List<ExportMessageDto> getAllMessagesSortedByCreated() {
-        List<ExportMessageDto> messages = chatRestClient
+        List<ExportMessageDto> messages = this.chatRestClient
                 .get()
                 .uri("/chat")
                 .accept(MediaType.APPLICATION_JSON)

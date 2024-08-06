@@ -28,7 +28,7 @@ public class ClubSocialMediaServiceImpl implements ClubSocialMediaService {
 
     @Override
     public LinksExportDto findLinksByTeamName(TeamNames teamName) {
-        Optional<Team> optionalTeam = teamRepository.findByName(teamName);
+        Optional<Team> optionalTeam = this.teamRepository.findByName(teamName);
         if(optionalTeam.isEmpty()){
             throw new ResourceNotFoundException("TEAM NOT FOUND!");
         }

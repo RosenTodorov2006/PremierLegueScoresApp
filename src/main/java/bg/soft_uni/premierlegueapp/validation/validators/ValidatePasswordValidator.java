@@ -27,7 +27,7 @@ public class ValidatePasswordValidator implements ConstraintValidator<ValidPassw
 
         if(!isValid) {
             constraintValidatorContext.unwrap(HibernateConstraintValidatorContext.class)
-                    .buildConstraintViolationWithTemplate(message)
+                    .buildConstraintViolationWithTemplate(this.message)
                     .addPropertyNode("confirmPassword")
                     .addConstraintViolation()
                     .disableDefaultConstraintViolation();

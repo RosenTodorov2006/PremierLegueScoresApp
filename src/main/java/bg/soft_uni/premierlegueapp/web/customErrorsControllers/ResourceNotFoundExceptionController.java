@@ -19,7 +19,7 @@ public class ResourceNotFoundExceptionController implements ErrorController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("error");
         modelAndView.addObject("errorMessage", NOT_FOUNT_EXCEPTION_MESSAGE);
-        applicationEventPublisher.publishEvent(new ErrorLoggingEvent(this, "An unexpected error occurred in the application: "+NOT_FOUNT_EXCEPTION_MESSAGE));
+        this.applicationEventPublisher.publishEvent(new ErrorLoggingEvent(this, "An unexpected error occurred in the application: "+NOT_FOUNT_EXCEPTION_MESSAGE));
         return modelAndView;
     }
 }

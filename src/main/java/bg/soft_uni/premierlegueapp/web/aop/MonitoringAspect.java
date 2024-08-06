@@ -39,7 +39,7 @@ public class MonitoringAspect {
         if(methodExecutionTime>threshold){
             String message = String.format("The method %s executed in %s millis which is more than the acceptable threshold of %d millis."
                     , pjp.getSignature(), methodExecutionTime, threshold);
-            applicationEventPublisher.publishEvent(new ErrorLoggingEvent(this, message));
+            this.applicationEventPublisher.publishEvent(new ErrorLoggingEvent(this, message));
         }
         return proceed;
     }
