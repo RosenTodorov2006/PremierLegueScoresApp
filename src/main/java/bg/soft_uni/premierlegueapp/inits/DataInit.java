@@ -35,14 +35,14 @@ public class DataInit implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        if(roleRepository.count()==0){
+        if(this.roleRepository.count()==0){
             Arrays.stream(RoleNames.values())
                     .map(Role::new)
                     .forEach(this.roleRepository::save);
         }
 
-        if (colorRepository.count() == 0) {
-            colorRepository.saveAll(List.of(
+        if (this.colorRepository.count() == 0) {
+            this.colorRepository.saveAll(List.of(
                     new Color("Red"),
                     new Color("Blue"),
                     new Color("Green"),
@@ -52,13 +52,13 @@ public class DataInit implements CommandLineRunner {
             ));
         }
 
-        if (countryRepository.count() == 0) {
-            countryRepository.save(new Country("England"));
+        if (this.countryRepository.count() == 0) {
+            this.countryRepository.save(new Country("England"));
         }
 
-        if (townRepository.count() == 0) {
-            Country england = countryRepository.getByName("England");
-            townRepository.saveAll(List.of(
+        if (this.townRepository.count() == 0) {
+            Country england = this.countryRepository.getByName("England");
+            this.townRepository.saveAll(List.of(
                     new Town("London", england),
                     new Town("Leicester", england),
                     new Town("Nottingham", england),
@@ -76,32 +76,32 @@ public class DataInit implements CommandLineRunner {
             ));
         }
 
-        if (competitionRepository.count() == 0) {
-            competitionRepository.save(new Competition(CompetitionNames.PremierLeague, "https://www.youtube.com/embed/UFXRlCgykrw?si=Q17z4d3uezOOTzOf&autoplay=1", "/images/logos/imgbin_premier-league-uefa-champions-league-manchester-city-f-c-trophy-leicester-city-f-c-png.png"));
+        if (this.competitionRepository.count() == 0) {
+            this.competitionRepository.save(new Competition(CompetitionNames.PremierLeague, "https://www.youtube.com/embed/UFXRlCgykrw?si=Q17z4d3uezOOTzOf&autoplay=1", "/images/logos/imgbin_premier-league-uefa-champions-league-manchester-city-f-c-trophy-leicester-city-f-c-png.png"));
         }
 
-        if (teamRepository.count() == 0) {
-            Town london = townRepository.getByName("London");
-            Town leicester = townRepository.getByName("Leicester");
-            Town nottingham = townRepository.getByName("Nottingham");
-            Town southampton = townRepository.getByName("Southampton");
-            Town liverpool = townRepository.getByName("Liverpool");
-            Town manchester = townRepository.getByName("Manchester");
-            Town brentford = townRepository.getByName("Brentford");
-            Town brighton = townRepository.getByName("Brighton");
-            Town wolverhampton = townRepository.getByName("Wolverhampton");
-            Town ipswich = townRepository.getByName("Ipswich");
-            Town birmingham = townRepository.getByName("Birmingham");
-            Town bournemouth = townRepository.getByName("Bournemouth");
-            Town everton = townRepository.getByName("Everton");
-            Town newCastle = townRepository.getByName("Newcastle upon Tyne");
-            Color red = colorRepository.getByName("Red");
-            Color blue = colorRepository.getByName("Blue");
-            Color white = colorRepository.getByName("White");
-            Color black = colorRepository.getByName("Black");
-            Color yellow = colorRepository.getByName("Yellow");
+        if (this.teamRepository.count() == 0) {
+            Town london = this.townRepository.getByName("London");
+            Town leicester = this.townRepository.getByName("Leicester");
+            Town nottingham = this.townRepository.getByName("Nottingham");
+            Town southampton = this.townRepository.getByName("Southampton");
+            Town liverpool = this.townRepository.getByName("Liverpool");
+            Town manchester = this.townRepository.getByName("Manchester");
+            Town brentford = this.townRepository.getByName("Brentford");
+            Town brighton = this.townRepository.getByName("Brighton");
+            Town wolverhampton = this.townRepository.getByName("Wolverhampton");
+            Town ipswich = this.townRepository.getByName("Ipswich");
+            Town birmingham = this.townRepository.getByName("Birmingham");
+            Town bournemouth = this.townRepository.getByName("Bournemouth");
+            Town everton = this.townRepository.getByName("Everton");
+            Town newCastle = this.townRepository.getByName("Newcastle upon Tyne");
+            Color red = this.colorRepository.getByName("Red");
+            Color blue = this.colorRepository.getByName("Blue");
+            Color white = this.colorRepository.getByName("White");
+            Color black = this.colorRepository.getByName("Black");
+            Color yellow = this.colorRepository.getByName("Yellow");
             Competition competition = this.competitionRepository.getByName(CompetitionNames.PremierLeague);
-            teamRepository.saveAll(List.of(
+            this.teamRepository.saveAll(List.of(
                     new Team(
                             competition,
                             TeamNames.Arsenal,  // name
@@ -404,7 +404,7 @@ public class DataInit implements CommandLineRunner {
                     )
             ));
         }
-        if(clubSocialMediaRepository.count() == 0){
+        if(this.clubSocialMediaRepository.count() == 0){
             this.clubSocialMediaRepository.saveAll(List.of(
                     new ClubSocialMedia(teamRepository.findByName(TeamNames.Arsenal).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
                             "https://www.arsenal.com/tickets?field_arsenal_team_target_id=1&revision_information=",
@@ -416,7 +416,7 @@ public class DataInit implements CommandLineRunner {
                             "https://www.tiktok.com/@arsenal"
                     ),
 
-                    new ClubSocialMedia(teamRepository.findByName(TeamNames.AstonVilla).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                    new ClubSocialMedia(this.teamRepository.findByName(TeamNames.AstonVilla).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
                             "https://tickets.avfc.co.uk/en-GB/categories/home-tickets",
                             "https://www.avfc.co.uk/",
                             "https://twitter.com/AVFCOfficial",
@@ -426,7 +426,7 @@ public class DataInit implements CommandLineRunner {
                             "https://www.tiktok.com/@avfcofficial"
                     ),
 
-                    new ClubSocialMedia(teamRepository.findByName(TeamNames.BournemouthAFC).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                    new ClubSocialMedia(this.teamRepository.findByName(TeamNames.BournemouthAFC).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
                             "https://tickets.afcb.co.uk/content",
                             "https://www.afcb.co.uk",
                             "https://twitter.com/afcbournemouth",
@@ -436,7 +436,7 @@ public class DataInit implements CommandLineRunner {
                             "https://www.tiktok.com/@afcb"
                     ),
 
-                    new ClubSocialMedia(teamRepository.findByName(TeamNames.Brentford).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                    new ClubSocialMedia(this.teamRepository.findByName(TeamNames.Brentford).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
                             "https://www.brentfordfc.com/en/ticket-information",
                             "https://www.brentfordfc.com/en",
                             "https://twitter.com/brentfordfc",
@@ -446,7 +446,7 @@ public class DataInit implements CommandLineRunner {
                             "https://www.tiktok.com/@brentfordfc"
                     ),
 
-                    new ClubSocialMedia(teamRepository.findByName(TeamNames.BrightonHoveAlbion).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                    new ClubSocialMedia(this.teamRepository.findByName(TeamNames.BrightonHoveAlbion).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
                             "https://tickets.brightonandhovealbion.com",
                             "https://www.brightonandhovealbion.com",
                             "https://twitter.com/OfficialBHAFC",
@@ -456,7 +456,7 @@ public class DataInit implements CommandLineRunner {
                             "https://www.tiktok.com/@officialbhafc"
                     ),
 
-                    new ClubSocialMedia(teamRepository.findByName(TeamNames.Chelsea).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                    new ClubSocialMedia(this.teamRepository.findByName(TeamNames.Chelsea).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
                             "https://www.chelseafc.com/en/tickets/mens-tickets",
                             "https://www.chelseafc.com/en",
                             "https://twitter.com/ChelseaFC",
@@ -466,7 +466,7 @@ public class DataInit implements CommandLineRunner {
                             "https://www.tiktok.com/@chelseafc"
                     ),
 
-                    new ClubSocialMedia(teamRepository.findByName(TeamNames.CrystalPalace).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                    new ClubSocialMedia(this.teamRepository.findByName(TeamNames.CrystalPalace).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
                             "https://www.cpfc.co.uk/tickets/",
                             "https://www.cpfc.co.uk",
                             "https://twitter.com/cpfc",
@@ -476,7 +476,7 @@ public class DataInit implements CommandLineRunner {
                             "https://www.tiktok.com/@cpfc"
                     ),
 
-                    new ClubSocialMedia(teamRepository.findByName(TeamNames.Everton).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                    new ClubSocialMedia(this.teamRepository.findByName(TeamNames.Everton).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
                             "https://www.evertonfc.com/tickets-hospitality",
                             "https://www.evertonfc.com/home",
                             "https://twitter.com/everton",
@@ -486,7 +486,7 @@ public class DataInit implements CommandLineRunner {
                             "https://www.tiktok.com/@everton"
                     ),
 
-                    new ClubSocialMedia(teamRepository.findByName(TeamNames.Fulham).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                    new ClubSocialMedia(this.teamRepository.findByName(TeamNames.Fulham).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
                             "https://www.fulhamfc.com/tickets-and-hospitality/match-tickets/",
                             "https://www.fulhamfc.com",
                             "https://twitter.com/fulhamfc",
@@ -496,7 +496,7 @@ public class DataInit implements CommandLineRunner {
                             "https://www.tiktok.com/@fulhamfc"
                     ),
 
-                    new ClubSocialMedia(teamRepository.findByName(TeamNames.Ipswich).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                    new ClubSocialMedia(this.teamRepository.findByName(TeamNames.Ipswich).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
                             "https://tickets.avfc.co.uk/en-GB/categories/home-tickets",
                             "https://www.itfc.co.uk",
                             "https://twitter.com/ipswichtown",
@@ -506,7 +506,7 @@ public class DataInit implements CommandLineRunner {
                             "https://www.tiktok.com/@ipswichtown"
                     ),
 
-                    new ClubSocialMedia(teamRepository.findByName(TeamNames.LeicesterCity).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                    new ClubSocialMedia(this.teamRepository.findByName(TeamNames.LeicesterCity).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
                             "https://tickets.lcfc.com/en-gb/categories/home%20tickets",
                             "https://www.lcfc.com/?lang=EN",
                             "https://twitter.com/LCFC",
@@ -516,7 +516,7 @@ public class DataInit implements CommandLineRunner {
                             "https://www.tiktok.com/@lcfc"
                     ),
 
-                    new ClubSocialMedia(teamRepository.findByName(TeamNames.Liverpool).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                    new ClubSocialMedia(this.teamRepository.findByName(TeamNames.Liverpool).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
                             "https://www.liverpoolfc.com/tickets/tickets-availability",
                             "https://www.liverpoolfc.com/",
                             "https://twitter.com/lfc",
@@ -526,7 +526,7 @@ public class DataInit implements CommandLineRunner {
                             "https://www.tiktok.com/@liverpoolfc"
                     ),
 
-                    new ClubSocialMedia(teamRepository.findByName(TeamNames.ManchesterCity).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                    new ClubSocialMedia(this.teamRepository.findByName(TeamNames.ManchesterCity).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
                             "https://www.mancity.com/tickets/mens",
                             "https://www.mancity.com",
                             "https://twitter.com/mancity",
@@ -536,7 +536,7 @@ public class DataInit implements CommandLineRunner {
                             "https://www.tiktok.com/@mancity"
                     ),
 
-                    new ClubSocialMedia(teamRepository.findByName(TeamNames.ManchesterUnited).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                    new ClubSocialMedia(this.teamRepository.findByName(TeamNames.ManchesterUnited).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
                             "https://tickets.manutd.com/en-GB/categories/home-tickets",
                             "https://www.manutd.com",
                             "https://twitter.com/ManUtd",
@@ -546,7 +546,7 @@ public class DataInit implements CommandLineRunner {
                             "https://www.tiktok.com/@manutd"
                     ),
 
-                    new ClubSocialMedia(teamRepository.findByName(TeamNames.NewcastleUnited).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                    new ClubSocialMedia(this.teamRepository.findByName(TeamNames.NewcastleUnited).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
                             "https://www.newcastleunited.com/tickets/on-sale-dates/",
                             "https://www.newcastleunited.com",
                             "https://twitter.com/NUFC",
@@ -556,7 +556,7 @@ public class DataInit implements CommandLineRunner {
                             "https://www.tiktok.com/@nufc"
                     ),
 
-                    new ClubSocialMedia(teamRepository.findByName(TeamNames.NottinghamForest).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                    new ClubSocialMedia(this.teamRepository.findByName(TeamNames.NottinghamForest).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
                             "https://www.nottinghamforest.co.uk/category/tickets",
                             "https://www.nottinghamforest.co.uk",
                             "https://twitter.com/NFFC",
@@ -566,7 +566,7 @@ public class DataInit implements CommandLineRunner {
                             "https://www.tiktok.com/@officialnffc"
                     ),
 
-                    new ClubSocialMedia(teamRepository.findByName(TeamNames.Southampton).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                    new ClubSocialMedia(this.teamRepository.findByName(TeamNames.Southampton).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
                             "https://www.southamptonfc.com/en/matches/mens-team",
                             "https://www.southamptonfc.com/en",
                             "https://x.com/southamptonfc",
@@ -576,7 +576,7 @@ public class DataInit implements CommandLineRunner {
                             "https://www.tiktok.com/@southamptonfc"
                     ),
 
-                    new ClubSocialMedia(teamRepository.findByName(TeamNames.TottenhamHotspur).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                    new ClubSocialMedia(this.teamRepository.findByName(TeamNames.TottenhamHotspur).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
                             "https://www.tottenhamhotspur.com/tickets/buy-tickets/home-tickets/",
                             "https://www.tottenhamhotspur.com/",
                             "https://twitter.com/SpursOfficial",
@@ -586,7 +586,7 @@ public class DataInit implements CommandLineRunner {
                             "https://www.tiktok.com/@spursofficial"
                     ),
 
-                    new ClubSocialMedia(teamRepository.findByName(TeamNames.WestHamUnited).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                    new ClubSocialMedia(this.teamRepository.findByName(TeamNames.WestHamUnited).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
                             "https://www.whufc.com/tickets/home-matches",
                             "https://www.whufc.com",
                             "https://twitter.com/westham",
@@ -596,7 +596,7 @@ public class DataInit implements CommandLineRunner {
                             "https://www.tiktok.com/@westham"
                     ),
 
-                    new ClubSocialMedia(teamRepository.findByName(TeamNames.Wolverhampton).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
+                    new ClubSocialMedia(this.teamRepository.findByName(TeamNames.Wolverhampton).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
                             "https://www.wolves.co.uk/tickets/",
                             "https://www.wolves.co.uk",
                             "https://twitter.com/Wolves",
