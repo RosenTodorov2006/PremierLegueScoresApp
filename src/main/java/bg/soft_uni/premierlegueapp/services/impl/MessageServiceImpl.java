@@ -51,19 +51,28 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public List<ExportMessageDto> getAllMessagesSortedByCreated() {
-        List<ExportMessageDto> collect = this.messageRepository.findAll().stream().map(message -> {
-            ExportMessageDto map = this.modelMapper.map(message, ExportMessageDto.class);
-            Optional<UserEntity> optionalUser = userRepository.findById(message.getUserId());
-            if(optionalUser.isEmpty()){
-                throw new ResourceNotFoundException("USER IS NOT FOUND!");
-            }
-            UserEntity userEntity = optionalUser.get();
-            map.setUsername(userEntity.getUsername());
-            map.setUserEmail(userEntity.getEmail());
-            map.setUserId(userEntity.getId());
-            return map;
-        }).sorted(Comparator.comparing(ExportMessageDto::getCreated)).collect(Collectors.toList());
-        return collect;
+        //first, the name "collect" is not descriptive. Change it to something like "sortedMessages"
+        //second, avoid defining variables that are used only once. Directly return the result of the stream operation
+        //third, every stream operation should be on its own line for better readability
+        return this.messageRepository
+        .findAll()
+        .stream()
+        .map(message -> {            
+                UserEntity userEntity = 
+                    userRepository.findById(message.getUserId())
+                    .orElseThrow(() -> 
+                        new ResourceNotFoundException("USER IS NOT FOUND!")
+                    );
+                
+                //different method:
+                ExportMessageDto map = this.modelMapper.map(message, ExportMessageDto.class);
+                map.setUsername(userEntity.getUsername());
+                map.setUserEmail(userEntity.getEmail());
+                map.setUserId(userEntity.getId());
+                return map;
+        })
+        .sorted(Comparator.comparing(ExportMessageDto::getCreated))
+        .collect(Collectors.toList());
     }
 
     @Override
