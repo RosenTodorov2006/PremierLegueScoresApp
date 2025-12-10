@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TownRepository extends JpaRepository<Town, Long> {
-    Town getByName(String london);
+    Town getByName(String london); //why is london hardcoded here? Should be a variable. Why not Optional<Town> like in RoleRepository?
 }

@@ -62,11 +62,9 @@ public class UserServiceImpl implements UserService {
             Role role = optionalRole.get();
             userEntity.setRole(role);
         }
-        Optional<Team> optionalTeam = this.teamRepository.findByName(TeamNames.valueOf(registerSeedDto.getFavouriteTeam()));
-        if(optionalTeam.isEmpty()){
-            throw new ResourceNotFoundException("TEAM NOT FOUND!");
-        }
-        Team team = optionalTeam.get();
+        //this is a more elegant way to deal with Optional objects. You can use for the roles above as well
+        Team team = this.teamRepository.findByName(TeamNames.valueOf(registerSeedDto.getFavouriteTeam()))
+            .orElseThrow(() -> new ResourceNotFoundException("TEAM NOT FOUND!"));
         userEntity.setFavouriteTeam(team);
         this.userRepository.save(userEntity);
     }

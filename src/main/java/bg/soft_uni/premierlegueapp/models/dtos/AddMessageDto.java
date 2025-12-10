@@ -1,4 +1,4 @@
-package bg.soft_uni.premierlegueapp.models.dtos;
+package bg.soft_uni.premierlegueapp.models.dtos; //package dtos should be in the root level, not under models
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

@@ -1,11 +1,13 @@
 package bg.soft_uni.premierlegueapp.web;
 
-import bg.soft_uni.premierlegueapp.models.entities.enums.TeamNames;
-import bg.soft_uni.premierlegueapp.services.ClubSocialMediaService;
-import bg.soft_uni.premierlegueapp.services.TeamService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import bg.soft_uni.premierlegueapp.models.entities.enums.TeamNames;
+import bg.soft_uni.premierlegueapp.services.ClubSocialMediaService;
+import bg.soft_uni.premierlegueapp.services.TeamService;
 
 @Controller
 public class TeamsController {
@@ -16,6 +18,21 @@ public class TeamsController {
         this.teamService = teamService;
         this.clubSocialMediaService = clubSocialMediaService;
     }
+    //what if we have hundreds of teams? This approach is not scalable. Consider using a path variable to handle different teams dynamically.
+    //example:
+    @GetMapping("/teams/{teamName}")
+    public String teamPage(@PathVariable String teamName, Model model){
+        TeamNames teamEnum;
+        try {
+            teamEnum = TeamNames.valueOf(teamName);
+        } catch (IllegalArgumentException e) {
+            return "error"; // or some error page
+        }   
+        model.addAttribute("team", this.teamService.findByName(teamEnum));
+        model.addAttribute("links", this.clubSocialMediaService.findLinksByTeamName(teamEnum));
+        return teamName.toLowerCase(); //assuming the view name matches the team name in lowercase
+    }
+
 
     @GetMapping("/liverpool")
     public String liverpool(Model model){

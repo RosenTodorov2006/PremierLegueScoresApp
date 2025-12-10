@@ -404,7 +404,7 @@ public class DataInit implements CommandLineRunner {
                     )
             ));
         }
-        if(this.clubSocialMediaRepository.count() == 0){
+        if (this.clubSocialMediaRepository.count() == 0) {
             this.clubSocialMediaRepository.saveAll(List.of(
                     new ClubSocialMedia(teamRepository.findByName(TeamNames.Arsenal).orElseThrow(() -> new ResourceNotFoundException("ERROR IN DATABASE! THE TEAM DOESN'T EXIST!")),
                             "https://www.arsenal.com/tickets?field_arsenal_team_target_id=1&revision_information=",

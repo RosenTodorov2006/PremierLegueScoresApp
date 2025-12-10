@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class StandingsAndMatchesController {
-    private final StandingsAndMatchesService positionService;
+    private final StandingsAndMatchesService positionService; //name and type mismatch
 
     public StandingsAndMatchesController(StandingsAndMatchesService positionService) {
         this.positionService = positionService;
@@ -24,8 +24,8 @@ public class StandingsAndMatchesController {
     )
     @GetMapping("/standings")
     public List<PositionSeedDto> getStandings() {
-        List<PositionSeedDto> standing = this.positionService.getStanding();
-        return standing;
+        List<PositionSeedDto> standing = this.positionService.getStanding(); //rename to standings
+        return standing; //directly return this.positionService.getStanding();
     }
     @WarnIfExecutionExceeds(
             threshold = 2000

@@ -1,4 +1,4 @@
-package bg.soft_uni.premierlegueapp.web;
+package bg.soft_uni.premierlegueapp.web; //why is the package name web? Shouldn't it be controller?
 
 import bg.soft_uni.premierlegueapp.services.AiApiConnection;
 import bg.soft_uni.premierlegueapp.services.impl.AiApiConnectionImpl;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
+import java.util.LinkedHashMap; //remove unused imports
 import java.util.List;
 import java.util.Map;
 
@@ -39,8 +39,10 @@ public class AiController {
 
     @PostMapping("/ai")
     public String sendMessage(@RequestParam String message, HttpSession session, Model model) {
-        // Вземаме съществуващите съобщения от сесията
-        List<String> messages = (List<String>) session.getAttribute("messages");
+        // Вземаме съществуващите съобщения от сесията //avoid commenting in Bulgarian. You never know who is going to read this code.
+
+       
+        List<String> messages = (List<String>) session.getAttribute("messages"); 
 
         // Добавяме новото съобщение към съществуващите
         messages = aiApiConnection.addMessage(messages, "user: " + message);
