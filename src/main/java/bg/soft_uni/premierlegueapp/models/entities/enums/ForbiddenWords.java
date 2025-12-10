@@ -1,4 +1,4 @@
-package bg.soft_uni.premierlegueapp.models.entities.enums;
+package bg.soft_uni.premierlegueapp.models.entities.enums; //package enums must move one levl up (in models package) or in root level package
 
 public enum ForbiddenWords {
     KILL,

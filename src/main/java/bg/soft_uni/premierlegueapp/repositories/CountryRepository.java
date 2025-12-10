@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CountryRepository extends JpaRepository<Country, Long> {
-    Country getByName(String england);
+    Country getByName(String england); //why is england hardcoded here? Should be a variable.
 }

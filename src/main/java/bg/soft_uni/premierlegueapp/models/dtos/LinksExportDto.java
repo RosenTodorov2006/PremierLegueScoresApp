@@ -1,9 +1,8 @@
 package bg.soft_uni.premierlegueapp.models.dtos;
 
-import bg.soft_uni.premierlegueapp.models.entities.Team;
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+
+
+
 
 public class LinksExportDto {
     private String ticketsLink;
